@@ -5,7 +5,8 @@ Orchestrates the full extraction flow:
 2. Locate and parse TOC pages
 3. Detect headings via font heuristics
 4. Reconcile and produce final bookmark tree
-5. Optionally inject bookmarks back into the PDF
+5. Optionally run LLM review to validate and enhance results
+6. Optionally inject bookmarks back into the PDF
 """
 
 from __future__ import annotations
@@ -30,6 +31,8 @@ def extract_bookmarks(
     force_rebuild: bool = False,
     use_toc: bool = True,
     use_font_heuristics: bool = True,
+    use_llm: bool = False,
+    llm_model: str = "claude-sonnet-4-20250514",
     inject_into_pdf: bool = False,
     output_path: Optional[str] = None,
     fuzzy_threshold: int = 70,
@@ -41,6 +44,8 @@ def extract_bookmarks(
         force_rebuild: If True, ignore existing bookmarks and rebuild.
         use_toc: Whether to try TOC page parsing (Approach 1).
         use_font_heuristics: Whether to use font-based heading detection (Approach 3).
+        use_llm: Whether to use LLM review to validate/enhance headings.
+        llm_model: Which Anthropic model to use for LLM review.
         inject_into_pdf: If True, write bookmarks into the PDF.
         output_path: Path for the output PDF (if injecting). Defaults to overwriting input.
         fuzzy_threshold: Fuzzy match threshold for reconciliation (0-100).
@@ -131,6 +136,36 @@ def extract_bookmarks(
         else:
             result.warnings.append("No bookmarks could be extracted from this PDF.")
             result.method_used = "none"
+
+        # ── Step 5.5: Optional LLM review ────────────────────────────────
+        if use_llm and result.bookmarks:
+            logger.info("Running LLM review stage...")
+            try:
+                from .llm_review import llm_review_headings
+
+                # LLM reviews the flat bookmark list against the full document
+                flat = result.flat_bookmarks()
+                llm_result = llm_review_headings(
+                    doc, font_profile if use_font_heuristics else build_font_profile(doc),
+                    flat, model=llm_model,
+                )
+                if llm_result is not None:
+                    result.bookmarks = llm_result
+                    methods_used.append("llm_review")
+                    result.method_used = " + ".join(methods_used)
+                    logger.info(f"LLM review complete: {len(result.flat_bookmarks())} bookmarks")
+                else:
+                    result.warnings.append("LLM review failed — using heuristic results.")
+                    logger.warning("LLM review returned None, keeping heuristic results.")
+            except ImportError:
+                result.warnings.append(
+                    "LLM review requested but 'anthropic' package not installed. "
+                    "Install with: pip install anthropic"
+                )
+                logger.warning("anthropic package not installed, skipping LLM review.")
+            except Exception as e:
+                result.warnings.append(f"LLM review failed: {e}")
+                logger.warning(f"LLM review error: {e}")
 
         # ── Step 6: Optionally inject bookmarks into PDF ────────────────
         if inject_into_pdf and result.bookmarks:

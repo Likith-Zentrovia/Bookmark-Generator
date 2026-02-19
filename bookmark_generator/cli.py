@@ -46,6 +46,19 @@ def main(argv: list[str] | None = None) -> int:
         help="Disable font-based heading detection.",
     )
     parser.add_argument(
+        "--llm",
+        action="store_true",
+        help="Enable LLM review stage (requires ANTHROPIC_API_KEY). "
+             "The LLM validates heuristic headings, finds missed ones, "
+             "and removes false positives.",
+    )
+    parser.add_argument(
+        "--llm-model",
+        default="claude-sonnet-4-20250514",
+        metavar="MODEL",
+        help="Anthropic model to use for LLM review. Default: claude-sonnet-4-20250514.",
+    )
+    parser.add_argument(
         "--fuzzy-threshold",
         type=int,
         default=70,
@@ -79,6 +92,8 @@ def main(argv: list[str] | None = None) -> int:
             force_rebuild=args.force,
             use_toc=not args.no_toc,
             use_font_heuristics=not args.no_font,
+            use_llm=args.llm,
+            llm_model=args.llm_model,
             inject_into_pdf=args.inject,
             output_path=args.output,
             fuzzy_threshold=args.fuzzy_threshold,
