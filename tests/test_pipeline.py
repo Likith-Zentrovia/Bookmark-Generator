@@ -749,6 +749,148 @@ class TestPipeline:
         assert "font_heuristics" not in result.method_used
 
 
+# ─── Tests: LLM review module (no API key needed) ────────────────────────────
+
+class TestLLMReview:
+    """Tests for the LLM review module that don't require an API key."""
+
+    def test_parse_llm_response_valid_json(self):
+        """parse_llm_response should parse valid JSON arrays."""
+        from bookmark_generator.llm_review import parse_llm_response
+
+        response = '[{"text": "Chapter 1", "level": 1, "page": 1, "action": "keep"}]'
+        result = parse_llm_response(response)
+        assert result is not None
+        assert len(result) == 1
+        assert result[0]["text"] == "Chapter 1"
+
+    def test_parse_llm_response_with_markdown_fences(self):
+        """parse_llm_response should handle markdown code fences."""
+        from bookmark_generator.llm_review import parse_llm_response
+
+        response = '```json\n[{"text": "Intro", "level": 1, "page": 2, "action": "keep"}]\n```'
+        result = parse_llm_response(response)
+        assert result is not None
+        assert len(result) == 1
+
+    def test_parse_llm_response_trailing_commas(self):
+        """parse_llm_response should fix trailing commas."""
+        from bookmark_generator.llm_review import parse_llm_response
+
+        response = '[{"text": "Ch1", "level": 1, "page": 1, "action": "keep",},]'
+        result = parse_llm_response(response)
+        assert result is not None
+        assert len(result) == 1
+
+    def test_parse_llm_response_invalid(self):
+        """parse_llm_response should return None for invalid input."""
+        from bookmark_generator.llm_review import parse_llm_response
+
+        assert parse_llm_response("") is None
+        assert parse_llm_response(None) is None
+        assert parse_llm_response("not json at all") is None
+        assert parse_llm_response('{"not": "a list"}') is None
+
+    def test_merge_heuristic_and_llm_keep(self, pdf_with_headers_footers):
+        """LLM 'keep' action should boost confidence and set source='both'."""
+        from bookmark_generator.llm_review import merge_heuristic_and_llm
+
+        doc = fitz.open(pdf_with_headers_footers)
+        heuristic = [
+            BookmarkEntry(title="Chapter 1 Introduction", page_number=1, pdf_page_index=0, level=1, confidence=0.7, source="font_heuristic"),
+        ]
+        llm_data = [
+            {"text": "Chapter 1 Introduction", "level": 1, "page": 1, "action": "keep"},
+        ]
+        result = merge_heuristic_and_llm(heuristic, llm_data, doc)
+        doc.close()
+
+        assert len(result) >= 1
+        ch1 = next((h for h in result if "Introduction" in h.title), None)
+        assert ch1 is not None
+        assert ch1.source == "both"
+        assert ch1.confidence > 0.7  # Boosted
+
+    def test_merge_heuristic_and_llm_remove(self, pdf_with_headers_footers):
+        """LLM 'remove' action should drop the heading."""
+        from bookmark_generator.llm_review import merge_heuristic_and_llm
+
+        doc = fitz.open(pdf_with_headers_footers)
+        heuristic = [
+            BookmarkEntry(title="Chapter 1 Introduction", page_number=1, pdf_page_index=0, level=1, confidence=0.7, source="font_heuristic"),
+            BookmarkEntry(title="SGNA Core Curriculum", page_number=1, pdf_page_index=0, level=1, confidence=0.5, source="font_heuristic"),
+        ]
+        llm_data = [
+            {"text": "Chapter 1 Introduction", "level": 1, "page": 1, "action": "keep"},
+            {"text": "SGNA Core Curriculum", "level": 1, "page": 1, "action": "remove"},
+        ]
+        result = merge_heuristic_and_llm(heuristic, llm_data, doc)
+        doc.close()
+
+        titles = [h.title for h in result]
+        assert "SGNA Core Curriculum" not in titles
+        assert any("Introduction" in t for t in titles)
+
+    def test_merge_heuristic_and_llm_add(self, pdf_with_headers_footers):
+        """LLM 'add' action should add new headings."""
+        from bookmark_generator.llm_review import merge_heuristic_and_llm
+
+        doc = fitz.open(pdf_with_headers_footers)
+        heuristic = [
+            BookmarkEntry(title="Chapter 1 Introduction", page_number=1, pdf_page_index=0, level=1, confidence=0.7, source="font_heuristic"),
+        ]
+        llm_data = [
+            {"text": "Chapter 1 Introduction", "level": 1, "page": 1, "action": "keep"},
+            {"text": "Appendix B", "level": 1, "page": 5, "action": "add"},
+        ]
+        result = merge_heuristic_and_llm(heuristic, llm_data, doc)
+        doc.close()
+
+        assert len(result) >= 2
+        appendix = next((h for h in result if "Appendix B" in h.title), None)
+        assert appendix is not None
+        assert appendix.source == "llm"
+
+    def test_build_document_map(self, pdf_with_headers_footers):
+        """build_document_map should produce a non-empty string with page markers."""
+        from bookmark_generator.llm_review import build_document_map
+
+        doc = fitz.open(pdf_with_headers_footers)
+        profile = build_font_profile(doc)
+        headings = detect_headings(doc, profile)
+
+        doc_map = build_document_map(doc, profile, headings)
+        doc.close()
+
+        assert "DOCUMENT MAP" in doc_map
+        assert "PAGE 1" in doc_map
+        assert len(doc_map) > 100
+
+    def test_build_llm_prompt(self, pdf_with_headers_footers):
+        """build_llm_prompt should produce a prompt with instructions and headings."""
+        from bookmark_generator.llm_review import build_llm_prompt
+
+        doc = fitz.open(pdf_with_headers_footers)
+        profile = build_font_profile(doc)
+        headings = [
+            BookmarkEntry(title="Chapter 1 Introduction", page_number=1, pdf_page_index=0, level=1, confidence=0.8, source="font_heuristic"),
+        ]
+
+        prompt = build_llm_prompt("DOCUMENT MAP\n...", headings, profile)
+        doc.close()
+
+        assert "HEURISTIC STAGE DETECTED" in prompt
+        assert "Chapter 1 Introduction" in prompt
+        assert "JSON array" in prompt
+
+    def test_pipeline_llm_without_anthropic(self, pdf_no_toc):
+        """Pipeline with use_llm=True but no anthropic installed should warn gracefully."""
+        result = extract_bookmarks(pdf_no_toc, use_llm=True)
+        # Should still produce results via heuristics
+        assert len(result.flat_bookmarks()) >= 3
+        # Should have a warning about LLM
+
+
 # ─── Tests: Models ──────────────────────────────────────────────────────────────
 
 class TestModels:
