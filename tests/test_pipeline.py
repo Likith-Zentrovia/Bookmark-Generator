@@ -271,6 +271,36 @@ class TestBookmarkExtractor:
         assert extracted[0].title == "Chapter 1"
         doc.close()
 
+    def test_inject_bookmarks_normalizes_levels(self, tmp_path):
+        """Ensure inject handles entries that don't start at level 1."""
+        path = str(tmp_path / "level_test.pdf")
+        doc = fitz.open()
+        for i in range(5):
+            page = doc.new_page()
+            page.insert_text((72, 72), f"Page {i+1}", fontsize=12)
+        doc.save(path)
+        doc.close()
+
+        doc = fitz.open(path)
+        # Simulate entries where levels start at 2 and have gaps
+        bookmarks = [
+            BookmarkEntry(title="Section A", page_number=1, pdf_page_index=0, level=2),
+            BookmarkEntry(title="Sub A.1", page_number=2, pdf_page_index=1, level=4),
+            BookmarkEntry(title="Section B", page_number=3, pdf_page_index=2, level=2),
+        ]
+        inject_bookmarks(doc, bookmarks)
+        out_path = str(tmp_path / "level_test_out.pdf")
+        doc.save(out_path)
+        doc.close()
+
+        # Verify it saved without error and bookmarks are readable
+        doc = fitz.open(out_path)
+        assert has_bookmarks(doc)
+        extracted = extract_existing_bookmarks(doc)
+        assert len(extracted) == 3
+        assert extracted[0].level == 1  # Normalized to start at 1
+        doc.close()
+
 
 # ─── Tests: TOC parser ─────────────────────────────────────────────────────────
 
