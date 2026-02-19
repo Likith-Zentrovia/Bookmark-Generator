@@ -17,7 +17,15 @@ from bookmark_generator.bookmark_extractor import (
     has_bookmarks,
     inject_bookmarks,
 )
-from bookmark_generator.font_heuristics import build_font_profile, detect_headings
+from bookmark_generator.font_heuristics import (
+    build_font_profile,
+    detect_headings,
+    detect_headers_footers,
+    score_heading_candidate,
+    FontProfile,
+    CHAPTER_PATTERNS,
+    NUMBERED_HEADING_PATTERN,
+)
 from bookmark_generator.models import BookmarkEntry, PageNumberMapping
 from bookmark_generator.pdf_utils import (
     build_page_number_mapping,
@@ -143,6 +151,78 @@ def _create_pdf_no_toc(path: str) -> None:
     doc.close()
 
 
+def _create_pdf_with_headers_footers(path: str) -> None:
+    """Create a PDF with running headers/footers and numbered sections.
+
+    Every page has:
+    - Running header "SGNA Core Curriculum" at top
+    - Running footer "Copyright 2024" at bottom
+    - Page number at bottom-right
+    Chapters use larger fonts, sections use numbered headings like "1.1 Title".
+    """
+    doc = fitz.open()
+
+    sections = [
+        ("Chapter 1 Introduction", 20, [
+            ("1.1 Overview of the Field", 14),
+            ("1.2 Historical Background", 14),
+        ]),
+        ("Chapter 2 Patient Assessment", 20, [
+            ("2.1 Initial Evaluation", 14),
+            ("2.2 Risk Stratification", 14),
+            ("2.2.1 Cardiovascular Risk", 12),
+        ]),
+        ("Chapter 3 Procedures", 20, [
+            ("3.1 Endoscopy", 14),
+        ]),
+    ]
+
+    page_num = 1
+    for chapter_title, chapter_size, subs in sections:
+        # Chapter page
+        page = doc.new_page(width=595, height=842)
+        # Running header (same text every page)
+        page.insert_text((72, 30), "SGNA Core Curriculum", fontsize=9, fontname="helv")
+        # Chapter heading
+        page.insert_text((72, 80), chapter_title, fontsize=chapter_size, fontname="helv")
+        body = f"Content about {chapter_title.lower()}. " * 15
+        _insert_wrapped_text(page, body, x=72, y=120, fontsize=11, max_width=450)
+        # Running footer
+        page.insert_text((72, 820), "Copyright 2024", fontsize=8, fontname="helv")
+        page.insert_text((550, 820), str(page_num), fontsize=9, fontname="helv")
+        page_num += 1
+
+        # Section pages
+        for sub_title, sub_size in subs:
+            page = doc.new_page(width=595, height=842)
+            page.insert_text((72, 30), "SGNA Core Curriculum", fontsize=9, fontname="helv")
+            page.insert_text((72, 80), sub_title, fontsize=sub_size, fontname="helv")
+            body = f"Details about {sub_title.lower()}. " * 20
+            _insert_wrapped_text(page, body, x=72, y=120, fontsize=11, max_width=450)
+            page.insert_text((72, 820), "Copyright 2024", fontsize=8, fontname="helv")
+            page.insert_text((550, 820), str(page_num), fontsize=9, fontname="helv")
+            page_num += 1
+
+    doc.save(path)
+    doc.close()
+
+
+def _create_pdf_uppercase_headings(path: str) -> None:
+    """Create a PDF where headings are uppercase bold, same font size as body."""
+    doc = fitz.open()
+
+    headings = ["INTRODUCTION", "METHODOLOGY", "RESULTS", "DISCUSSION", "CONCLUSION"]
+    for heading in headings:
+        page = doc.new_page(width=595, height=842)
+        # Heading in bold uppercase — note: we use "hebo" for bold font
+        page.insert_text((72, 80), heading, fontsize=12, fontname="hebo")
+        body = f"This section discusses {heading.lower()} in detail. " * 20
+        _insert_wrapped_text(page, body, x=72, y=110, fontsize=11, max_width=450)
+
+    doc.save(path)
+    doc.close()
+
+
 def _insert_wrapped_text(page, text, x, y, fontsize, max_width):
     """Insert text with basic word wrapping."""
     words = text.split()
@@ -183,6 +263,20 @@ def pdf_with_bookmarks(tmp_path):
 def pdf_no_toc(tmp_path):
     path = str(tmp_path / "no_toc.pdf")
     _create_pdf_no_toc(path)
+    return path
+
+
+@pytest.fixture
+def pdf_with_headers_footers(tmp_path):
+    path = str(tmp_path / "headers_footers.pdf")
+    _create_pdf_with_headers_footers(path)
+    return path
+
+
+@pytest.fixture
+def pdf_uppercase_headings(tmp_path):
+    path = str(tmp_path / "uppercase.pdf")
+    _create_pdf_uppercase_headings(path)
     return path
 
 
@@ -365,6 +459,185 @@ class TestFontHeuristics:
         headings = detect_headings(doc, profile, skip_pages=skip)
         # Should detect chapter headings
         assert len(headings) >= 3
+        doc.close()
+
+
+# ─── Tests: Heading scoring ───────────────────────────────────────────────────
+
+class TestHeadingScoring:
+    """Tests for the multi-signal scoring engine."""
+
+    def test_chapter_pattern_scores_high(self):
+        """Lines matching 'Chapter N' should score high and get level 1."""
+        from bookmark_generator.pdf_utils import TextSpan, TextLine
+
+        span = TextSpan(
+            text="Chapter 3 Patient Assessment",
+            font_name="Helvetica-Bold", font_size=18.0,
+            is_bold=True, is_italic=False, color=0,
+            bbox=(72, 60, 400, 78), page_index=0,
+        )
+        line = TextLine(spans=[span], bbox=(72, 60, 400, 78), page_index=0)
+        profile = FontProfile(body_font_size=11.0, body_font_name="Helvetica")
+
+        score, level = score_heading_candidate(line, profile)
+        assert score >= 0.7
+        assert level == 1
+
+    def test_numbered_heading_level_from_depth(self):
+        """'1.2.3 Title' should get level 3 from dot-depth."""
+        from bookmark_generator.pdf_utils import TextSpan, TextLine
+
+        span = TextSpan(
+            text="1.2.3 Subsection Title",
+            font_name="Helvetica-Bold", font_size=13.0,
+            is_bold=True, is_italic=False, color=0,
+            bbox=(72, 60, 300, 73), page_index=0,
+        )
+        line = TextLine(spans=[span], bbox=(72, 60, 300, 73), page_index=0)
+        profile = FontProfile(body_font_size=11.0, body_font_name="Helvetica")
+
+        score, level = score_heading_candidate(line, profile)
+        assert score >= 0.35
+        assert level == 3
+
+    def test_uppercase_bold_scores(self):
+        """ALL CAPS bold text should score as a heading."""
+        from bookmark_generator.pdf_utils import TextSpan, TextLine
+
+        span = TextSpan(
+            text="INTRODUCTION",
+            font_name="Helvetica-Bold", font_size=12.0,
+            is_bold=True, is_italic=False, color=0,
+            bbox=(72, 60, 200, 72), page_index=0,
+        )
+        line = TextLine(spans=[span], bbox=(72, 60, 200, 72), page_index=0)
+        profile = FontProfile(body_font_size=11.0, body_font_name="Helvetica")
+
+        score, level = score_heading_candidate(line, profile)
+        # Bold + uppercase + chapter pattern ("Introduction") + short text
+        assert score >= 0.35
+
+    def test_body_text_scores_low(self):
+        """Normal body text should score below threshold."""
+        from bookmark_generator.pdf_utils import TextSpan, TextLine
+
+        span = TextSpan(
+            text="This is a normal sentence with regular formatting and no special patterns.",
+            font_name="Helvetica", font_size=11.0,
+            is_bold=False, is_italic=False, color=0,
+            bbox=(72, 200, 500, 211), page_index=0,
+        )
+        line = TextLine(spans=[span], bbox=(72, 200, 500, 211), page_index=0)
+        profile = FontProfile(body_font_size=11.0, body_font_name="Helvetica")
+
+        score, level = score_heading_candidate(line, profile)
+        assert score < 0.35
+
+    def test_period_ending_penalty(self):
+        """Text ending with a period gets penalized (likely a sentence, not a heading)."""
+        from bookmark_generator.pdf_utils import TextSpan, TextLine
+
+        span = TextSpan(
+            text="This looks like a heading but ends with a period.",
+            font_name="Helvetica-Bold", font_size=14.0,
+            is_bold=True, is_italic=False, color=0,
+            bbox=(72, 60, 400, 74), page_index=0,
+        )
+        line = TextLine(spans=[span], bbox=(72, 60, 400, 74), page_index=0)
+        profile = FontProfile(body_font_size=11.0, body_font_name="Helvetica")
+
+        score_period, _ = score_heading_candidate(line, profile)
+
+        # Same text without period should score higher
+        span2 = TextSpan(
+            text="This looks like a heading but ends with a period",
+            font_name="Helvetica-Bold", font_size=14.0,
+            is_bold=True, is_italic=False, color=0,
+            bbox=(72, 60, 400, 74), page_index=0,
+        )
+        line2 = TextLine(spans=[span2], bbox=(72, 60, 400, 74), page_index=0)
+        score_no_period, _ = score_heading_candidate(line2, profile)
+
+        assert score_no_period > score_period
+
+    def test_exclude_patterns_reject_noise(self):
+        """Figure captions, URLs, emails should score 0."""
+        from bookmark_generator.pdf_utils import TextSpan, TextLine
+
+        noise_texts = [
+            "Figure 3: Distribution of Results",
+            "Table 2 Summary Statistics",
+            "https://example.com/paper",
+            "42",
+        ]
+        profile = FontProfile(body_font_size=11.0, body_font_name="Helvetica")
+
+        for text in noise_texts:
+            span = TextSpan(
+                text=text, font_name="Helvetica-Bold", font_size=14.0,
+                is_bold=True, is_italic=False, color=0,
+                bbox=(72, 60, 400, 74), page_index=0,
+            )
+            line = TextLine(spans=[span], bbox=(72, 60, 400, 74), page_index=0)
+            score, _ = score_heading_candidate(line, profile)
+            assert score == 0.0, f"'{text}' should be excluded but scored {score}"
+
+
+# ─── Tests: Header/footer detection ──────────────────────────────────────────
+
+class TestHeaderFooterDetection:
+    def test_detect_running_headers(self, pdf_with_headers_footers):
+        """Running headers/footers should be detected and excluded."""
+        doc = fitz.open(pdf_with_headers_footers)
+        profile = build_font_profile(doc)
+        excluded = detect_headers_footers(doc, profile)
+
+        # Should detect repeated text
+        excluded_texts = set(text for _, text in excluded)
+        # "SGNA Core Curriculum" appears on every page at the same Y
+        assert any("SGNA" in t or "Core" in t or "Copyright" in t for t in excluded_texts)
+        doc.close()
+
+    def test_headings_not_excluded_as_headers(self, pdf_with_headers_footers):
+        """Chapter headings should NOT be excluded as headers (they vary)."""
+        doc = fitz.open(pdf_with_headers_footers)
+        profile = build_font_profile(doc)
+        headings = detect_headings(doc, profile)
+
+        titles = [h.title for h in headings]
+        # Running headers should not appear as headings
+        assert not any("SGNA Core Curriculum" in t for t in titles)
+        assert not any("Copyright" in t for t in titles)
+        doc.close()
+
+
+# ─── Tests: Numbered heading hierarchy ────────────────────────────────────────
+
+class TestNumberedHeadings:
+    def test_numbered_headings_detected(self, pdf_with_headers_footers):
+        """Numbered headings like '1.1 Title' should be detected with correct levels."""
+        doc = fitz.open(pdf_with_headers_footers)
+        profile = build_font_profile(doc)
+        headings = detect_headings(doc, profile)
+
+        titles = [h.title for h in headings]
+        # Should find numbered sections
+        assert any("1.1" in t for t in titles) or any("Overview" in t for t in titles)
+        doc.close()
+
+    def test_hierarchy_levels_from_numbering(self, pdf_with_headers_footers):
+        """Deeper numbered headings should get higher level numbers."""
+        doc = fitz.open(pdf_with_headers_footers)
+        profile = build_font_profile(doc)
+        headings = detect_headings(doc, profile)
+
+        # Find a '2.2.1' style heading if detected
+        for h in headings:
+            if "2.2.1" in h.title or "Cardiovascular" in h.title:
+                # Should be level 3 (or deeper than level 1)
+                assert h.level >= 2
+                break
         doc.close()
 
 

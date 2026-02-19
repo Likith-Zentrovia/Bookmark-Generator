@@ -60,9 +60,6 @@ def extract_bookmarks(
             result.method_used = "existing_bookmarks"
             return result
 
-        if not force_rebuild and has_bookmarks(doc):
-            logger.info("PDF has existing bookmarks but force_rebuild=True, rebuilding.")
-
         methods_used: list[str] = []
 
         # ── Step 2: Build page number mapping ───────────────────────────
