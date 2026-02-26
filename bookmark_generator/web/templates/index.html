@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Bookmark Editor</title>
+
+    <!-- SortableJS -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
+    <!-- Alpine.js (deferred) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    <style>
+        /* ── CSS Reset & Variables ─────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #1a1a2e;
+            --bg-surface: #16213e;
+            --bg-elevated: #1c2a4a;
+            --bg-hover: #243354;
+            --bg-selected: #0f3460;
+            --border: #2a3a5c;
+            --border-light: #354868;
+            --text: #e4e4e7;
+            --text-muted: #8892a4;
+            --text-dim: #5a6478;
+            --primary: #4f8cff;
+            --primary-hover: #6fa0ff;
+            --primary-dim: #2d5aa0;
+            --success: #34d399;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --danger-hover: #ff8a8a;
+            --accent: #a78bfa;
+            --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            --radius: 6px;
+            --radius-lg: 10px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+            --transition: 150ms ease;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* ── Scrollbar ──────────────────────────────────────────────── */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-surface); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
+        /* ── Upload Screen ──────────────────────────────────────────── */
+        .upload-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .upload-card {
+            background: var(--bg-surface);
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-lg);
+            padding: 60px 80px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            transition: border-color var(--transition), background var(--transition);
+            cursor: pointer;
+        }
+        .upload-card:hover, .upload-card.dragover {
+            border-color: var(--primary);
+            background: var(--bg-elevated);
+        }
+        .upload-card h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .upload-card p { color: var(--text-muted); margin-bottom: 24px; }
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+        .upload-card input[type="file"] { display: none; }
+        .upload-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: var(--radius);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background var(--transition);
+        }
+        .upload-btn:hover { background: var(--primary-hover); }
+        .upload-or { color: var(--text-dim); margin: 16px 0; font-size: 13px; }
+        .path-input-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .path-input-row input {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            font-size: 13px;
+            font-family: var(--mono);
+        }
+        .path-input-row input::placeholder { color: var(--text-dim); }
+        .path-input-row button {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .path-input-row button:hover { background: var(--bg-hover); }
+
+        /* ── Loading Screen ─────────────────────────────────────────── */
+        .loading-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 20px;
+        }
+        .spinner {
+            width: 48px; height: 48px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: var(--text-muted); font-size: 16px; }
+
+        /* ── Editor Layout ──────────────────────────────────────────── */
+        .editor-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* ── Top Toolbar ────────────────────────────────────────────── */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            min-height: 48px;
+        }
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .toolbar-sep {
+            width: 1px;
+            height: 24px;
+            background: var(--border);
+            margin: 0 6px;
+        }
+        .tb-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 12px;
+            font-family: var(--font);
+            white-space: nowrap;
+            transition: all var(--transition);
+        }
+        .tb-btn:hover { background: var(--bg-hover); border-color: var(--border-light); }
+        .tb-btn:active { transform: scale(0.97); }
+        .tb-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .tb-btn.primary:hover { background: var(--primary-hover); }
+        .tb-btn.danger { color: var(--danger); }
+        .tb-btn.danger:hover { background: rgba(248,113,113,0.1); }
+        .tb-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .tb-btn svg { width: 14px; height: 14px; }
+
+        .search-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 5px 10px;
+            border-radius: var(--radius);
+            font-size: 12px;
+            width: 180px;
+            font-family: var(--font);
+        }
+        .search-box::placeholder { color: var(--text-dim); }
+        .search-box:focus { outline: none; border-color: var(--primary); }
+
+        .file-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-left: auto;
+            font-family: var(--mono);
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* ── Split Panels ───────────────────────────────────────────── */
+        .panels {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* ── Tree Panel (Left) ──────────────────────────────────────── */
+        .tree-panel {
+            width: 42%;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-surface);
+            border-right: 2px solid var(--border);
+        }
+        .tree-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .tree-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+
+        /* Resize handle */
+        .resize-handle {
+            width: 4px;
+            cursor: col-resize;
+            background: var(--border);
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .resize-handle:hover { background: var(--primary); }
+
+        /* ── Bookmark Tree ──────────────────────────────────────────── */
+        .bm-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .bm-list .bm-list {
+            padding-left: 20px;
+            border-left: 1px solid var(--border);
+            margin-left: 12px;
+        }
+        .bm-item {
+            user-select: none;
+        }
+        .bm-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px 4px 4px;
+            margin: 1px 4px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background var(--transition);
+            min-height: 30px;
+        }
+        .bm-row:hover { background: var(--bg-hover); }
+        .bm-row.selected { background: var(--bg-selected); outline: 1px solid var(--primary-dim); }
+        .bm-row.selected:hover { background: var(--bg-selected); }
+
+        .bm-toggle {
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 3px;
+            flex-shrink: 0;
+            border: none;
+            background: none;
+        }
+        .bm-toggle:hover { background: var(--bg-hover); color: var(--text); }
+        .bm-spacer { width: 18px; flex-shrink: 0; }
+
+        .bm-title {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+            padding: 1px 0;
+        }
+        .bm-title-edit {
+            flex: 1;
+            background: var(--bg);
+            border: 1px solid var(--primary);
+            color: var(--text);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+            font-family: var(--font);
+            outline: none;
+        }
+
+        .bm-page {
+            color: var(--text-muted);
+            font-size: 11px;
+            font-family: var(--mono);
+            padding: 1px 6px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+        .bm-page:hover { background: var(--bg-elevated); color: var(--text); }
+        .bm-page-edit {
+            width: 55px;
+            background: var(--bg);
+            border: 1px solid var(--primary);
+            color: var(--text);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-family: var(--mono);
+            outline: none;
+            flex-shrink: 0;
+        }
+
+        .bm-badge {
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+        .badge-high { background: rgba(52,211,153,0.2); color: var(--success); }
+        .badge-med  { background: rgba(251,191,36,0.2); color: var(--warning); }
+        .badge-low  { background: rgba(248,113,113,0.2); color: var(--danger); }
+
+        .bm-source {
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 8px;
+            background: rgba(167,139,250,0.15);
+            color: var(--accent);
+            flex-shrink: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .bm-row-actions {
+            display: flex;
+            gap: 2px;
+            opacity: 0.5;
+            transition: opacity var(--transition);
+            flex-shrink: 0;
+        }
+        .bm-row:hover .bm-row-actions { opacity: 1; }
+        .bm-act-btn {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .bm-act-btn:hover { background: var(--bg-hover); color: var(--text); border-color: var(--border-light); }
+        .bm-act-btn.del:hover { color: var(--danger); border-color: var(--danger); }
+
+        /* SortableJS */
+        .sortable-ghost { opacity: 0.3; }
+        .sortable-chosen { background: var(--bg-elevated) !important; }
+        .sortable-drag { box-shadow: var(--shadow-lg); }
+        .bm-drop-zone {
+            min-height: 4px;
+            transition: min-height var(--transition);
+        }
+
+        /* Empty state */
+        .tree-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            text-align: center;
+            gap: 8px;
+        }
+        .tree-empty span { font-size: 32px; opacity: 0.4; }
+
+        /* ── PDF Panel (Right) ──────────────────────────────────────── */
+        .pdf-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #111827;
+            min-width: 300px;
+        }
+        .pdf-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+        }
+        .pdf-nav-btn {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 10px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .pdf-nav-btn:hover { background: var(--bg-hover); }
+        .pdf-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .page-input {
+            width: 55px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 6px;
+            border-radius: var(--radius);
+            font-size: 12px;
+            font-family: var(--mono);
+            text-align: center;
+        }
+        .page-input:focus { outline: none; border-color: var(--primary); }
+        .page-label { color: var(--text-muted); font-size: 12px; }
+        .zoom-display {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-family: var(--mono);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .pdf-viewport {
+            flex: 1;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 16px;
+            background: #0f1729;
+        }
+        .pdf-page-img {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            max-width: 100%;
+            height: auto;
+            transition: width 0.2s ease;
+        }
+        .pdf-page-img.loading { opacity: 0.5; }
+
+        .pdf-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+
+        /* ── Status Bar ─────────────────────────────────────────────── */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 12px;
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+        .status-bar .status-left { display: flex; gap: 16px; }
+        .status-bar .status-right { display: flex; gap: 16px; }
+
+        /* ── Toast notifications ─────────────────────────────────────── */
+        .toast-container {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .toast {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            font-size: 13px;
+            box-shadow: var(--shadow-lg);
+            animation: slideIn 0.3s ease;
+            max-width: 360px;
+        }
+        .toast.success { border-left: 3px solid var(--success); }
+        .toast.error { border-left: 3px solid var(--danger); }
+        .toast.warning { border-left: 3px solid var(--warning); }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ── Modal ──────────────────────────────────────────────────── */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+        .modal h3 { margin-bottom: 12px; font-size: 16px; }
+        .modal p { color: var(--text-muted); margin-bottom: 16px; font-size: 13px; }
+        .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+        .modal-actions button { padding: 6px 16px; border-radius: var(--radius); cursor: pointer; font-size: 13px; border: 1px solid var(--border); }
+        .modal-actions .cancel-btn { background: var(--bg-elevated); color: var(--text); }
+        .modal-actions .confirm-btn { background: var(--danger); color: #fff; border-color: var(--danger); }
+        .modal-actions .confirm-btn:hover { background: var(--danger-hover); }
+    </style>
+</head>
+<body x-data="bookmarkEditor()" x-init="init()">
+
+    <!-- ═══════════════════ TOASTS ════════════════════════════════════ -->
+    <div class="toast-container">
+        <template x-for="toast in toasts" :key="toast.id">
+            <div class="toast" :class="toast.type" x-text="toast.message"
+                 x-show="toast.visible"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"></div>
+        </template>
+    </div>
+
+    <!-- ═══════════════════ DELETE CONFIRMATION MODAL ═════════════════ -->
+    <template x-if="deleteConfirm.show">
+        <div class="modal-overlay" @click.self="deleteConfirm.show = false">
+            <div class="modal">
+                <h3>Delete Bookmark</h3>
+                <p x-text="deleteConfirm.message"></p>
+                <div class="modal-actions">
+                    <button class="cancel-btn" @click="deleteConfirm.show = false">Cancel</button>
+                    <button class="confirm-btn" @click="confirmDelete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- ═══════════════════ UPLOAD SCREEN ═════════════════════════════ -->
+    <template x-if="screen === 'upload'">
+        <div class="upload-screen">
+            <div class="upload-card"
+                 :class="{ dragover: isDragging }"
+                 @dragover.prevent="isDragging = true"
+                 @dragleave.prevent="isDragging = false"
+                 @drop.prevent="handleFileDrop($event)"
+                 @click="$refs.fileInput.click()">
+                <div class="upload-icon">&#128218;</div>
+                <h1>PDF Bookmark Editor</h1>
+                <p>Drag & drop a PDF file here, or click to browse</p>
+                <button class="upload-btn" @click.stop="$refs.fileInput.click()">Choose PDF File</button>
+                <input type="file" accept=".pdf" x-ref="fileInput"
+                       @change="handleFileSelect($event)">
+                <div class="upload-or">or enter a local file path</div>
+                <div class="path-input-row" @click.stop>
+                    <input type="text" x-model="localPath"
+                           placeholder="C:\path\to\document.pdf"
+                           @keydown.enter="loadLocalPath()">
+                    <button @click="loadLocalPath()">Load</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- ═══════════════════ LOADING SCREEN ════════════════════════════ -->
+    <template x-if="screen === 'loading'">
+        <div class="loading-screen">
+            <div class="spinner"></div>
+            <div class="loading-text" x-text="loadingMessage">Extracting bookmarks...</div>
+        </div>
+    </template>
+
+    <!-- ═══════════════════ EDITOR SCREEN ═════════════════════════════ -->
+    <template x-if="screen === 'editor'">
+        <div class="editor-layout">
+
+            <!-- ── Toolbar ────────────────────────────────────────── -->
+            <div class="toolbar">
+                <div class="toolbar-group">
+                    <button class="tb-btn" @click="openNewPdf()" title="Open a new PDF">
+                        &#128194; Open
+                    </button>
+                    <button class="tb-btn primary" @click="exportPdf()" title="Export PDF with bookmarks">
+                        &#128190; Export PDF
+                    </button>
+                </div>
+                <div class="toolbar-sep"></div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" @click="saveJson()" title="Save bookmarks as JSON">
+                        &#128190; Save JSON
+                    </button>
+                    <button class="tb-btn" @click="$refs.jsonInput.click()" title="Load bookmarks from JSON">
+                        &#128194; Load JSON
+                    </button>
+                    <input type="file" accept=".json" x-ref="jsonInput" style="display:none"
+                           @change="loadJsonFile($event)">
+                </div>
+                <div class="toolbar-sep"></div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" @click="undo()" :disabled="undoStack.length === 0"
+                            title="Undo (Ctrl+Z)">&#8617; Undo</button>
+                    <button class="tb-btn" @click="redo()" :disabled="redoStack.length === 0"
+                            title="Redo (Ctrl+Shift+Z)">&#8618; Redo</button>
+                </div>
+                <div class="toolbar-sep"></div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" @click="addBookmark()" title="Add new bookmark">+ Add</button>
+                    <button class="tb-btn danger" @click="requestDelete()" :disabled="!selectedId"
+                            title="Delete selected (Del)">&#128465; Delete</button>
+                    <button class="tb-btn" @click="indentNode()" :disabled="!selectedId"
+                            title="Indent (Tab)">&#8594; Indent</button>
+                    <button class="tb-btn" @click="outdentNode()" :disabled="!selectedId"
+                            title="Outdent (Shift+Tab)">&#8592; Outdent</button>
+                </div>
+                <div class="toolbar-sep"></div>
+                <input type="text" class="search-box" placeholder="&#128269; Search bookmarks..."
+                       x-model="searchQuery" @input="renderTree()">
+
+                <span class="file-label" x-text="filename" :title="filename"></span>
+            </div>
+
+            <!-- ── Panels ─────────────────────────────────────────── -->
+            <div class="panels">
+
+                <!-- ── Tree Panel ─────────────────────────────────── -->
+                <div class="tree-panel" :style="'width:' + treePanelWidth + 'px'">
+                    <div class="tree-header">
+                        <span x-text="countBookmarks() + ' bookmarks'"></span>
+                        <span x-text="methodUsed" style="font-style:italic"></span>
+                    </div>
+                    <div class="tree-scroll" id="tree-scroll">
+                        <div id="tree-container"></div>
+                        <template x-if="bookmarks.length === 0">
+                            <div class="tree-empty">
+                                <span>&#128209;</span>
+                                <div>No bookmarks yet</div>
+                                <div style="font-size:12px">Click "+ Add" to create one, or extract from a PDF</div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- ── Resize Handle ──────────────────────────────── -->
+                <div class="resize-handle" @mousedown="startResize($event)"></div>
+
+                <!-- ── PDF Panel ──────────────────────────────────── -->
+                <div class="pdf-panel">
+                    <div class="pdf-toolbar">
+                        <button class="pdf-nav-btn" @click="prevPage()"
+                                :disabled="currentPage <= 0">&#9664;</button>
+                        <span class="page-label">Page</span>
+                        <input type="number" class="page-input"
+                               :value="currentPage + 1" min="1" :max="totalPages"
+                               @change="goToPage(parseInt($event.target.value) - 1)"
+                               @keydown.enter="goToPage(parseInt($event.target.value) - 1)">
+                        <span class="page-label" x-text="'/ ' + totalPages"></span>
+                        <button class="pdf-nav-btn" @click="nextPage()"
+                                :disabled="currentPage >= totalPages - 1">&#9654;</button>
+                        <div style="flex:1"></div>
+                        <button class="pdf-nav-btn" @click="zoomOut()" title="Zoom out">&#8722;</button>
+                        <span class="zoom-display" x-text="Math.round(zoomLevel * 100) + '%'"></span>
+                        <button class="pdf-nav-btn" @click="zoomIn()" title="Zoom in">&#43;</button>
+                        <button class="pdf-nav-btn" @click="zoomFit()" title="Fit to width">Fit</button>
+                    </div>
+                    <div class="pdf-viewport" id="pdf-viewport"
+                         @click="handlePageClick()">
+                        <template x-if="fileId">
+                            <img :src="getPageUrl()"
+                                 :style="'width:' + Math.round(zoomLevel * 100) + '%'"
+                                 class="pdf-page-img"
+                                 @load="pageLoading = false"
+                                 @loadstart="pageLoading = true"
+                                 :class="{ loading: pageLoading }">
+                        </template>
+                        <template x-if="!fileId">
+                            <div class="pdf-placeholder">No PDF loaded</div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Status Bar ─────────────────────────────────────── -->
+            <div class="status-bar">
+                <div class="status-left">
+                    <span x-text="countBookmarks() + ' bookmarks'"></span>
+                    <span x-show="methodUsed" x-text="'Method: ' + methodUsed"></span>
+                    <span x-show="warnings.length" :title="warnings.join('\n')"
+                          style="color:var(--warning)">&#9888; <span x-text="warnings.length + ' warning(s)'"></span></span>
+                </div>
+                <div class="status-right">
+                    <span x-show="undoStack.length" x-text="undoStack.length + ' undo step(s)'"></span>
+                    <span x-show="lastSaved" x-text="'Saved: ' + lastSaved"></span>
+                    <span>Ctrl+Z / Ctrl+Shift+Z | Tab / Shift+Tab | F2 | Del</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- ═══════════════════ APPLICATION SCRIPT ════════════════════════ -->
+    <script>
+    function bookmarkEditor() {
+        return {
+            // ── App state ────────────────────────────────────────
+            screen: 'upload',
+            fileId: null,
+            filename: '',
+            totalPages: 0,
+            methodUsed: '',
+            warnings: [],
+            loadingMessage: 'Extracting bookmarks...',
+
+            // ── Bookmark data ────────────────────────────────────
+            bookmarks: [],
+            selectedId: null,
+            collapsed: new Set(),
+
+            // ── Editing state ────────────────────────────────────
+            editingId: null,
+            editingField: null,
+            editingOriginalValue: null,
+
+            // ── Search/filter ────────────────────────────────────
+            searchQuery: '',
+
+            // ── PDF viewer ───────────────────────────────────────
+            currentPage: 0,
+            zoomLevel: 1.0,
+            pageLoading: false,
+
+            // ── Undo/redo ────────────────────────────────────────
+            undoStack: [],
+            redoStack: [],
+
+            // ── UI state ─────────────────────────────────────────
+            isDragging: false,
+            localPath: '',
+            toasts: [],
+            treePanelWidth: 520,
+            isResizing: false,
+            lastSaved: '',
+            autoSaveTimer: null,
+
+            // ── Delete confirmation ──────────────────────────────
+            deleteConfirm: { show: false, id: null, message: '' },
+
+            // ── Sortable instances ───────────────────────────────
+            sortableInstances: [],
+
+            // ═════════════════════════════════════════════════════
+            // INIT
+            // ═════════════════════════════════════════════════════
+            async init() {
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+
+                // Check for preloaded PDF
+                try {
+                    const resp = await fetch('/api/config');
+                    const config = await resp.json();
+                    if (config.preload_pdf) {
+                        this.localPath = config.preload_pdf;
+                        await this.loadLocalPath();
+                    }
+                } catch (e) {
+                    console.log('No preload config');
+                }
+
+                // Check for auto-saved session
+                this.checkAutoSave();
+
+                // Start auto-save timer
+                this.autoSaveTimer = setInterval(() => this.autoSave(), 30000);
+            },
+
+            // ═════════════════════════════════════════════════════
+            // FILE LOADING
+            // ═════════════════════════════════════════════════════
+            handleFileDrop(event) {
+                this.isDragging = false;
+                const files = event.dataTransfer.files;
+                if (files.length > 0 && files[0].name.toLowerCase().endsWith('.pdf')) {
+                    this.uploadFile(files[0]);
+                } else {
+                    this.toast('Please drop a PDF file', 'error');
+                }
+            },
+
+            handleFileSelect(event) {
+                const file = event.target.files[0];
+                if (file) this.uploadFile(file);
+            },
+
+            async uploadFile(file) {
+                this.screen = 'loading';
+                this.loadingMessage = `Uploading ${file.name}...`;
+
+                try {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    const resp = await fetch('/api/upload', { method: 'POST', body: formData });
+                    const data = await resp.json();
+
+                    if (data.error) throw new Error(data.error);
+
+                    this.fileId = data.file_id;
+                    this.filename = data.filename;
+                    this.totalPages = data.total_pages;
+                    await this.runExtraction();
+                } catch (e) {
+                    this.toast('Upload failed: ' + e.message, 'error');
+                    this.screen = 'upload';
+                }
+            },
+
+            async loadLocalPath() {
+                if (!this.localPath.trim()) return;
+                this.screen = 'loading';
+                this.loadingMessage = 'Loading PDF...';
+
+                try {
+                    const resp = await fetch('/api/upload', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ local_path: this.localPath.trim() })
+                    });
+                    const data = await resp.json();
+                    if (data.error) throw new Error(data.error);
+
+                    this.fileId = data.file_id;
+                    this.filename = data.filename;
+                    this.totalPages = data.total_pages;
+                    await this.runExtraction();
+                } catch (e) {
+                    this.toast('Load failed: ' + e.message, 'error');
+                    this.screen = 'upload';
+                }
+            },
+
+            async runExtraction() {
+                this.loadingMessage = 'Extracting bookmarks (analyzing fonts, TOC, headings)...';
+                try {
+                    const resp = await fetch('/api/extract', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            file_id: this.fileId,
+                            force_rebuild: true,
+                            use_toc: true,
+                            use_font_heuristics: true,
+                        })
+                    });
+                    const data = await resp.json();
+                    if (data.error) throw new Error(data.error);
+
+                    this.bookmarks = data.bookmarks;
+                    this.methodUsed = data.method_used;
+                    this.warnings = data.warnings || [];
+                    this.screen = 'editor';
+
+                    this.$nextTick(() => {
+                        this.renderTree();
+                        this.prefetchPages();
+                    });
+
+                    if (data.warnings && data.warnings.length > 0) {
+                        this.toast(data.warnings[0], 'warning');
+                    }
+                    this.toast(`Extracted ${data.bookmark_count} bookmarks`, 'success');
+                } catch (e) {
+                    this.toast('Extraction failed: ' + e.message, 'error');
+                    this.screen = 'upload';
+                }
+            },
+
+            openNewPdf() {
+                // Reset state
+                this.bookmarks = [];
+                this.selectedId = null;
+                this.undoStack = [];
+                this.redoStack = [];
+                this.currentPage = 0;
+                this.fileId = null;
+                this.screen = 'upload';
+            },
+
+            // ═════════════════════════════════════════════════════
+            // TREE RENDERING
+            // ═════════════════════════════════════════════════════
+            renderTree() {
+                const container = document.getElementById('tree-container');
+                if (!container) return;
+
+                // Destroy old sortable instances
+                this.sortableInstances.forEach(s => s.destroy());
+                this.sortableInstances = [];
+
+                const filtered = this.getFilteredBookmarks(this.bookmarks);
+                container.innerHTML = this.buildTreeHtml(filtered, 'root');
+
+                // Init sortable on all bookmark lists
+                this.initSortable();
+
+                // Setup event delegation
+                this.setupTreeEvents(container);
+            },
+
+            getFilteredBookmarks(nodes) {
+                if (!this.searchQuery.trim()) return nodes;
+                const q = this.searchQuery.toLowerCase();
+                return this.filterTree(nodes, q);
+            },
+
+            filterTree(nodes, query) {
+                const result = [];
+                for (const node of nodes) {
+                    const titleMatch = node.title.toLowerCase().includes(query);
+                    const filteredChildren = this.filterTree(node.children || [], query);
+                    if (titleMatch || filteredChildren.length > 0) {
+                        result.push({
+                            ...node,
+                            children: titleMatch ? (node.children || []) : filteredChildren
+                        });
+                    }
+                }
+                return result;
+            },
+
+            buildTreeHtml(nodes, parentId) {
+                if (!nodes || nodes.length === 0) return '';
+
+                let html = `<ul class="bm-list" data-parent-id="${this.escHtml(parentId)}">`;
+                for (const node of nodes) {
+                    const hasChildren = node.children && node.children.length > 0;
+                    const isCollapsed = this.collapsed.has(node.id);
+                    const isSelected = this.selectedId === node.id;
+                    const isEditing = this.editingId === node.id;
+
+                    html += `<li class="bm-item" data-id="${this.escHtml(node.id)}">`;
+                    html += `<div class="bm-row ${isSelected ? 'selected' : ''}" data-node-id="${this.escHtml(node.id)}">`;
+
+                    // Toggle button
+                    if (hasChildren) {
+                        html += `<button class="bm-toggle" data-action="toggle" data-id="${this.escHtml(node.id)}">${isCollapsed ? '&#9654;' : '&#9660;'}</button>`;
+                    } else {
+                        html += `<span class="bm-spacer"></span>`;
+                    }
+
+                    // Title
+                    if (isEditing && this.editingField === 'title') {
+                        html += `<input class="bm-title-edit" type="text" value="${this.escHtml(node.title)}" data-action="edit-title" data-id="${this.escHtml(node.id)}" autofocus>`;
+                    } else {
+                        html += `<span class="bm-title" data-action="select" data-id="${this.escHtml(node.id)}" title="${this.escHtml(node.title)}">${this.escHtml(node.title)}</span>`;
+                    }
+
+                    // Page number
+                    if (isEditing && this.editingField === 'page') {
+                        html += `<input class="bm-page-edit" type="number" value="${node.pdf_page_index + 1}" min="1" max="${this.totalPages}" data-action="edit-page" data-id="${this.escHtml(node.id)}" autofocus>`;
+                    } else {
+                        html += `<span class="bm-page" data-action="edit-page-start" data-id="${this.escHtml(node.id)}">p.${node.pdf_page_index >= 0 ? node.pdf_page_index + 1 : node.page_number}</span>`;
+                    }
+
+                    // Confidence badge
+                    const confClass = node.confidence >= 0.8 ? 'badge-high' : (node.confidence >= 0.5 ? 'badge-med' : 'badge-low');
+                    html += `<span class="bm-badge ${confClass}">${Math.round(node.confidence * 100)}%</span>`;
+
+                    // Source badge
+                    if (node.source) {
+                        const srcLabel = this.getSourceLabel(node.source);
+                        html += `<span class="bm-source">${srcLabel}</span>`;
+                    }
+
+                    // Action buttons
+                    html += `<span class="bm-row-actions">`;
+                    html += `<button class="bm-act-btn" data-action="edit-title-start" data-id="${this.escHtml(node.id)}" title="Edit title (F2)">&#9998;</button>`;
+                    html += `<button class="bm-act-btn" data-action="add-child" data-id="${this.escHtml(node.id)}" title="Add child bookmark">+</button>`;
+                    html += `<button class="bm-act-btn del" data-action="delete" data-id="${this.escHtml(node.id)}" title="Delete">&#10005;</button>`;
+                    html += `</span>`;
+
+                    html += `</div>`; // .bm-row
+
+                    // Children
+                    if (hasChildren && !isCollapsed) {
+                        html += this.buildTreeHtml(node.children, node.id);
+                    } else if (!hasChildren) {
+                        // Empty drop zone for children
+                        html += `<ul class="bm-list bm-drop-zone" data-parent-id="${this.escHtml(node.id)}"></ul>`;
+                    }
+
+                    html += `</li>`;
+                }
+                html += `</ul>`;
+                return html;
+            },
+
+            getSourceLabel(source) {
+                const map = {
+                    'toc_parse': 'TOC',
+                    'font_heuristic': 'Font',
+                    'reconciled': 'Recon',
+                    'both': 'AI+Font',
+                    'llm': 'AI',
+                    'existing_bookmark': 'Existing',
+                    'manual': 'Manual',
+                };
+                return map[source] || source;
+            },
+
+            escHtml(str) {
+                if (str === null || str === undefined) return '';
+                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            },
+
+            // ═════════════════════════════════════════════════════
+            // TREE EVENTS (Delegation)
+            // ═════════════════════════════════════════════════════
+            setupTreeEvents(container) {
+                // Remove old listeners by replacing the container's event handler reference
+                const self = this;
+
+                container.onclick = function(e) {
+                    const target = e.target;
+                    const action = target.dataset.action;
+                    const id = target.dataset.id || target.closest('[data-node-id]')?.dataset.nodeId;
+
+                    if (!action && !id) return;
+
+                    // Don't interfere with active edit inputs
+                    if (action === 'edit-title' || action === 'edit-page') return;
+
+                    if (action === 'toggle') {
+                        e.stopPropagation();
+                        self.toggleCollapse(target.dataset.id);
+                        return;
+                    }
+                    if (action === 'edit-title-start') {
+                        e.stopPropagation();
+                        self.startEditing(target.dataset.id, 'title');
+                        return;
+                    }
+                    if (action === 'delete') {
+                        e.stopPropagation();
+                        self.requestDelete(target.dataset.id);
+                        return;
+                    }
+                    if (action === 'add-child') {
+                        e.stopPropagation();
+                        self.addBookmark(target.dataset.id);
+                        return;
+                    }
+                    if (action === 'edit-page-start') {
+                        e.stopPropagation();
+                        self.startEditing(target.dataset.id, 'page');
+                        return;
+                    }
+                    if (action === 'select' || id) {
+                        const nodeId = target.dataset.id || id;
+                        self.selectNode(nodeId);
+                        return;
+                    }
+                };
+
+                container.ondblclick = function(e) {
+                    const target = e.target;
+                    if (target.dataset.action === 'select' || target.classList.contains('bm-title')) {
+                        e.stopPropagation();
+                        self.startEditing(target.dataset.id, 'title');
+                    }
+                };
+
+                // Handle edit inputs
+                container.onkeydown = function(e) {
+                    if (e.target.dataset.action === 'edit-title') {
+                        if (e.key === 'Enter') {
+                            console.log('[onkeydown Enter] value:', JSON.stringify(e.target.value));
+                            self.commitTitleEdit(e.target.dataset.id, e.target.value);
+                        } else if (e.key === 'Escape') {
+                            self.cancelEditing();
+                        }
+                    }
+                    if (e.target.dataset.action === 'edit-page') {
+                        if (e.key === 'Enter') {
+                            self.commitPageEdit(e.target.dataset.id, parseInt(e.target.value));
+                        } else if (e.key === 'Escape') {
+                            self.cancelEditing();
+                        }
+                    }
+                };
+
+                container.onfocusout = function(e) {
+                    if (e.target.dataset.action === 'edit-title') {
+                        console.log('[onfocusout] value:', JSON.stringify(e.target.value));
+                        self.commitTitleEdit(e.target.dataset.id, e.target.value);
+                    }
+                    if (e.target.dataset.action === 'edit-page') {
+                        self.commitPageEdit(e.target.dataset.id, parseInt(e.target.value));
+                    }
+                };
+
+                // Focus edit inputs
+                this.$nextTick(() => {
+                    const editInput = container.querySelector('.bm-title-edit, .bm-page-edit');
+                    if (editInput) {
+                        editInput.focus();
+                        editInput.select();
+                    }
+                });
+            },
+
+            // ═════════════════════════════════════════════════════
+            // SORTABLE (Drag & Drop)
+            // ═════════════════════════════════════════════════════
+            initSortable() {
+                const self = this;
+                document.querySelectorAll('.bm-list').forEach(el => {
+                    const instance = new Sortable(el, {
+                        group: 'bookmarks',
+                        animation: 150,
+                        fallbackOnBody: true,
+                        swapThreshold: 0.65,
+                        handle: '.bm-row',
+                        ghostClass: 'sortable-ghost',
+                        chosenClass: 'sortable-chosen',
+                        dragClass: 'sortable-drag',
+                        onEnd: (evt) => self.handleSortEnd(evt),
+                    });
+                    self.sortableInstances.push(instance);
+                });
+            },
+
+            handleSortEnd(evt) {
+                const itemId = evt.item.dataset.id;
+                const fromParentId = evt.from.dataset.parentId;
+                const toParentId = evt.to.dataset.parentId;
+                const newIndex = evt.newIndex;
+
+                // Get old parent's children array
+                const fromChildren = fromParentId === 'root'
+                    ? this.bookmarks
+                    : this.findNode(fromParentId)?.children;
+
+                if (!fromChildren) return;
+
+                // Find the node in the DOM order (might have changed)
+                // We need to find and remove from data model first
+                const nodeIdx = fromChildren.findIndex(n => n.id === itemId);
+                if (nodeIdx === -1) return;
+
+                this.pushUndo();
+
+                const [node] = fromChildren.splice(nodeIdx, 1);
+
+                // Get new parent's children array
+                const toChildren = toParentId === 'root'
+                    ? this.bookmarks
+                    : this.findNode(toParentId)?.children;
+
+                if (!toChildren) {
+                    // Fallback: put back
+                    fromChildren.splice(nodeIdx, 0, node);
+                    return;
+                }
+
+                // Correct the newIndex if moving within the same parent
+                const adjustedIndex = Math.min(newIndex, toChildren.length);
+                toChildren.splice(adjustedIndex, 0, node);
+
+                // Recalculate levels
+                this.recalculateLevels();
+                this.renderTree();
+            },
+
+            // ═════════════════════════════════════════════════════
+            // NODE OPERATIONS
+            // ═════════════════════════════════════════════════════
+            findNode(id, nodes) {
+                if (!nodes) nodes = this.bookmarks;
+                for (const node of nodes) {
+                    if (node.id === id) return node;
+                    if (node.children) {
+                        const found = this.findNode(id, node.children);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            },
+
+            findNodeContext(id, nodes, parent) {
+                if (!nodes) nodes = this.bookmarks;
+                if (!parent) parent = null;
+                for (let i = 0; i < nodes.length; i++) {
+                    if (nodes[i].id === id) {
+                        return { node: nodes[i], siblings: nodes, index: i, parent: parent };
+                    }
+                    if (nodes[i].children) {
+                        const found = this.findNodeContext(id, nodes[i].children, nodes[i]);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            },
+
+            removeNode(nodes, id) {
+                const idx = nodes.findIndex(n => n.id === id);
+                if (idx >= 0) {
+                    nodes.splice(idx, 1);
+                    return true;
+                }
+                for (const node of nodes) {
+                    if (node.children && this.removeNode(node.children, id)) return true;
+                }
+                return false;
+            },
+
+            selectNode(id) {
+                this.selectedId = id;
+                const node = this.findNode(id);
+                if (node && node.pdf_page_index >= 0) {
+                    this.goToPage(node.pdf_page_index);
+                }
+                this.renderTree();
+            },
+
+            toggleCollapse(id) {
+                if (this.collapsed.has(id)) {
+                    this.collapsed.delete(id);
+                } else {
+                    this.collapsed.add(id);
+                }
+                this.renderTree();
+            },
+
+            addBookmark(parentId) {
+                this.pushUndo();
+                const newNode = {
+                    id: crypto.randomUUID(),
+                    title: 'New Bookmark',
+                    page_number: this.currentPage + 1,
+                    pdf_page_index: this.currentPage,
+                    level: 1,
+                    confidence: 1.0,
+                    source: 'manual',
+                    children: [],
+                };
+
+                if (parentId) {
+                    const parent = this.findNode(parentId);
+                    if (parent) {
+                        newNode.level = parent.level + 1;
+                        if (!parent.children) parent.children = [];
+                        parent.children.push(newNode);
+                        this.collapsed.delete(parentId);
+                    }
+                } else if (this.selectedId) {
+                    // Insert after selected node at same level
+                    const ctx = this.findNodeContext(this.selectedId);
+                    if (ctx) {
+                        newNode.level = ctx.node.level;
+                        ctx.siblings.splice(ctx.index + 1, 0, newNode);
+                    } else {
+                        this.bookmarks.push(newNode);
+                    }
+                } else {
+                    this.bookmarks.push(newNode);
+                }
+
+                this.selectedId = newNode.id;
+                this.editingId = newNode.id;
+                this.editingField = 'title';
+                this.recalculateLevels();
+                this.renderTree();
+            },
+
+            requestDelete(id) {
+                const targetId = id || this.selectedId;
+                if (!targetId) return;
+
+                const node = this.findNode(targetId);
+                if (!node) return;
+
+                const childCount = this.countChildren(node);
+                if (childCount > 0) {
+                    this.deleteConfirm = {
+                        show: true,
+                        id: targetId,
+                        message: `Delete "${node.title}" and its ${childCount} child bookmark(s)?`
+                    };
+                } else {
+                    this.deleteConfirm = {
+                        show: true,
+                        id: targetId,
+                        message: `Delete "${node.title}"?`
+                    };
+                }
+            },
+
+            confirmDelete() {
+                const id = this.deleteConfirm.id;
+                this.deleteConfirm.show = false;
+                if (!id) return;
+
+                this.pushUndo();
+                this.removeNode(this.bookmarks, id);
+                if (this.selectedId === id) this.selectedId = null;
+                this.renderTree();
+                this.toast('Bookmark deleted', 'success');
+            },
+
+            countChildren(node) {
+                let count = 0;
+                if (node.children) {
+                    count += node.children.length;
+                    for (const child of node.children) {
+                        count += this.countChildren(child);
+                    }
+                }
+                return count;
+            },
+
+            // ── Inline Editing ───────────────────────────────────
+            startEditing(id, field) {
+                const node = this.findNode(id);
+                if (!node) return;
+
+                this.editingId = id;
+                this.editingField = field;
+                this.editingOriginalValue = field === 'title' ? node.title : node.pdf_page_index;
+                this.selectedId = id;
+                this.renderTree();
+            },
+
+            commitTitleEdit(id, newValue) {
+                console.log('[commitTitleEdit] called with id:', id, 'newValue:', JSON.stringify(newValue), 'editingId:', this.editingId);
+                if (!this.editingId || this.editingId !== id) {
+                    console.log('[commitTitleEdit] SKIPPED - editingId mismatch');
+                    return;
+                }
+                const node = this.findNode(id);
+                if (!node) {
+                    console.log('[commitTitleEdit] SKIPPED - node not found');
+                    return;
+                }
+
+                const trimmed = newValue.trim();
+                console.log('[commitTitleEdit] trimmed:', JSON.stringify(trimmed), 'originalValue:', JSON.stringify(this.editingOriginalValue));
+                if (trimmed && trimmed !== this.editingOriginalValue) {
+                    this.pushUndo();
+                    node.title = trimmed;
+                    console.log('[commitTitleEdit] SAVED - node.title is now:', JSON.stringify(node.title));
+                } else {
+                    console.log('[commitTitleEdit] NOT SAVED - trimmed empty or same as original');
+                }
+
+                this.editingId = null;
+                this.editingField = null;
+                this.renderTree();
+            },
+
+            commitPageEdit(id, newPageNum) {
+                if (!this.editingId || this.editingId !== id) return;
+                const node = this.findNode(id);
+                if (!node || isNaN(newPageNum)) return;
+
+                const clampedPage = Math.max(1, Math.min(newPageNum, this.totalPages));
+                if (clampedPage - 1 !== this.editingOriginalValue) {
+                    this.pushUndo();
+                    node.page_number = clampedPage;
+                    node.pdf_page_index = clampedPage - 1;
+                }
+
+                this.editingId = null;
+                this.editingField = null;
+                this.renderTree();
+                this.goToPage(clampedPage - 1);
+            },
+
+            cancelEditing() {
+                this.editingId = null;
+                this.editingField = null;
+                this.renderTree();
+            },
+
+            // ── Indent / Outdent ─────────────────────────────────
+            indentNode() {
+                if (!this.selectedId) return;
+                const ctx = this.findNodeContext(this.selectedId);
+                if (!ctx || ctx.index <= 0) return;
+
+                this.pushUndo();
+                const node = ctx.siblings.splice(ctx.index, 1)[0];
+                const prevSibling = ctx.siblings[ctx.index - 1];
+                if (!prevSibling.children) prevSibling.children = [];
+                prevSibling.children.push(node);
+                this.collapsed.delete(prevSibling.id);
+                this.recalculateLevels();
+                this.renderTree();
+            },
+
+            outdentNode() {
+                if (!this.selectedId) return;
+                const ctx = this.findNodeContext(this.selectedId);
+                if (!ctx || !ctx.parent) return; // Already top-level
+
+                this.pushUndo();
+                // Remove from current parent
+                const node = ctx.siblings.splice(ctx.index, 1)[0];
+                // Insert after parent
+                const parentCtx = this.findNodeContext(ctx.parent.id);
+                if (parentCtx) {
+                    parentCtx.siblings.splice(parentCtx.index + 1, 0, node);
+                } else {
+                    this.bookmarks.push(node);
+                }
+                this.recalculateLevels();
+                this.renderTree();
+            },
+
+            recalculateLevels(nodes, level) {
+                if (!nodes) nodes = this.bookmarks;
+                if (!level) level = 1;
+                for (const node of nodes) {
+                    node.level = level;
+                    if (node.children) {
+                        this.recalculateLevels(node.children, level + 1);
+                    }
+                }
+            },
+
+            // ═════════════════════════════════════════════════════
+            // PDF VIEWER
+            // ═════════════════════════════════════════════════════
+            getPageUrl() {
+                if (!this.fileId) return '';
+                const width = Math.round(800 * this.zoomLevel);
+                return `/api/page/${this.fileId}/${this.currentPage}?width=${width}`;
+            },
+
+            prevPage() {
+                if (this.currentPage > 0) {
+                    this.currentPage--;
+                    this.prefetchPages();
+                }
+            },
+
+            nextPage() {
+                if (this.currentPage < this.totalPages - 1) {
+                    this.currentPage++;
+                    this.prefetchPages();
+                }
+            },
+
+            goToPage(index) {
+                const page = Math.max(0, Math.min(index, this.totalPages - 1));
+                if (!isNaN(page)) {
+                    this.currentPage = page;
+                    this.prefetchPages();
+                }
+            },
+
+            zoomIn()  { this.zoomLevel = Math.min(3.0, +(this.zoomLevel + 0.25).toFixed(2)); },
+            zoomOut() { this.zoomLevel = Math.max(0.25, +(this.zoomLevel - 0.25).toFixed(2)); },
+            zoomFit() { this.zoomLevel = 1.0; },
+
+            prefetchPages() {
+                if (!this.fileId) return;
+                const adjacent = [this.currentPage - 1, this.currentPage + 1]
+                    .filter(p => p >= 0 && p < this.totalPages);
+                const width = Math.round(800 * this.zoomLevel);
+                adjacent.forEach(p => {
+                    const img = new Image();
+                    img.src = `/api/page/${this.fileId}/${p}?width=${width}`;
+                });
+            },
+
+            handlePageClick() {
+                if (this.selectedId) {
+                    const node = this.findNode(this.selectedId);
+                    if (node) {
+                        const pageNum = this.currentPage + 1;
+                        if (node.pdf_page_index !== this.currentPage) {
+                            if (confirm(`Set "${node.title}" to page ${pageNum}?`)) {
+                                this.pushUndo();
+                                node.page_number = pageNum;
+                                node.pdf_page_index = this.currentPage;
+                                this.renderTree();
+                                this.toast(`Page set to ${pageNum}`, 'success');
+                            }
+                        }
+                    }
+                }
+            },
+
+            // ═════════════════════════════════════════════════════
+            // UNDO / REDO
+            // ═════════════════════════════════════════════════════
+            pushUndo() {
+                this.undoStack.push(JSON.parse(JSON.stringify(this.bookmarks)));
+                this.redoStack = [];
+                if (this.undoStack.length > 50) this.undoStack.shift();
+            },
+
+            undo() {
+                if (this.undoStack.length === 0) return;
+                this.redoStack.push(JSON.parse(JSON.stringify(this.bookmarks)));
+                this.bookmarks = this.undoStack.pop();
+                this.renderTree();
+                this.toast('Undone', 'success');
+            },
+
+            redo() {
+                if (this.redoStack.length === 0) return;
+                this.undoStack.push(JSON.parse(JSON.stringify(this.bookmarks)));
+                this.bookmarks = this.redoStack.pop();
+                this.renderTree();
+                this.toast('Redone', 'success');
+            },
+
+            // ═════════════════════════════════════════════════════
+            // KEYBOARD SHORTCUTS
+            // ═════════════════════════════════════════════════════
+            handleKeyboard(e) {
+                // Don't capture when in input fields (unless it's our edit fields)
+                if (e.target.tagName === 'INPUT' && !e.target.dataset.action) return;
+
+                // Ctrl+Z = Undo
+                if (e.ctrlKey && e.key === 'z' && !e.shiftKey) {
+                    e.preventDefault();
+                    this.undo();
+                    return;
+                }
+                // Ctrl+Shift+Z = Redo
+                if (e.ctrlKey && e.key === 'z' && e.shiftKey) {
+                    e.preventDefault();
+                    this.redo();
+                    return;
+                }
+                // Ctrl+S = Save JSON
+                if (e.ctrlKey && e.key === 's') {
+                    e.preventDefault();
+                    this.saveJson();
+                    return;
+                }
+
+                // Shortcuts that need editor screen
+                if (this.screen !== 'editor') return;
+                if (this.editingId) return; // Don't capture during editing
+
+                // Tab = Indent
+                if (e.key === 'Tab' && !e.ctrlKey) {
+                    e.preventDefault();
+                    if (e.shiftKey) this.outdentNode();
+                    else this.indentNode();
+                    return;
+                }
+                // Delete
+                if (e.key === 'Delete' && this.selectedId) {
+                    e.preventDefault();
+                    this.requestDelete();
+                    return;
+                }
+                // F2 = Edit title
+                if (e.key === 'F2' && this.selectedId) {
+                    e.preventDefault();
+                    this.startEditing(this.selectedId, 'title');
+                    return;
+                }
+                // Arrow keys for navigation
+                if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    this.navigateTree(e.key === 'ArrowDown' ? 1 : -1);
+                    return;
+                }
+                // Arrow left/right for page navigation
+                if (e.key === 'ArrowLeft') { this.prevPage(); return; }
+                if (e.key === 'ArrowRight') { this.nextPage(); return; }
+            },
+
+            navigateTree(direction) {
+                const flatList = this.flattenForNavigation(this.bookmarks);
+                if (flatList.length === 0) return;
+
+                const currentIdx = flatList.findIndex(n => n.id === this.selectedId);
+                let nextIdx;
+                if (currentIdx === -1) {
+                    nextIdx = direction > 0 ? 0 : flatList.length - 1;
+                } else {
+                    nextIdx = currentIdx + direction;
+                }
+                nextIdx = Math.max(0, Math.min(nextIdx, flatList.length - 1));
+                this.selectNode(flatList[nextIdx].id);
+            },
+
+            flattenForNavigation(nodes) {
+                const result = [];
+                for (const node of nodes) {
+                    result.push(node);
+                    if (node.children && !this.collapsed.has(node.id)) {
+                        result.push(...this.flattenForNavigation(node.children));
+                    }
+                }
+                return result;
+            },
+
+            // ═════════════════════════════════════════════════════
+            // EXPORT / SAVE / LOAD
+            // ═════════════════════════════════════════════════════
+            async exportPdf() {
+                if (!this.fileId) return;
+                if (this.bookmarks.length === 0) {
+                    this.toast('No bookmarks to export', 'warning');
+                    return;
+                }
+
+                this.toast('Injecting bookmarks into PDF...', 'success');
+
+                try {
+                    const outputFilename = this.filename.replace('.pdf', '_bookmarked.pdf');
+                    const resp = await fetch('/api/inject', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            file_id: this.fileId,
+                            bookmarks: this.bookmarks,
+                            output_filename: outputFilename,
+                        })
+                    });
+                    const data = await resp.json();
+                    if (data.error) throw new Error(data.error);
+
+                    // Trigger download
+                    window.open(`/api/download/${this.fileId}`, '_blank');
+                    this.toast(`Exported ${data.bookmark_count} bookmarks!`, 'success');
+                } catch (e) {
+                    this.toast('Export failed: ' + e.message, 'error');
+                }
+            },
+
+            saveJson() {
+                const payload = {
+                    version: 1,
+                    filename: this.filename,
+                    total_pages: this.totalPages,
+                    bookmarks: this.bookmarks,
+                    saved_at: new Date().toISOString(),
+                };
+                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = this.filename ? this.filename.replace('.pdf', '_bookmarks.json') : 'bookmarks.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                this.lastSaved = new Date().toLocaleTimeString();
+                this.toast('Bookmarks saved as JSON', 'success');
+            },
+
+            async loadJsonFile(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+                try {
+                    const text = await file.text();
+                    const data = JSON.parse(text);
+                    if (data.bookmarks && Array.isArray(data.bookmarks)) {
+                        this.pushUndo();
+                        this.bookmarks = data.bookmarks;
+                        this.recalculateLevels();
+                        this.renderTree();
+                        this.toast(`Loaded ${this.countBookmarks()} bookmarks from JSON`, 'success');
+                    } else {
+                        throw new Error('Invalid bookmark JSON format');
+                    }
+                } catch (e) {
+                    this.toast('Failed to load JSON: ' + e.message, 'error');
+                }
+                // Reset input
+                event.target.value = '';
+            },
+
+            // ── Auto-save to localStorage ────────────────────────
+            autoSave() {
+                if (this.screen !== 'editor' || !this.fileId) return;
+                const data = {
+                    fileId: this.fileId,
+                    filename: this.filename,
+                    bookmarks: this.bookmarks,
+                    timestamp: Date.now(),
+                };
+                try {
+                    localStorage.setItem('bookmark-editor-autosave', JSON.stringify(data));
+                } catch (e) {
+                    // localStorage might be full, ignore
+                }
+            },
+
+            checkAutoSave() {
+                try {
+                    const saved = localStorage.getItem('bookmark-editor-autosave');
+                    if (!saved) return;
+                    const data = JSON.parse(saved);
+                    // Only restore if it's recent (last 24 hours) and for the same file
+                    if (this.fileId && data.fileId === this.fileId &&
+                        Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+                        if (confirm(`Restore auto-saved session for "${data.filename}" from ${new Date(data.timestamp).toLocaleString()}?`)) {
+                            this.bookmarks = data.bookmarks;
+                            this.$nextTick(() => this.renderTree());
+                        }
+                    }
+                } catch (e) {
+                    // Ignore
+                }
+            },
+
+            // ═════════════════════════════════════════════════════
+            // PANEL RESIZE
+            // ═════════════════════════════════════════════════════
+            startResize(event) {
+                this.isResizing = true;
+                const startX = event.clientX;
+                const startWidth = this.treePanelWidth;
+
+                const onMouseMove = (e) => {
+                    const delta = e.clientX - startX;
+                    this.treePanelWidth = Math.max(250, Math.min(startWidth + delta, window.innerWidth - 300));
+                };
+                const onMouseUp = () => {
+                    this.isResizing = false;
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                };
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            },
+
+            // ═════════════════════════════════════════════════════
+            // HELPERS
+            // ═════════════════════════════════════════════════════
+            countBookmarks(nodes) {
+                if (!nodes) nodes = this.bookmarks;
+                let count = 0;
+                for (const node of nodes) {
+                    count++;
+                    if (node.children) count += this.countBookmarks(node.children);
+                }
+                return count;
+            },
+
+            toast(message, type = 'success') {
+                const id = Date.now() + Math.random();
+                const toast = { id, message, type, visible: true };
+                this.toasts.push(toast);
+                setTimeout(() => {
+                    toast.visible = false;
+                    setTimeout(() => {
+                        this.toasts = this.toasts.filter(t => t.id !== id);
+                    }, 300);
+                }, 3000);
+            },
+        };
+    }
+    </script>
+</body>
+</html>

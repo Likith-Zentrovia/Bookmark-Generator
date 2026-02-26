@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip show:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(pkill:*)",
+      "Bash(# Check what Flask actually serves curl -s http://localhost:5000/)",
+      "Bash(# Check what the server actually returns curl -s http://localhost:5000/)",
+      "Bash(# Show exactly what action button lines are served curl -s http://localhost:5000/)",
+      "Bash(# Find any jinja cache find /c/Bookmark-Generator -name \"\"*.cache\"\" -o -name \"\"*.pyc\"\")",
+      "Bash(# Kill server, nuke all pycache, restart pkill -f \"\"run_editor\"\" pkill -f \"\"python\"\" sleep 2 # Delete all pycache rm -rf /c/Bookmark-Generator/bookmark_generator/web/__pycache__ rm -rf /c/Bookmark-Generator/bookmark_generator/__pycache__ # Verify the file on disk is correct grep \"\"edit-title-start\"\" /c/Bookmark-Generator/bookmark_generator/web/templates/index.html)",
+      "Bash(__NEW_LINE_5ca905301573fad9__ python -c \"\nimport os, sys\nsys.path.insert\\(0, ''C:/Bookmark-Generator''\\)\nfrom bookmark_generator.web.app import create_app\napp = create_app\\(\\)\nprint\\(''Template folder:'', app.template_folder\\)\nprint\\(''Template folder exists:'', os.path.isdir\\(app.template_folder\\)\\)\n\n# List files in template folder\nfor f in os.listdir\\(app.template_folder\\):\n    fpath = os.path.join\\(app.template_folder, f\\)\n    print\\(f''  {f}: {os.path.getsize\\(fpath\\)} bytes''\\)\n\n# Read via Jinja loader\ntpl_source = app.jinja_env.loader.get_source\\(app.jinja_env, ''index.html''\\)\nprint\\(''Jinja loaded template size:'', len\\(tpl_source[0]\\)\\)\nprint\\(''Jinja source file:'', tpl_source[1]\\)\nprint\\(''Has edit-title-start:'', ''edit-title-start'' in tpl_source[0]\\)\n\")",
+      "Bash(__NEW_LINE_49d3727cf5c04f85__ python -c \"\nimport sys\nsys.path.insert\\(0, ''C:/Bookmark-Generator''\\)\nfrom bookmark_generator.web.app import create_app\napp = create_app\\(\\)\n\nwith app.app_context\\(\\):\n    rendered = app.jinja_env.get_template\\(''index.html''\\).render\\(\\)\n    print\\(''Rendered size:'', len\\(rendered\\)\\)\n    print\\(''Has edit-title-start:'', ''edit-title-start'' in rendered\\)\n    \n    # Find the action buttons section\n    idx = rendered.find\\(''bm-row-actions''\\)\n    if idx > 0:\n        print\\(''Action buttons section:''\\)\n        print\\(rendered[idx:idx+500]\\)\n\")",
+      "Bash(__NEW_LINE_248666f957e1f3e1__ python -c \"\nimport sys\nsys.path.insert\\(0, ''C:/Bookmark-Generator''\\)\nfrom bookmark_generator.web.app import create_app\napp = create_app\\(\\)\n\nwith app.test_client\\(\\) as client:\n    resp = client.get\\(''/''\\)\n    data = resp.get_data\\(as_text=True\\)\n    print\\(''Response size:'', len\\(data\\)\\)\n    print\\(''Has edit-title-start:'', ''edit-title-start'' in data\\)\n    print\\(''Status:'', resp.status_code\\)\n    \n    # Find what''s around the add-child line\n    lines = data.split\\(''\\\\n''\\)\n    for i, line in enumerate\\(lines\\):\n        if ''add-child'' in line and ''bm-act-btn'' in line:\n            print\\(f''Line {i-1}: {lines[i-1].strip\\(\\)[:150]}''\\)\n            print\\(f''Line {i}: {line.strip\\(\\)[:150]}''\\)\n            print\\(f''Line {i+1}: {lines[i+1].strip\\(\\)[:150]}''\\)\n\")",
+      "Bash(# Nuclear option - kill ALL python pkill -9 -f python sleep 3 # Double check nothing on port 5000 ss -tlnp | grep 5000 || netstat -an)",
+      "Bash(timeout:*)",
+      "Bash(curl:*)",
+      "Bash(ping:*)",
+      "Bash(gh issue list:*)",
+      "Bash(where:*)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(git config:*)",
+      "Bash(git reset:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
