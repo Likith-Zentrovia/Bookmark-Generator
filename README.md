@@ -3,8 +3,8 @@
 Extract and reconstruct chapter structure from PDFs — even when bookmarks are missing.
 
 ## How It Works
-
-The pipeline uses a layered approach:
+Lets see for commit
+The pipeline uses a layered approach: Just a commit
 
 1. **Existing bookmarks** — If the PDF already has an outline, use it directly.
 2. **TOC page parsing** — Locate the Table of Contents page, extract entries using regex pattern matching and font metadata analysis.

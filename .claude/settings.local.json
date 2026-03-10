@@ -23,7 +23,9 @@
       "Bash(git config:*)",
       "Bash(git reset:*)",
       "Bash(git rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
