@@ -46,6 +46,19 @@ def main(argv: list[str] | None = None) -> int:
         help="Disable font-based heading detection.",
     )
     parser.add_argument(
+        "--vision",
+        action="store_true",
+        help="Enable vision-based TOC extraction (requires ANTHROPIC_API_KEY). "
+             "Renders PDF pages as images and uses Claude Vision to extract "
+             "TOC entries with cross-verification against actual pages.",
+    )
+    parser.add_argument(
+        "--vision-model",
+        default="claude-sonnet-4-20250514",
+        metavar="MODEL",
+        help="Anthropic model to use for vision extraction. Default: claude-sonnet-4-20250514.",
+    )
+    parser.add_argument(
         "--llm",
         action="store_true",
         help="Enable LLM review stage (requires ANTHROPIC_API_KEY). "
@@ -79,12 +92,24 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
 
-    # Configure logging
+    # Fix Windows terminal encoding for Unicode tree characters
+    if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+        import io
+        sys.stdout = io.TextIOWrapper(
+            sys.stdout.buffer, encoding="utf-8", errors="replace"
+        )
+
+    # Configure logging — only our loggers get DEBUG, suppress noisy third-party libs
     log_level = logging.DEBUG if args.verbose else logging.WARNING
     logging.basicConfig(
-        level=log_level,
+        level=logging.WARNING,  # Default to WARNING for all loggers
         format="%(levelname)s: %(message)s",
     )
+    # Set our package loggers to the requested level
+    logging.getLogger("bookmark_generator").setLevel(log_level)
+    # Keep third-party loggers (anthropic, httpx, httpcore) quiet
+    for noisy_logger in ("anthropic", "httpx", "httpcore"):
+        logging.getLogger(noisy_logger).setLevel(logging.WARNING)
 
     try:
         result = extract_bookmarks(
@@ -93,6 +118,8 @@ def main(argv: list[str] | None = None) -> int:
             use_toc=not args.no_toc,
             use_font_heuristics=not args.no_font,
             use_llm=args.llm,
+            use_vision=args.vision,
+            vision_model=args.vision_model,
             llm_model=args.llm_model,
             inject_into_pdf=args.inject,
             output_path=args.output,

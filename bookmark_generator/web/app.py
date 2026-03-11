@@ -5,6 +5,8 @@ from __future__ import annotations
 import logging
 import os
 import tempfile
+import threading
+import time
 import uuid
 from pathlib import Path
 from typing import Any
@@ -14,6 +16,7 @@ from flask import Flask, jsonify, make_response, render_template, request, send_
 
 from bookmark_generator.bookmark_extractor import inject_bookmarks
 from bookmark_generator.models import BookmarkEntry
+from bookmark_generator.pdf_utils import render_page_to_png
 from bookmark_generator.pipeline import extract_bookmarks
 
 logger = logging.getLogger(__name__)
@@ -42,7 +45,8 @@ def create_app() -> Flask:
     def get_config():
         """Return startup config (e.g. preloaded PDF path)."""
         preload = app.config.get("PRELOAD_PDF")
-        return jsonify({"preload_pdf": preload})
+        has_api_key = bool(os.environ.get("ANTHROPIC_API_KEY", ""))
+        return jsonify({"preload_pdf": preload, "has_api_key": has_api_key})
 
     @app.route("/api/upload", methods=["POST"])
     def upload_pdf():
@@ -97,7 +101,12 @@ def create_app() -> Flask:
 
     @app.route("/api/extract", methods=["POST"])
     def run_extraction():
-        """Run the bookmark extraction pipeline on a loaded PDF."""
+        """Run the bookmark extraction pipeline on a loaded PDF.
+
+        For vision extraction, this starts the pipeline in a background thread
+        and returns immediately with a task_id for progress polling.
+        For non-vision extraction, runs synchronously as before.
+        """
         data = request.get_json()
         file_id = data.get("file_id")
 
@@ -105,33 +114,145 @@ def create_app() -> Flask:
             return jsonify(error="Unknown file_id"), 404
 
         session = sessions[file_id]
+        use_vision = data.get("use_vision", False)
 
-        try:
-            result = extract_bookmarks(
-                pdf_path=session["pdf_path"],
-                force_rebuild=data.get("force_rebuild", True),
-                use_toc=data.get("use_toc", True),
-                use_font_heuristics=data.get("use_font_heuristics", True),
-                use_llm=data.get("use_llm", False),
-                llm_model=data.get("llm_model", "claude-sonnet-4-20250514"),
-                fuzzy_threshold=data.get("fuzzy_threshold", 70),
-            )
+        if use_vision:
+            # ── Async vision extraction ─────────────────────────────────
+            task_id = str(uuid.uuid4())
 
-            # Convert bookmarks to JSON-serializable format with unique IDs
-            bookmarks_json = _bookmarks_to_json(result.bookmarks)
-            session["bookmarks"] = bookmarks_json
+            # Initialize progress tracking in session
+            session["extract_task"] = {
+                "task_id": task_id,
+                "status": "running",
+                "phase": "starting",
+                "step": 0,
+                "total_steps": 1,
+                "message": "Starting vision extraction...",
+                "started_at": time.time(),
+                "result": None,
+                "error": None,
+            }
+
+            def progress_callback(phase: str, step: int, total_steps: int, message: str):
+                """Called by vision_extract to report progress."""
+                task = session.get("extract_task")
+                if task and task["task_id"] == task_id:
+                    task["phase"] = phase
+                    task["step"] = step
+                    task["total_steps"] = total_steps
+                    task["message"] = message
+
+            def run_extraction_thread():
+                """Run extraction in background thread."""
+                task = session.get("extract_task")
+                try:
+                    result = extract_bookmarks(
+                        pdf_path=session["pdf_path"],
+                        force_rebuild=data.get("force_rebuild", True),
+                        use_toc=data.get("use_toc", True),
+                        use_font_heuristics=data.get("use_font_heuristics", True),
+                        use_llm=data.get("use_llm", False),
+                        use_vision=True,
+                        vision_model=data.get("vision_model", "claude-sonnet-4-20250514"),
+                        llm_model=data.get("llm_model", "claude-sonnet-4-20250514"),
+                        fuzzy_threshold=data.get("fuzzy_threshold", 70),
+                        progress_callback=progress_callback,
+                    )
+
+                    bookmarks_json = _bookmarks_to_json(result.bookmarks)
+                    session["bookmarks"] = bookmarks_json
+
+                    if task:
+                        task["status"] = "completed"
+                        task["phase"] = "done"
+                        task["message"] = f"Extracted {len(result.flat_bookmarks())} bookmarks"
+                        task["result"] = {
+                            "bookmarks": bookmarks_json,
+                            "total_pages": result.total_pages,
+                            "method_used": result.method_used,
+                            "warnings": result.warnings,
+                            "bookmark_count": len(result.flat_bookmarks()),
+                        }
+
+                except Exception as e:
+                    logger.exception("Vision extraction failed")
+                    if task:
+                        task["status"] = "error"
+                        task["error"] = str(e)
+                        task["message"] = f"Error: {e}"
+
+            thread = threading.Thread(target=run_extraction_thread, daemon=True)
+            thread.start()
 
             return jsonify({
-                "bookmarks": bookmarks_json,
-                "total_pages": result.total_pages,
-                "method_used": result.method_used,
-                "warnings": result.warnings,
-                "bookmark_count": len(result.flat_bookmarks()),
+                "async": True,
+                "task_id": task_id,
+                "message": "Vision extraction started",
             })
 
-        except Exception as e:
-            logger.exception("Extraction failed")
-            return jsonify(error=str(e)), 500
+        else:
+            # ── Synchronous non-vision extraction ───────────────────────
+            try:
+                result = extract_bookmarks(
+                    pdf_path=session["pdf_path"],
+                    force_rebuild=data.get("force_rebuild", True),
+                    use_toc=data.get("use_toc", True),
+                    use_font_heuristics=data.get("use_font_heuristics", True),
+                    use_llm=data.get("use_llm", False),
+                    use_vision=False,
+                    vision_model=data.get("vision_model", "claude-sonnet-4-20250514"),
+                    llm_model=data.get("llm_model", "claude-sonnet-4-20250514"),
+                    fuzzy_threshold=data.get("fuzzy_threshold", 70),
+                )
+
+                bookmarks_json = _bookmarks_to_json(result.bookmarks)
+                session["bookmarks"] = bookmarks_json
+
+                return jsonify({
+                    "bookmarks": bookmarks_json,
+                    "total_pages": result.total_pages,
+                    "method_used": result.method_used,
+                    "warnings": result.warnings,
+                    "bookmark_count": len(result.flat_bookmarks()),
+                })
+
+            except Exception as e:
+                logger.exception("Extraction failed")
+                return jsonify(error=str(e)), 500
+
+    @app.route("/api/extract/progress", methods=["POST"])
+    def get_extraction_progress():
+        """Poll for vision extraction progress."""
+        data = request.get_json()
+        file_id = data.get("file_id")
+        task_id = data.get("task_id")
+
+        if not file_id or file_id not in sessions:
+            return jsonify(error="Unknown file_id"), 404
+
+        session = sessions[file_id]
+        task = session.get("extract_task")
+
+        if not task or task.get("task_id") != task_id:
+            return jsonify(error="Unknown task_id"), 404
+
+        elapsed = time.time() - task.get("started_at", time.time())
+
+        response = {
+            "status": task["status"],
+            "phase": task["phase"],
+            "step": task["step"],
+            "total_steps": task["total_steps"],
+            "message": task["message"],
+            "elapsed_seconds": round(elapsed, 1),
+        }
+
+        if task["status"] == "completed":
+            response["result"] = task["result"]
+        elif task["status"] == "error":
+            response["error"] = task["error"]
+
+        return jsonify(response)
 
     @app.route("/api/page/<file_id>/<int:page_index>")
     def get_page(file_id: str, page_index: int):
@@ -149,10 +270,7 @@ def create_app() -> Flask:
 
         try:
             page = doc[page_index]
-            zoom = width / page.rect.width
-            mat = fitz.Matrix(zoom, zoom)
-            pix = page.get_pixmap(matrix=mat, alpha=False)
-            img_bytes = pix.tobytes("png")
+            img_bytes = render_page_to_png(page, width=width)
 
             response = make_response(img_bytes)
             response.headers["Content-Type"] = "image/png"

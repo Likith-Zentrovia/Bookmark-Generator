@@ -157,6 +157,51 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         .loading-text { color: var(--text-muted); font-size: 16px; }
+        .loading-subtext { color: var(--text-dim); font-size: 13px; margin-top: -8px; }
+        .loading-progress {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .progress-bar-container {
+            width: 320px;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        .progress-phase {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .progress-phase-dot {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .progress-phase-dot.active { color: var(--primary); font-weight: 600; }
+        .progress-phase-dot.done { color: var(--success); }
+        .progress-phase-dot::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-dim);
+        }
+        .progress-phase-dot.active::before { background: var(--primary); }
+        .progress-phase-dot.done::before { background: var(--success); }
+        .loading-elapsed { color: var(--text-dim); font-size: 12px; }
 
         /* ── Editor Layout ──────────────────────────────────────────── */
         .editor-layout {
@@ -639,6 +684,33 @@
         <div class="loading-screen">
             <div class="spinner"></div>
             <div class="loading-text" x-text="loadingMessage">Extracting bookmarks...</div>
+            <template x-if="visionProgress">
+                <div class="loading-progress">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" :style="'width:' + visionProgressPct + '%'"></div>
+                    </div>
+                    <div class="loading-subtext" x-text="visionProgress.message"></div>
+                    <div class="progress-phase">
+                        <span class="progress-phase-dot"
+                              :class="{'active': visionProgress.phase === 'discovery', 'done': ['extraction','verification','finalizing','done'].includes(visionProgress.phase)}">
+                            Discover
+                        </span>
+                        <span class="progress-phase-dot"
+                              :class="{'active': visionProgress.phase === 'extraction', 'done': ['verification','finalizing','done'].includes(visionProgress.phase)}">
+                            Extract
+                        </span>
+                        <span class="progress-phase-dot"
+                              :class="{'active': visionProgress.phase === 'verification', 'done': ['finalizing','done'].includes(visionProgress.phase)}">
+                            Verify
+                        </span>
+                        <span class="progress-phase-dot"
+                              :class="{'active': visionProgress.phase === 'finalizing', 'done': visionProgress.phase === 'done'}">
+                            Build
+                        </span>
+                    </div>
+                    <div class="loading-elapsed" x-text="formatElapsed(visionProgress.elapsed_seconds)"></div>
+                </div>
+            </template>
         </div>
     </template>
 
@@ -683,6 +755,14 @@
                             title="Indent (Tab)">&#8594; Indent</button>
                     <button class="tb-btn" @click="outdentNode()" :disabled="!selectedId"
                             title="Outdent (Shift+Tab)">&#8592; Outdent</button>
+                </div>
+                <div class="toolbar-sep"></div>
+                <div class="toolbar-group">
+                    <button class="tb-btn" @click="runVisionExtraction()"
+                            :title="hasApiKey ? 'Re-extract bookmarks using Claude Vision AI' : 'Add ANTHROPIC_API_KEY to .env file first'"
+                            :style="hasApiKey ? 'background:#2a4a7f;color:#fff' : 'background:#555;color:#999;cursor:not-allowed'">
+                        &#128065; Vision Extract
+                    </button>
                 </div>
                 <div class="toolbar-sep"></div>
                 <input type="text" class="search-box" placeholder="&#128269; Search bookmarks..."
@@ -780,6 +860,9 @@
             methodUsed: '',
             warnings: [],
             loadingMessage: 'Extracting bookmarks...',
+            visionProgress: null,   // {phase, step, total_steps, message, elapsed_seconds}
+            visionTaskId: null,
+            visionPollTimer: null,
 
             // ── Bookmark data ────────────────────────────────────
             bookmarks: [],
@@ -811,6 +894,7 @@
             isResizing: false,
             lastSaved: '',
             autoSaveTimer: null,
+            hasApiKey: false,
 
             // ── Delete confirmation ──────────────────────────────
             deleteConfirm: { show: false, id: null, message: '' },
@@ -825,10 +909,11 @@
                 // Keyboard shortcuts
                 document.addEventListener('keydown', (e) => this.handleKeyboard(e));
 
-                // Check for preloaded PDF
+                // Check for preloaded PDF and API key status
                 try {
                     const resp = await fetch('/api/config');
                     const config = await resp.json();
+                    this.hasApiKey = config.has_api_key || false;
                     if (config.preload_pdf) {
                         this.localPath = config.preload_pdf;
                         await this.loadLocalPath();
@@ -942,6 +1027,126 @@
                     this.toast('Extraction failed: ' + e.message, 'error');
                     this.screen = 'upload';
                 }
+            },
+
+            async runVisionExtraction() {
+                if (!this.hasApiKey) {
+                    this.toast('ANTHROPIC_API_KEY not found. Add it to the .env file in the project root and restart the editor.', 'error');
+                    return;
+                }
+                this.loadingMessage = 'Vision AI: Starting extraction...';
+                this.visionProgress = { phase: 'starting', step: 0, total_steps: 1, message: 'Starting...', elapsed_seconds: 0 };
+                this.screen = 'loading';
+
+                try {
+                    // Start async extraction
+                    const startResp = await fetch('/api/extract', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            file_id: this.fileId,
+                            force_rebuild: true,
+                            use_toc: true,
+                            use_font_heuristics: true,
+                            use_vision: true,
+                        })
+                    });
+                    const startData = await startResp.json();
+
+                    if (startData.error) throw new Error(startData.error);
+
+                    if (!startData.async) {
+                        // Synchronous response (shouldn't happen for vision, but handle it)
+                        this._handleExtractionResult(startData, 'vision');
+                        return;
+                    }
+
+                    this.visionTaskId = startData.task_id;
+
+                    // Poll for progress every 2 seconds
+                    const pollProgress = async () => {
+                        try {
+                            const resp = await fetch('/api/extract/progress', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    file_id: this.fileId,
+                                    task_id: this.visionTaskId,
+                                })
+                            });
+                            const progress = await resp.json();
+
+                            if (progress.error) {
+                                throw new Error(progress.error);
+                            }
+
+                            // Update progress display
+                            this.visionProgress = progress;
+
+                            // Update phase-based loading message
+                            const phaseLabels = {
+                                'starting': 'Vision AI: Starting...',
+                                'discovery': 'Vision AI: Discovering TOC pages...',
+                                'extraction': 'Vision AI: Extracting entries from TOC...',
+                                'verification': 'Vision AI: Cross-verifying entries...',
+                                'finalizing': 'Vision AI: Building bookmark tree...',
+                                'done': 'Vision AI: Complete!',
+                            };
+                            this.loadingMessage = phaseLabels[progress.phase] || progress.message;
+
+                            if (progress.status === 'completed' && progress.result) {
+                                // Extraction finished!
+                                clearInterval(this.visionPollTimer);
+                                this.visionPollTimer = null;
+                                this._handleExtractionResult(progress.result, 'vision');
+                                return;
+                            }
+
+                            if (progress.status === 'error') {
+                                clearInterval(this.visionPollTimer);
+                                this.visionPollTimer = null;
+                                throw new Error(progress.error || 'Vision extraction failed');
+                            }
+
+                        } catch (pollErr) {
+                            clearInterval(this.visionPollTimer);
+                            this.visionPollTimer = null;
+                            this.visionProgress = null;
+                            this.toast('Vision extraction failed: ' + pollErr.message, 'error');
+                            this.screen = 'editor';
+                        }
+                    };
+
+                    // Start polling
+                    this.visionPollTimer = setInterval(pollProgress, 2000);
+                    // Also poll immediately after a short delay
+                    setTimeout(pollProgress, 1000);
+
+                } catch (e) {
+                    this.visionProgress = null;
+                    this.toast('Vision extraction failed: ' + e.message, 'error');
+                    this.screen = 'editor';
+                }
+            },
+
+            _handleExtractionResult(data, source) {
+                this.bookmarks = data.bookmarks;
+                this.methodUsed = data.method_used;
+                this.warnings = data.warnings || [];
+                this.visionProgress = null;
+                this.visionTaskId = null;
+                this.screen = 'editor';
+
+                this.$nextTick(() => {
+                    this.renderTree();
+                    this.prefetchPages();
+                });
+
+                if (data.warnings && data.warnings.length > 0) {
+                    this.toast(data.warnings[0], 'warning');
+                }
+                const label = source === 'vision' ? 'Vision extracted' : 'Extracted';
+                this.toast(`${label} ${data.bookmark_count} bookmarks (${data.method_used})`, 'success');
             },
 
             openNewPdf() {
@@ -1073,6 +1278,9 @@
                     'llm': 'AI',
                     'existing_bookmark': 'Existing',
                     'manual': 'Manual',
+                    'vision_toc': 'Vision',
+                    'vision_verified': 'Verified',
+                    'vision_unverified': 'Unverified',
                 };
                 return map[source] || source;
             },
@@ -1080,6 +1288,43 @@
             escHtml(str) {
                 if (str === null || str === undefined) return '';
                 return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            },
+
+            get visionProgressPct() {
+                if (!this.visionProgress) return 0;
+                const phase = this.visionProgress.phase;
+                const step = this.visionProgress.step || 0;
+                const total = Math.max(this.visionProgress.total_steps || 1, 1);
+                const phasePct = (step / total) * 100;
+                // Weighted phases: discovery 5%, extraction 10%, verification 80%, finalize 5%
+                const phaseWeights = {
+                    'starting': 0,
+                    'discovery': 5,
+                    'extraction': 15,
+                    'verification': 95,
+                    'finalizing': 100,
+                    'done': 100,
+                };
+                const phaseBase = phaseWeights[phase] ?? 0;
+                const prevPhases = {
+                    'starting': 0,
+                    'discovery': 0,
+                    'extraction': 5,
+                    'verification': 15,
+                    'finalizing': 95,
+                    'done': 100,
+                };
+                const base = prevPhases[phase] ?? 0;
+                const range = phaseBase - base;
+                return Math.min(100, Math.round(base + (phasePct / 100) * range));
+            },
+
+            formatElapsed(seconds) {
+                if (!seconds) return '';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                if (mins === 0) return `${secs}s elapsed`;
+                return `${mins}m ${secs}s elapsed`;
             },
 
             // ═════════════════════════════════════════════════════

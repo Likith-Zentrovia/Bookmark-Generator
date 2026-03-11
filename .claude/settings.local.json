@@ -25,7 +25,9 @@
       "Bash(git rm:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(pip --version)",
+      "Bash(findstr \"bookmark_count method_used\")"
     ]
   }
 }

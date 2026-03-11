@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "bookmark-generator"
@@ -10,6 +10,7 @@ requires-python = ">=3.9"
 dependencies = [
     "PyMuPDF>=1.23.0",
     "rapidfuzz>=3.0.0",
+    "python-dotenv>=1.0.0",
 ]
 
 [project.optional-dependencies]

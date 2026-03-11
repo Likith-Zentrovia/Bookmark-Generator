@@ -1,0 +1,975 @@
+INFO: Building page number mapping...
+INFO: Page mapping: offset=18, confidence=0.90
+INFO: Running vision-based TOC extraction...
+INFO: Phase 1: Discovering TOC pages...
+INFO: Regex found TOC on pages [9, 10, 11, 12, 13, 14, 15] ("CONTENTS")
+INFO: Phase 2: Extracting TOC entries via Vision...
+INFO: TOC extraction batch 1/3: pages 9, 10, 11
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 3 image(s)...
+INFO: Total image payload: 698 KB across 3 image(s)
+INFO: Vision API responded in 71.8s
+INFO: TOC extraction batch 2/3: pages 12, 13, 14
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 3 image(s)...
+INFO: Total image payload: 811 KB across 3 image(s)
+INFO: Vision API responded in 86.2s
+INFO: TOC extraction batch 3/3: pages 15
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 1 image(s)...
+INFO: Total image payload: 189 KB across 1 image(s)
+INFO: Vision API responded in 20.7s
+INFO: Vision extracted 621 TOC entries.
+INFO: Phase 3: Cross-verifying entries against target pages...
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2008 KB across 9 image(s)
+INFO: Vision API responded in 8.0s
+DEBUG: Entry "Section I GASTROENTEROLOGY NURSING PRACTICE" corrected to page 1
+DEBUG: Entry "1 THE GASTROENTEROLOGY NURSE AND ASSOCIATE" corrected to page 3
+DEBUG: Entry "Learning objectives" corrected to page 3
+DEBUG: Entry "Background and Historical Perspective" corrected to page 3
+DEBUG: Entry "Scope of Practice" corrected to page 5
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2922 KB across 8 image(s)
+INFO: Vision API responded in 8.8s
+DEBUG: Entry "Education and Training" corrected to page 6
+DEBUG: Entry "Role Delineations" corrected to page 8
+DEBUG: Entry "Role delineation of the advanced practice nurse in gastroenterology" could not be verified on any nearby page
+DEBUG: Entry "CONTENTS" could not be verified on any nearby page
+DEBUG: Entry "Role delineation of the registered nurse in a staff position in gastroenterology and/or endoscopy" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2280 KB across 7 image(s)
+INFO: Vision API responded in 8.2s
+DEBUG: Entry "Role delineation of the licensed practical/ vocational nurse in gastroenterology and/or endoscopy" could not be verified on any nearby page
+DEBUG: Entry "Role delineation of the UAP in gastroenterology" corrected to page 9
+DEBUG: Entry "Position Descriptions" corrected to page 9
+DEBUG: Entry "Review Terms" corrected to page 11
+DEBUG: Entry "Review Questions" corrected to page 11
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2617 KB across 8 image(s)
+INFO: Vision API responded in 14.3s
+DEBUG: Entry "Bibliography" corrected to page 11
+DEBUG: Entry "2 NURSING ADMINISTRATION: LEADERSHIP ROLES & MANAGEMENT OF THE GASTROENTEROLOGY DEPARTMENT" could not be verified on any nearby page
+DEBUG: Entry "Learning objectives" corrected to page 13
+DEBUG: Entry "The First Nurse Leader and Manager: Florence Nightingale" corrected to page 14
+DEBUG: Entry "Leadership" corrected to page 14
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3816 KB across 11 image(s)
+INFO: Vision API responded in 10.7s
+DEBUG: Entry "Leadership: Theory and Styles" corrected to page 15
+DEBUG: Entry "The Organization" corrected to page 16
+DEBUG: Entry "The Role of Management in Leadership" corrected to page 17
+DEBUG: Entry "Nursing Informatics" corrected to page 20
+DEBUG: Entry "Evidence-Based Practice and Research" corrected to page 21
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2069 KB across 7 image(s)
+INFO: Vision API responded in 9.3s
+DEBUG: Entry "Summary" corrected to page 21
+DEBUG: Entry "Case Situations" corrected to page 22
+DEBUG: Entry "Review Terms" corrected to page 23
+DEBUG: Entry "Review Questions" corrected to page 23
+DEBUG: Entry "Bibliography" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2150 KB across 7 image(s)
+INFO: Vision API responded in 8.2s
+DEBUG: Entry "3 INFECTION CONTROL" could not be verified on any nearby page
+DEBUG: Entry "Learning objectives" corrected to page 25
+DEBUG: Entry "Infection Control Principles" could not be verified on any nearby page
+DEBUG: Entry "Microbial reservoirs and mechanisms of transmission" could not be verified on any nearby page
+DEBUG: Entry "Standards for Infection Control in the Endoscopy Setting" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 13 image(s)...
+INFO: Total image payload: 4665 KB across 13 image(s)
+INFO: Vision API responded in 11.4s
+DEBUG: Entry "Decontamination (Cleaning)" corrected to page 28
+DEBUG: Entry "Disinfectants" corrected to page 31
+DEBUG: Entry "Endoscopic accessory equipment" corrected to page 35
+DEBUG: Entry "Reprocessing of single-use accessory equipment" corrected to page 35
+DEBUG: Entry "Unresolved issues requiring further study" corrected to page 36
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2756 KB across 9 image(s)
+INFO: Vision API responded in 9.6s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2497 KB across 8 image(s)
+INFO: Vision API responded in 8.1s
+DEBUG: Entry "Electrical Safety" corrected to page 41
+DEBUG: Entry "Fires" corrected to page 42
+DEBUG: Entry "Endoscopic Imaging Systems" corrected to page 42
+DEBUG: Entry "Electrosurgical and Cautery Devices" corrected to page 43
+DEBUG: Entry "Equipment Maintenance" corrected to page 44
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2886 KB across 8 image(s)
+INFO: Vision API responded in 9.3s
+DEBUG: Entry "Laser Safety" corrected to page 44
+DEBUG: Entry "Radiation Safety" corrected to page 44
+DEBUG: Entry "Latex Sensitivity or Allergy" corrected to page 46
+DEBUG: Entry "Chemical Safety" corrected to page 46
+DEBUG: Entry "Accidental Injury" corrected to page 47
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2398 KB across 7 image(s)
+INFO: Vision API responded in 8.2s
+DEBUG: Entry "Emergency Patient Care" corrected to page 47
+DEBUG: Entry "Disaster Planning" corrected to page 48
+DEBUG: Entry "Workplace Violence" corrected to page 48
+DEBUG: Entry "Case Situation" corrected to page 48
+DEBUG: Entry "Review Terms" corrected to page 49
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2714 KB across 8 image(s)
+INFO: Vision API responded in 8.0s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3723 KB across 11 image(s)
+INFO: Vision API responded in 11.4s
+DEBUG: Entry "Standards and guidelines in gastroenterology" corrected to page 52
+DEBUG: Entry "SGNA Standards of Clinical Nursing Practice and Role Delineation Statements" corrected to page 52
+DEBUG: Entry "Accreditation" corrected to page 57
+DEBUG: Entry "Accrediting organizations" corrected to page 57
+DEBUG: Entry "Federal Regulations and Guidelines" corrected to page 58
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2513 KB across 8 image(s)
+INFO: Vision API responded in 6.1s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2892 KB across 9 image(s)
+INFO: Vision API responded in 9.1s
+DEBUG: Entry "Learning objectives" corrected to page 63
+DEBUG: Entry "Rationale for a Quality Program" corrected to page 63
+DEBUG: Entry "Integrating Quality into the Gastroenterology Department" corrected to page 65
+DEBUG: Entry "Measuring Quality" corrected to page 65
+DEBUG: Entry "Improving Quality" corrected to page 67
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1832 KB across 6 image(s)
+INFO: Vision API responded in 8.1s
+DEBUG: Entry "Future Endeavors" corrected to page 68
+DEBUG: Entry "Case Situation" corrected to page 68
+DEBUG: Entry "Review Terms" corrected to page 68
+DEBUG: Entry "Review Questions" corrected to page 68
+DEBUG: Entry "Bibliography" corrected to page 69
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1837 KB across 6 image(s)
+INFO: Vision API responded in 5.4s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3250 KB across 9 image(s)
+INFO: Vision API responded in 7.4s
+DEBUG: Entry "Step 2. The literature review" corrected to page 73
+DEBUG: Entry "Step 3. Identify implications for nursing and nursing practice" corrected to page 74
+DEBUG: Entry "Step 4. Determining the appropriate number of participants for the study" could not be verified on any nearby page
+DEBUG: Entry "Step 5. Data collection plan" corrected to page 77
+DEBUG: Entry "Step 6. Analyze the data and interpret the findings" corrected to page 77
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2183 KB across 7 image(s)
+INFO: Vision API responded in 6.1s
+DEBUG: Entry "Step 7. Report findings of study" corrected to page 79
+DEBUG: Entry "Step 8. Disseminate study findings" corrected to page 80
+DEBUG: Entry "Case Situation" corrected to page 80
+DEBUG: Entry "Review Terms" corrected to page 81
+DEBUG: Entry "Review Questions" corrected to page 81
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 2249 KB across 10 image(s)
+INFO: Vision API responded in 5.7s
+DEBUG: Entry "Bibliography" corrected to page 82
+DEBUG: Entry "Section II NURSING PROCESS" corrected to page 85
+DEBUG: Entry "8 ASSESSMENT" corrected to page 87
+DEBUG: Entry "Learning objectives" corrected to page 87
+DEBUG: Entry "Assessment Process" corrected to page 87
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3130 KB across 11 image(s)
+INFO: Vision API responded in 7.1s
+DEBUG: Entry "Types of Nursing Assessment" corrected to page 88
+DEBUG: Entry "Steps of a Nursing Assessment" corrected to page 88
+DEBUG: Entry "Case Situation" corrected to page 95
+DEBUG: Entry "Review Terms" corrected to page 96
+DEBUG: Entry "Review Questions" corrected to page 96
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2232 KB across 8 image(s)
+INFO: Vision API responded in 8.3s
+DEBUG: Entry "Bibliography" corrected to page 97
+DEBUG: Entry "9 NURSING DIAGNOSIS" corrected to page 99
+DEBUG: Entry "Learning objectives" corrected to page 99
+DEBUG: Entry "Nursing Diagnosis Defined" corrected to page 99
+DEBUG: Entry "Nursing Diagnosis Versus Medical Diagnosis" corrected to page 100
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 1852 KB across 8 image(s)
+INFO: Vision API responded in 7.3s
+DEBUG: Entry "Collaborative Problems" corrected to page 100
+DEBUG: Entry "Formulating a Nursing Diagnosis" corrected to page 101
+DEBUG: Entry "Case Situation" corrected to page 102
+DEBUG: Entry "Review Terms" corrected to page 103
+DEBUG: Entry "Review Questions" corrected to page 103
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2549 KB across 9 image(s)
+INFO: Vision API responded in 6.9s
+DEBUG: Entry "Bibliography" corrected to page 103
+DEBUG: Entry "10 PLANNING" corrected to page 105
+DEBUG: Entry "Learning objectives" corrected to page 105
+DEBUG: Entry "Trends in Patient Care Planning" corrected to page 105
+DEBUG: Entry "Comprehensive Planning" corrected to page 107
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2421 KB across 8 image(s)
+INFO: Vision API responded in 8.7s
+DEBUG: Entry "Determining Nursing Activities" corrected to page 108
+DEBUG: Entry "Planning Care in Gastroenterology" corrected to page 109
+DEBUG: Entry "Case Situation" corrected to page 110
+DEBUG: Entry "Review Terms" corrected to page 111
+DEBUG: Entry "Review Questions" corrected to page 111
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2286 KB across 8 image(s)
+INFO: Vision API responded in 6.1s
+DEBUG: Entry "Bibliography" corrected to page 111
+DEBUG: Entry "11 IMPLEMENTATION" corrected to page 113
+DEBUG: Entry "Learning Objectives" corrected to page 113
+DEBUG: Entry "Moving to Implementation" corrected to page 113
+DEBUG: Entry "Putting the Plan in Motion" corrected to page 114
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3042 KB across 10 image(s)
+INFO: Vision API responded in 8.9s
+DEBUG: Entry "Data Collection Updating" corrected to page 117
+DEBUG: Entry "Communicating about Care" corrected to page 117
+DEBUG: Entry "Independent Intervention: Teaching, Counseling and Advocacy" corrected to page 119
+DEBUG: Entry "Case Situation" corrected to page 121
+DEBUG: Entry "Review Terms" corrected to page 122
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2355 KB across 8 image(s)
+INFO: Vision API responded in 7.6s
+DEBUG: Entry "Review Questions" corrected to page 122
+DEBUG: Entry "Bibliography" corrected to page 123
+DEBUG: Entry "12 EVALUATION" corrected to page 125
+DEBUG: Entry "Learning objectives" corrected to page 125
+DEBUG: Entry "The Nursing Process" corrected to page 125
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3023 KB across 10 image(s)
+INFO: Vision API responded in 9.9s
+DEBUG: Entry "Standards of Care" corrected to page 127
+DEBUG: Entry "Quality Improvement as a Function of the Nursing Process" corrected to page 129
+DEBUG: Entry "Examples of Evaluation of Care in the Endoscopy Suite" corrected to page 129
+DEBUG: Entry "Case Situation" corrected to page 130
+DEBUG: Entry "Review Terms" corrected to page 132
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 2543 KB across 10 image(s)
+INFO: Vision API responded in 11.3s
+DEBUG: Entry "Review Questions" corrected to page 132
+DEBUG: Entry "Bibliography" corrected to page 133
+DEBUG: Entry "Section III ANATOMY, PHYSIOLOGY AND PATHOPHYSIOLOGY" corrected to page 135
+DEBUG: Entry "13 ESOPHAGUS" corrected to page 137
+DEBUG: Entry "Learning objectives" corrected to page 137
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 2860 KB across 10 image(s)
+INFO: Vision API responded in 8.9s
+DEBUG: Entry "Anatomy and Physiology" corrected to page 137
+DEBUG: Entry "Disorders of the Esophagus" corrected to page 139
+DEBUG: Entry "Gastroesophageal reflux disease" corrected to page 139
+DEBUG: Entry "Esophageal varices" corrected to page 141
+DEBUG: Entry "Tumors" corrected to page 142
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2663 KB across 8 image(s)
+INFO: Vision API responded in 8.8s
+DEBUG: Entry "Diverticula" corrected to page 142
+DEBUG: Entry "Strictures" corrected to page 144
+DEBUG: Entry "Rings and webs" corrected to page 144
+DEBUG: Entry "Foreign bodies" could not be verified on any nearby page
+DEBUG: Entry "Inflammatory diseases" corrected to page 145
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2322 KB across 7 image(s)
+INFO: Vision API responded in 8.0s
+DEBUG: Entry "Infectious diseases" could not be verified on any nearby page
+DEBUG: Entry "HIV esophagitis" corrected to page 147
+DEBUG: Entry "Mallory-Weiss tears" corrected to page 147
+DEBUG: Entry "Motility disorders" corrected to page 147
+DEBUG: Entry "Caustic injury" corrected to page 148
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2333 KB across 7 image(s)
+INFO: Vision API responded in 9.2s
+DEBUG: Entry "Barrett's esophagus" corrected to page 149
+DEBUG: Entry "Fistulas in adults" corrected to page 149
+DEBUG: Entry "Case Situation" corrected to page 150
+DEBUG: Entry "Review Terms" corrected to page 151
+DEBUG: Entry "Review Questions" corrected to page 151
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3044 KB across 10 image(s)
+INFO: Vision API responded in 9.8s
+DEBUG: Entry "Bibliography" corrected to page 152
+DEBUG: Entry "14 STOMACH" corrected to page 155
+DEBUG: Entry "Learning objectives" corrected to page 155
+DEBUG: Entry "Anatomy and Physiology" corrected to page 155
+DEBUG: Entry "Disorders of the Stomach" corrected to page 157
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3347 KB across 10 image(s)
+INFO: Vision API responded in 9.4s
+DEBUG: Entry "Peptic ulcer disease" corrected to page 157
+DEBUG: Entry "Helicobacter pylori" corrected to page 159
+DEBUG: Entry "Gastric cancer" corrected to page 160
+DEBUG: Entry "Gastric polyps" corrected to page 162
+DEBUG: Entry "Gastritis" corrected to page 162
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2393 KB across 7 image(s)
+INFO: Vision API responded in 8.5s
+DEBUG: Entry "Stress ulcers" corrected to page 163
+DEBUG: Entry "Dieulafoy's lesion" corrected to page 164
+DEBUG: Entry "Gastric varices" corrected to page 164
+DEBUG: Entry "Hiatal hernia" corrected to page 164
+DEBUG: Entry "Congenital abnormalities" corrected to page 165
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2351 KB across 7 image(s)
+INFO: Vision API responded in 8.0s
+DEBUG: Entry "Gastric motor abnormalities" corrected to page 165
+DEBUG: Entry "Infectious gastritis" corrected to page 166
+DEBUG: Entry "Gastric outlet obstruction" corrected to page 166
+DEBUG: Entry "Caustic injury" corrected to page 166
+DEBUG: Entry "Bezoars" corrected to page 167
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 2875 KB across 10 image(s)
+INFO: Vision API responded in 10.3s
+DEBUG: Entry "Case Situation" corrected to page 168
+DEBUG: Entry "Review Terms" corrected to page 169
+DEBUG: Entry "Review Questions" corrected to page 169
+DEBUG: Entry "Bibliography" corrected to page 170
+DEBUG: Entry "15 SMALL INTESTINE" corrected to page 173
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2166 KB across 8 image(s)
+INFO: Vision API responded in 6.4s
+DEBUG: Entry "Learning objectives" corrected to page 173
+DEBUG: Entry "Anatomy and Physiology" corrected to page 173
+DEBUG: Entry "Disorders of the Small Intestine" corrected to page 175
+DEBUG: Entry "Duodenal ulcers" corrected to page 176
+DEBUG: Entry "Bacterial and viral infections" corrected to page 176
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 12 image(s)...
+INFO: Total image payload: 4294 KB across 12 image(s)
+INFO: Vision API responded in 8.4s
+DEBUG: Entry "Parasitic diseases" corrected to page 177
+DEBUG: Entry "Crohn's disease" corrected to page 180
+DEBUG: Entry "Meckel's diverticulum" corrected to page 183
+DEBUG: Entry "Vitamin B12 deficiency" corrected to page 183
+DEBUG: Entry "Malabsorption syndromes" corrected to page 184
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2998 KB across 9 image(s)
+INFO: Vision API responded in 6.4s
+DEBUG: Entry "Chronic intestinal pseudo-obstruction" corrected to page 189
+DEBUG: Entry "Small intestine tumors" corrected to page 190
+DEBUG: Entry "Lymphangiectasia" corrected to page 190
+DEBUG: Entry "Case Situation" corrected to page 191
+DEBUG: Entry "Review Terms" corrected to page 193
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2590 KB across 7 image(s)
+INFO: Vision API responded in 6.2s
+DEBUG: Entry "Review Questions" corrected to page 193
+DEBUG: Entry "Bibliography" corrected to page 193
+DEBUG: Entry "16 LARGE INTESTINE" corrected to page 195
+DEBUG: Entry "Learning objectives" corrected to page 195
+DEBUG: Entry "Anatomy and Physiology" corrected to page 195
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 4136 KB across 11 image(s)
+INFO: Vision API responded in 9.8s
+DEBUG: Entry "Disorders of the Large Intestine" corrected to page 199
+DEBUG: Entry "Polyps" corrected to page 199
+DEBUG: Entry "Angiodysplasia" corrected to page 200
+DEBUG: Entry "Colitis" corrected to page 200
+DEBUG: Entry "Irritable bowel syndrome" corrected to page 205
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3568 KB across 11 image(s)
+INFO: Vision API responded in 7.4s
+DEBUG: Entry "Chronic and recurrent abdominal pain syndromes" corrected to page 206
+DEBUG: Entry "Parasitic infestations" corrected to page 206
+DEBUG: Entry "Diverticular disease" corrected to page 208
+DEBUG: Entry "Colorectal cancer" corrected to page 209
+DEBUG: Entry "Intestinal obstruction" corrected to page 212
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2735 KB across 9 image(s)
+INFO: Vision API responded in 6.2s
+DEBUG: Entry "Anorectal disorders" corrected to page 214
+DEBUG: Entry "Case Situation" corrected to page 217
+DEBUG: Entry "Review Terms" corrected to page 218
+DEBUG: Entry "Review Questions" corrected to page 218
+DEBUG: Entry "Bibliography" corrected to page 218
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2141 KB across 7 image(s)
+INFO: Vision API responded in 5.8s
+DEBUG: Entry "17 BILIARY SYSTEM" corrected to page 221
+DEBUG: Entry "Learning objectives" corrected to page 221
+DEBUG: Entry "Anatomy and Physiology" corrected to page 221
+DEBUG: Entry "Disorders of the Biliary System" corrected to page 223
+DEBUG: Entry "Cholelithiasis" corrected to page 223
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3199 KB across 9 image(s)
+INFO: Vision API responded in 8.7s
+DEBUG: Entry "Choledocholithiasis" corrected to page 224
+DEBUG: Entry "Cholecystitis" corrected to page 225
+DEBUG: Entry "Cholangitis" corrected to page 226
+DEBUG: Entry "Cholangiocarcinoma" corrected to page 227
+DEBUG: Entry "Congenital abnormalities" corrected to page 228
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2548 KB across 9 image(s)
+INFO: Vision API responded in 6.9s
+DEBUG: Entry "Case Situation" corrected to page 229
+DEBUG: Entry "Review Terms" corrected to page 230
+DEBUG: Entry "Review Questions" corrected to page 230
+DEBUG: Entry "Bibliography" corrected to page 231
+DEBUG: Entry "18 PANCREAS" corrected to page 233
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2236 KB across 8 image(s)
+INFO: Vision API responded in 22.0s
+DEBUG: Entry "Learning objectives" corrected to page 233
+DEBUG: Entry "Anatomy and Physiology" corrected to page 233
+DEBUG: Entry "Disorders of the Pancreas" corrected to page 234
+DEBUG: Entry "Pancreatitis" corrected to page 234
+DEBUG: Entry "Pancreatic fluid collections" corrected to page 236
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2810 KB across 8 image(s)
+INFO: Vision API responded in 9.3s
+DEBUG: Entry "Pancreatic fistulas" corrected to page 237
+DEBUG: Entry "Pancreatic carcinoma" corrected to page 237
+DEBUG: Entry "Pancreatic tumors" corrected to page 238
+DEBUG: Entry "Pancreatic exocrine insufficiency" corrected to page 240
+DEBUG: Entry "Cystic fibrosis" corrected to page 240
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2791 KB across 8 image(s)
+INFO: Vision API responded in 8.6s
+DEBUG: Entry "Congenital anomalies" corrected to page 241
+DEBUG: Entry "Pancreatic diseases in children" corrected to page 242
+DEBUG: Entry "Case Situation" corrected to page 243
+DEBUG: Entry "Review Terms" corrected to page 244
+DEBUG: Entry "Review Questions" corrected to page 244
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3495 KB across 10 image(s)
+INFO: Vision API responded in 9.7s
+DEBUG: Entry "Bibliography" corrected to page 245
+DEBUG: Entry "19 LIVER" corrected to page 247
+DEBUG: Entry "Learning objectives" corrected to page 247
+DEBUG: Entry "Anatomy and Physiology" corrected to page 247
+DEBUG: Entry "Disorders of the Liver" corrected to page 250
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2898 KB across 8 image(s)
+INFO: Vision API responded in 9.3s
+DEBUG: Entry "Cirrhosis" corrected to page 250
+DEBUG: Entry "Portal hypertension" could not be verified on any nearby page
+DEBUG: Entry "Ascites" corrected to page 252
+DEBUG: Entry "Hepatic encephalopathy" corrected to page 253
+DEBUG: Entry "Hepatorenal syndrome" corrected to page 253
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 12 image(s)...
+INFO: Total image payload: 4112 KB across 12 image(s)
+INFO: Vision API responded in 10.3s
+DEBUG: Entry "Hepatitis" corrected to page 254
+DEBUG: Entry "Fulminant hepatic failure" corrected to page 260
+DEBUG: Entry "Budd-Chiari syndrome" corrected to page 260
+DEBUG: Entry "Tumors" corrected to page 261
+DEBUG: Entry "Wilson's disease" corrected to page 262
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2723 KB across 8 image(s)
+INFO: Vision API responded in 6.9s
+DEBUG: Entry "Porphyria" corrected to page 262
+DEBUG: Entry "Hemochromatosis" corrected to page 263
+DEBUG: Entry "Alpha1-antitrypsin deficiency" corrected to page 264
+DEBUG: Entry "Intrahepatic biliary dysplasia" corrected to page 265
+DEBUG: Entry "Biliary atresia" corrected to page 265
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2515 KB across 7 image(s)
+INFO: Vision API responded in 9.6s
+DEBUG: Entry "Neonatal hepatitis" corrected to page 266
+DEBUG: Entry "Gilbert syndrome" corrected to page 266
+DEBUG: Entry "Case Situation" corrected to page 267
+DEBUG: Entry "Review Terms" corrected to page 268
+DEBUG: Entry "Review Questions" corrected to page 268
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 2867 KB across 11 image(s)
+INFO: Vision API responded in 9.2s
+DEBUG: Entry "Bibliography" corrected to page 269
+DEBUG: Entry "Section IV PHARMACOLOGY, INTRAVENOUS THERAPY AND NUTRITION" corrected to page 273
+DEBUG: Entry "20 PHARMACOLOGY" corrected to page 275
+DEBUG: Entry "Learning objectives" corrected to page 275
+DEBUG: Entry "Basic Principles" corrected to page 275
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2329 KB across 8 image(s)
+INFO: Vision API responded in 6.3s
+DEBUG: Entry "Patient education" corrected to page 276
+DEBUG: Entry "Techniques and routes of administration" could not be verified on any nearby page
+DEBUG: Entry "Calculations and conversions" corrected to page 277
+DEBUG: Entry "Documentation" corrected to page 279
+DEBUG: Entry "Drugs Commonly Used for Patients with Gastrointestinal Disorders" corrected to page 279
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2764 KB across 8 image(s)
+INFO: Vision API responded in 8.9s
+DEBUG: Entry "Antacids" corrected to page 279
+DEBUG: Entry "Probiotics and prebiotics" corrected to page 280
+DEBUG: Entry "Antibiotics" corrected to page 280
+DEBUG: Entry "Anticholinergics and cholinergics" corrected to page 281
+DEBUG: Entry "Antidiarrheals" corrected to page 282
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2465 KB across 7 image(s)
+INFO: Vision API responded in 7.3s
+DEBUG: Entry "Antiemetics" corrected to page 283
+DEBUG: Entry "Antiflatulents" corrected to page 283
+DEBUG: Entry "Antiparasitic/antifungal agents" corrected to page 284
+DEBUG: Entry "Antiulcer Agents" could not be verified on any nearby page
+DEBUG: Entry "Corticosteroids" corrected to page 285
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2402 KB across 7 image(s)
+INFO: Vision API responded in 8.4s
+DEBUG: Entry "Immunomodulators" corrected to page 286
+DEBUG: Entry "Agents used in diagnostic tests" corrected to page 286
+DEBUG: Entry "Gallstone therapeutic agents" corrected to page 286
+DEBUG: Entry "Laxatives" corrected to page 287
+DEBUG: Entry "Narcotics and antagonists" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2321 KB across 7 image(s)
+INFO: Vision API responded in 8.2s
+DEBUG: Entry "Sclerosing agents" corrected to page 288
+DEBUG: Entry "Sedatives and antagonists" corrected to page 289
+DEBUG: Entry "Reversal agents" corrected to page 289
+DEBUG: Entry "Smooth muscle relaxants" corrected to page 290
+DEBUG: Entry "Topical anesthetics" corrected to page 290
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3210 KB across 10 image(s)
+INFO: Vision API responded in 9.3s
+DEBUG: Entry "Other agents" corrected to page 290
+DEBUG: Entry "Case Situation" corrected to page 293
+DEBUG: Entry "Review Terms" corrected to page 295
+DEBUG: Entry "Review Questions" corrected to page 295
+DEBUG: Entry "Bibliography" corrected to page 295
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1635 KB across 6 image(s)
+INFO: Vision API responded in 7.7s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2582 KB across 7 image(s)
+INFO: Vision API responded in 7.3s
+DEBUG: Entry "Fluid and electrolyte imbalances" corrected to page 301
+DEBUG: Entry "Considerations when selecting IV fluids and electrolytes" corrected to page 301
+DEBUG: Entry "IV therapy administration risks for the gastroenterology nurse" corrected to page 302
+DEBUG: Entry "Vascular access devices" corrected to page 302
+DEBUG: Entry "Equipment" corrected to page 303
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3211 KB across 9 image(s)
+INFO: Vision API responded in 9.7s
+DEBUG: Entry "Insertion sites" corrected to page 304
+DEBUG: Entry "Insertion technique" corrected to page 305
+DEBUG: Entry "Complications" could not be verified on any nearby page
+DEBUG: Entry "Dosage calculations" corrected to page 306
+DEBUG: Entry "Patient education" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1996 KB across 6 image(s)
+INFO: Vision API responded in 8.0s
+DEBUG: Entry "Insertion documentation" corrected to page 308
+DEBUG: Entry "Intravenous Medication Administration" corrected to page 308
+DEBUG: Entry "Techniques and routes of administration" corrected to page 308
+DEBUG: Entry "Indications for intravenous medication in gastroenterology" corrected to page 309
+DEBUG: Entry "Adverse reactions" corrected to page 309
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2499 KB across 7 image(s)
+INFO: Vision API responded in 10.4s
+DEBUG: Entry "Administration documentation" corrected to page 310
+DEBUG: Entry "Blood and Blood Components" corrected to page 310
+DEBUG: Entry "Types of blood component administration" corrected to page 311
+DEBUG: Entry "Equipment" corrected to page 311
+DEBUG: Entry "Nursing responsibilities" corrected to page 312
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2087 KB across 7 image(s)
+INFO: Vision API responded in 8.6s
+DEBUG: Entry "Adverse reactions" corrected to page 312
+DEBUG: Entry "Patient education" corrected to page 313
+DEBUG: Entry "Transfusion documentation" corrected to page 314
+DEBUG: Entry "Case Situation" corrected to page 314
+DEBUG: Entry "Review Terms" corrected to page 314
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2371 KB across 8 image(s)
+INFO: Vision API responded in 7.1s
+DEBUG: Entry "Review Questions" corrected to page 314
+DEBUG: Entry "Bibliography" corrected to page 315
+DEBUG: Entry "22 NUTRITIONAL THERAPY" corrected to page 317
+DEBUG: Entry "Learning objectives" corrected to page 317
+DEBUG: Entry "Basic Principles" corrected to page 317
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2152 KB across 6 image(s)
+INFO: Vision API responded in 5.3s
+DEBUG: Entry "Food-Drug Interactions" corrected to page 319
+DEBUG: Entry "Anticoagulants" corrected to page 319
+DEBUG: Entry "Anti-inflammatories" corrected to page 319
+DEBUG: Entry "Potassium-sparing diuretics" corrected to page 319
+DEBUG: Entry "Nutritional Assessment" corrected to page 320
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2300 KB across 6 image(s)
+INFO: Vision API responded in 5.9s
+DEBUG: Entry "Special Oral Diets" corrected to page 320
+DEBUG: Entry "High-fiber diets" corrected to page 320
+DEBUG: Entry "Low-fiber diets" corrected to page 320
+DEBUG: Entry "Gluten-free diets" corrected to page 321
+DEBUG: Entry "Low-lactose diets" corrected to page 321
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 5 image(s)...
+INFO: Total image payload: 1911 KB across 5 image(s)
+INFO: Vision API responded in 5.5s
+DEBUG: Entry "Low-protein diets" corrected to page 322
+DEBUG: Entry "Low-fat diets" corrected to page 322
+DEBUG: Entry "Two gram-sodium diets" could not be verified on any nearby page
+DEBUG: Entry "Low FODMAP diets" corrected to page 322
+DEBUG: Entry "GI Restoration Program: Making this Complex Simple" corrected to page 322
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 5 image(s)...
+INFO: Total image payload: 1916 KB across 5 image(s)
+INFO: Vision API responded in 5.0s
+DEBUG: Entry "1. Remove" corrected to page 323
+DEBUG: Entry "2. Replace" corrected to page 323
+DEBUG: Entry "3. Reinoculate" corrected to page 323
+DEBUG: Entry "4. Regenerate" corrected to page 323
+DEBUG: Entry "Intestinal Microflora – The Use of Probiotics to Promote Intestinal Balance" corrected to page 323
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2248 KB across 6 image(s)
+INFO: Vision API responded in 6.5s
+DEBUG: Entry "Prebiotics" corrected to page 324
+DEBUG: Entry "Enteral Nutrition" corrected to page 324
+DEBUG: Entry "Indications and contraindications" corrected to page 324
+DEBUG: Entry "Administration of enteral nutrition" corrected to page 324
+DEBUG: Entry "Initiation of feedings" corrected to page 325
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2229 KB across 6 image(s)
+INFO: Vision API responded in 6.5s
+DEBUG: Entry "Enteral formulas" corrected to page 325
+DEBUG: Entry "Potential complications of enteral feedings" corrected to page 326
+DEBUG: Entry "Nursing care" corrected to page 326
+DEBUG: Entry "Additional support" corrected to page 326
+DEBUG: Entry "Parenteral Nutrition" corrected to page 326
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2169 KB across 6 image(s)
+INFO: Vision API responded in 6.5s
+DEBUG: Entry "Indications and contraindications" corrected to page 326
+DEBUG: Entry "Administration of parenteral nutrition" corrected to page 327
+DEBUG: Entry "Parenteral formulas" corrected to page 327
+DEBUG: Entry "Daily fluid requirements" corrected to page 327
+DEBUG: Entry "Potential complications of total parenteral nutrition" corrected to page 327
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2073 KB across 7 image(s)
+INFO: Vision API responded in 6.2s
+DEBUG: Entry "Nursing care for patients receiving parenteral nutrition" corrected to page 328
+DEBUG: Entry "Case Situation" corrected to page 328
+DEBUG: Entry "Review Terms" corrected to page 329
+DEBUG: Entry "Review Questions" corrected to page 329
+DEBUG: Entry "Bibliography" corrected to page 330
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 1774 KB across 8 image(s)
+INFO: Vision API responded in 6.0s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3102 KB across 9 image(s)
+INFO: Vision API responded in 18.4s
+DEBUG: Entry "Esophagogastroduodenoscopy" corrected to page 339
+DEBUG: Entry "Endoscopic Retrograde Cholangiopancreatography" corrected to page 340
+DEBUG: Entry "Small Bowel Enteroscopy" corrected to page 342
+DEBUG: Entry "Anoscopy" corrected to page 342
+DEBUG: Entry "Proctosigmoidoscopy" corrected to page 343
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2469 KB across 7 image(s)
+INFO: Vision API responded in 9.4s
+DEBUG: Entry "Flexible Sigmoidoscopy" corrected to page 344
+DEBUG: Entry "Colonoscopy" corrected to page 344
+DEBUG: Entry "Additional Endoscopic Diagnostic Procedures" corrected to page 346
+DEBUG: Entry "Capsule endoscopy" corrected to page 346
+DEBUG: Entry "Endoscopy through an ostomy" corrected to page 346
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1624 KB across 6 image(s)
+INFO: Vision API responded in 7.1s
+DEBUG: Entry "Endoscopic ultrasonography" corrected to page 347
+DEBUG: Entry "Case Situation" corrected to page 347
+DEBUG: Entry "Review Terms" corrected to page 347
+DEBUG: Entry "Review Questions" corrected to page 347
+DEBUG: Entry "Bibliography" corrected to page 348
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3940 KB across 11 image(s)
+INFO: Vision API responded in 10.3s
+DEBUG: Entry "24 MANOMETRY" corrected to page 351
+DEBUG: Entry "Learning objectives" corrected to page 351
+DEBUG: Entry "Basic Principles of GI Manometry" corrected to page 351
+DEBUG: Entry "Esophageal Manometry" corrected to page 352
+DEBUG: Entry "Anorectal Manometry" corrected to page 359
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2649 KB across 8 image(s)
+INFO: Vision API responded in 13.7s
+DEBUG: Entry "Antroduodenal Manometry" corrected to page 362
+DEBUG: Entry "Sphincter of Oddi Manometry" corrected to page 363
+DEBUG: Entry "Case Situation" corrected to page 364
+DEBUG: Entry "Review Terms" corrected to page 365
+DEBUG: Entry "Review Questions" corrected to page 365
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1875 KB across 6 image(s)
+INFO: Vision API responded in 11.9s
+DEBUG: Entry "Bibliography" corrected to page 366
+DEBUG: Entry "25 BIOPSY AND CYTOLOGY" corrected to page 367
+DEBUG: Entry "Learning objectives" corrected to page 367
+DEBUG: Entry "Basic Principles" corrected to page 367
+DEBUG: Entry "Endoscopic Biopsy" corrected to page 367
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2873 KB across 8 image(s)
+INFO: Vision API responded in 9.2s
+DEBUG: Entry "Endoscopic Mucosal Resection" corrected to page 369
+DEBUG: Entry "Endoscopic Submucosal Dissection" corrected to page 370
+DEBUG: Entry "Endoscopic Esophageal Biopsy" corrected to page 370
+DEBUG: Entry "Endoscopic Gastric Biopsy" corrected to page 371
+DEBUG: Entry "Endoscopic Small Bowel Biopsy" corrected to page 372
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2905 KB across 8 image(s)
+INFO: Vision API responded in 9.7s
+DEBUG: Entry "Endoscopic Diagnosis of Biliary and Pancreatic Neoplasms" corrected to page 373
+DEBUG: Entry "Fine-Needle Aspiration and Fine-Needle Biopsy" corrected to page 373
+DEBUG: Entry "Endoscopic Colorectal Biopsy" corrected to page 374
+DEBUG: Entry "Rectal Suction Biopsy" corrected to page 375
+DEBUG: Entry "Percutaneous Liver Biopsy" corrected to page 376
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3036 KB across 9 image(s)
+INFO: Vision API responded in 8.8s
+DEBUG: Entry "Cytology and Culture of the GI Tract" corrected to page 379
+DEBUG: Entry "Case Situation" corrected to page 381
+DEBUG: Entry "Review Terms" corrected to page 382
+DEBUG: Entry "Review Questions" corrected to page 382
+DEBUG: Entry "Bibliography" corrected to page 383
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1941 KB across 6 image(s)
+INFO: Vision API responded in 5.2s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2258 KB across 7 image(s)
+INFO: Vision API responded in 8.3s
+DEBUG: Entry "Barium swallow" corrected to page 387
+DEBUG: Entry "Upper gastrointestinal series" corrected to page 387
+DEBUG: Entry "Enteroclysis" corrected to page 388
+DEBUG: Entry "Barium enema" corrected to page 388
+DEBUG: Entry "Capsule endoscopy" corrected to page 389
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2300 KB across 7 image(s)
+INFO: Vision API responded in 6.3s
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2334 KB across 7 image(s)
+INFO: Vision API responded in 5.7s
+DEBUG: Entry "Oral cholecystography" corrected to page 393
+DEBUG: Entry "Arteriography" corrected to page 393
+DEBUG: Entry "Computed tomography scan" could not be verified on any nearby page
+DEBUG: Entry "Scintigraphy" corrected to page 394
+DEBUG: Entry "Transjugular intrahepatic portosystemic shunt" corrected to page 395
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2325 KB across 7 image(s)
+INFO: Vision API responded in 5.9s
+DEBUG: Entry "Secretory Studies" corrected to page 396
+DEBUG: Entry "Pancreatic stimulation" corrected to page 396
+DEBUG: Entry "Gastric analysis" corrected to page 397
+DEBUG: Entry "Multichannel intraluminal impedance" corrected to page 397
+DEBUG: Entry "Twenty-four-hour pH monitoring" corrected to page 398
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2299 KB across 7 image(s)
+INFO: Vision API responded in 5.4s
+DEBUG: Entry "Wireless pH monitoring system" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 5 image(s)...
+INFO: Total image payload: 1619 KB across 5 image(s)
+INFO: Vision API responded in 5.0s
+DEBUG: Entry "Activated partial thromboplastin time" corrected to page 400
+DEBUG: Entry "International normalized ratio" corrected to page 400
+DEBUG: Entry "Bleeding time" corrected to page 400
+DEBUG: Entry "Platelet count" corrected to page 400
+DEBUG: Entry "Serum albumin-globulin ratio" corrected to page 400
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 5 image(s)...
+INFO: Total image payload: 1625 KB across 5 image(s)
+INFO: Vision API responded in 5.0s
+DEBUG: Entry "Total protein" corrected to page 401
+DEBUG: Entry "Galactose tolerance" corrected to page 401
+DEBUG: Entry "Glucose level" corrected to page 401
+DEBUG: Entry "Glucose tolerance test" corrected to page 401
+DEBUG: Entry "Serum d-xylose" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1974 KB across 6 image(s)
+INFO: Vision API responded in 5.9s
+DEBUG: Entry "Serum cholesterol" corrected to page 401
+DEBUG: Entry "Serum AST and ALT" corrected to page 402
+DEBUG: Entry "Serum bilirubin" corrected to page 402
+DEBUG: Entry "Serum alkaline phosphatase" corrected to page 402
+DEBUG: Entry "Gamma-glutamyl transferase" corrected to page 402
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2014 KB across 6 image(s)
+INFO: Vision API responded in 5.4s
+DEBUG: Entry "Serum amylase" corrected to page 403
+DEBUG: Entry "Serum lipase" corrected to page 403
+DEBUG: Entry "Serum gastrin" corrected to page 403
+DEBUG: Entry "Hepatitis antigens and antibodies" could not be verified on any nearby page
+DEBUG: Entry "Carcinoembryonic antigen" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2040 KB across 6 image(s)
+INFO: Vision API responded in 5.1s
+DEBUG: Entry "Cancer antigen 19-9" corrected to page 404
+DEBUG: Entry "Serum antibodies" corrected to page 404
+DEBUG: Entry "Celiac screening panel" corrected to page 404
+DEBUG: Entry "Urinalysis" corrected to page 404
+DEBUG: Entry "Urine bilirubin" corrected to page 405
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2047 KB across 6 image(s)
+INFO: Vision API responded in 6.2s
+DEBUG: Entry "Urine urobilinogen" corrected to page 405
+DEBUG: Entry "Fecal Analysis" corrected to page 405
+DEBUG: Entry "Fecal occult blood" corrected to page 405
+DEBUG: Entry "Fecal immunochemical test" corrected to page 406
+DEBUG: Entry "Stool DNA" corrected to page 406
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 2067 KB across 6 image(s)
+INFO: Vision API responded in 5.9s
+DEBUG: Entry "Fecal fat" corrected to page 406
+DEBUG: Entry "Fecal chymotrypsin" corrected to page 406
+DEBUG: Entry "Fecal Alpha1 antitrypsin" corrected to page 407
+DEBUG: Entry "Fecal organisms" corrected to page 407
+DEBUG: Entry "Hydrogen/Methane Breath Test" corrected to page 407
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 6 image(s)...
+INFO: Total image payload: 1552 KB across 6 image(s)
+INFO: Vision API responded in 5.5s
+DEBUG: Entry "Helicobacter Pylori Tests" corrected to page 408
+DEBUG: Entry "Case Situation" corrected to page 408
+DEBUG: Entry "Review Terms" corrected to page 408
+DEBUG: Entry "Review Questions" corrected to page 409
+DEBUG: Entry "Bibliography" corrected to page 409
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 1482 KB across 7 image(s)
+INFO: Vision API responded in 6.9s
+DEBUG: Entry "Section VI THERAPEUTIC PROCEDURES" corrected to page 411
+DEBUG: Entry "27 DILATATION" corrected to page 413
+DEBUG: Entry "Learning objectives" corrected to page 413
+DEBUG: Entry "Basic Principles" corrected to page 413
+DEBUG: Entry "Procedure" corrected to page 413
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2629 KB across 8 image(s)
+INFO: Vision API responded in 8.6s
+DEBUG: Entry "Types of Dilators" corrected to page 415
+DEBUG: Entry "Bougienage" could not be verified on any nearby page
+DEBUG: Entry "Polyvinyl chloride dilators" corrected to page 416
+DEBUG: Entry "Hydrostatic balloons" could not be verified on any nearby page
+DEBUG: Entry "Pneumatic balloons" could not be verified on any nearby page
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2712 KB across 9 image(s)
+INFO: Vision API responded in 40.0s
+DEBUG: Entry "Case Situation" corrected to page 419
+DEBUG: Entry "Review Terms" corrected to page 420
+DEBUG: Entry "Review Questions" corrected to page 420
+DEBUG: Entry "Bibliography" corrected to page 421
+DEBUG: Entry "28 HEMOSTASIS AND TUMOR ABLATION" corrected to page 423
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3488 KB across 11 image(s)
+INFO: Vision API responded in 9.8s
+DEBUG: Entry "Learning objectives" corrected to page 423
+DEBUG: Entry "Basic Principles" corrected to page 423
+DEBUG: Entry "Electrosurgery" corrected to page 424
+DEBUG: Entry "Heater Probes" corrected to page 428
+DEBUG: Entry "Laser Therapy" corrected to page 429
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2474 KB across 7 image(s)
+INFO: Vision API responded in 9.2s
+DEBUG: Entry "Argon Plasma Coagulation" corrected to page 432
+DEBUG: Entry "Photodynamic Therapy" corrected to page 432
+DEBUG: Entry "Brachytherapy" corrected to page 433
+DEBUG: Entry "Endoscopic Mucosal Resection" corrected to page 433
+DEBUG: Entry "Endoscopic Endoluminal Radiofrequency Ablation" corrected to page 434
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3182 KB across 9 image(s)
+INFO: Vision API responded in 9.8s
+DEBUG: Entry "Injection Therapy" corrected to page 434
+DEBUG: Entry "Endoscopic Variceal Ligation" corrected to page 437
+DEBUG: Entry "Endoscopic Clipping" corrected to page 438
+DEBUG: Entry "Hemostatic Powder" corrected to page 438
+DEBUG: Entry "Esophagogastric Tamponade" corrected to page 438
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 7 image(s)...
+INFO: Total image payload: 2366 KB across 7 image(s)
+INFO: Vision API responded in 8.7s
+DEBUG: Entry "Endoscopic Cryotherapy" corrected to page 440
+DEBUG: Entry "Confocal Laser Endomicroscopy" corrected to page 440
+DEBUG: Entry "Nursing Considerations" corrected to page 440
+DEBUG: Entry "Case Situation" corrected to page 440
+DEBUG: Entry "Review Terms" corrected to page 442
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2584 KB across 8 image(s)
+INFO: Vision API responded in 7.8s
+DEBUG: Entry "Review Questions" corrected to page 442
+DEBUG: Entry "Bibliography" corrected to page 443
+DEBUG: Entry "29 INTUBATION AND DRAINAGE" corrected to page 445
+DEBUG: Entry "Learning objectives" corrected to page 445
+DEBUG: Entry "Nasogastric Tube Insertion" corrected to page 445
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3941 KB across 11 image(s)
+INFO: Vision API responded in 9.8s
+DEBUG: Entry "Gastric Lavage" corrected to page 448
+DEBUG: Entry "Nasobiliary and Nasopancreatic Catheters" corrected to page 450
+DEBUG: Entry "Biliary Stents" corrected to page 451
+DEBUG: Entry "Pancreatic Stents" corrected to page 454
+DEBUG: Entry "Self-Expanding Stents" corrected to page 454
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2870 KB across 9 image(s)
+INFO: Vision API responded in 8.9s
+DEBUG: Entry "Temporary Expandable Esophageal Stents" corrected to page 456
+DEBUG: Entry "Colon Decompression" corrected to page 456
+DEBUG: Entry "Abdominal Paracentesis" corrected to page 457
+DEBUG: Entry "Case Situation" corrected to page 459
+DEBUG: Entry "Review Terms" corrected to page 460
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2403 KB across 8 image(s)
+INFO: Vision API responded in 9.5s
+DEBUG: Entry "Review Questions" corrected to page 460
+DEBUG: Entry "Bibliography" corrected to page 461
+DEBUG: Entry "30 EXCISION AND EXTRACTION" corrected to page 463
+DEBUG: Entry "Learning objectives" corrected to page 463
+DEBUG: Entry "Foreign Body Removal" corrected to page 463
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3174 KB across 9 image(s)
+INFO: Vision API responded in 6.7s
+DEBUG: Entry "Bezoar Removal" corrected to page 465
+DEBUG: Entry "Polypectomy" corrected to page 466
+DEBUG: Entry "Colonic polyps" corrected to page 466
+DEBUG: Entry "Hemorrhage" corrected to page 469
+DEBUG: Entry "Peutz-Jeghers syndrome" corrected to page 469
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 3296 KB across 9 image(s)
+INFO: Vision API responded in 7.2s
+DEBUG: Entry "Gastric polyps" corrected to page 469
+DEBUG: Entry "Sphincterotomy" corrected to page 469
+DEBUG: Entry "Pancreatic Sphincterotomy" corrected to page 473
+DEBUG: Entry "Extracorporeal Shock Wave Lithotripsy" corrected to page 473
+DEBUG: Entry "Pulsed Dye Laser Lithotripsy" corrected to page 473
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2533 KB across 8 image(s)
+INFO: Vision API responded in 6.0s
+DEBUG: Entry "Case Situation" corrected to page 474
+DEBUG: Entry "Review Terms" corrected to page 474
+DEBUG: Entry "Review Questions" corrected to page 475
+DEBUG: Entry "Bibliography" corrected to page 475
+DEBUG: Entry "31 COMPLICATIONS AND EMERGENCIES" corrected to page 477
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3293 KB across 10 image(s)
+INFO: Vision API responded in 8.7s
+DEBUG: Entry "Learning objectives" corrected to page 477
+DEBUG: Entry "Perforation of the Upper Gastrointestinal Tract" corrected to page 477
+DEBUG: Entry "Perforation of the Lower Gastrointestinal Tract" corrected to page 478
+DEBUG: Entry "Gastrointestinal hemorrhage" corrected to page 479
+DEBUG: Entry "Shock" corrected to page 482
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 8 image(s)...
+INFO: Total image payload: 2801 KB across 8 image(s)
+INFO: Vision API responded in 7.5s
+DEBUG: Entry "Adverse Drug Reactions" corrected to page 483
+DEBUG: Entry "Cardiac Complications and Arrest" corrected to page 484
+DEBUG: Entry "Respiratory Depression" corrected to page 485
+DEBUG: Entry "Vasovagal Syncope" corrected to page 486
+DEBUG: Entry "Postural Hypotension" corrected to page 486
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 9 image(s)...
+INFO: Total image payload: 2606 KB across 9 image(s)
+INFO: Vision API responded in 6.8s
+DEBUG: Entry "Aspiration" corrected to page 486
+DEBUG: Entry "Pediatric Complications and Emergencies" corrected to page 487
+DEBUG: Entry "Case Situation" corrected to page 487
+DEBUG: Entry "Review Terms" corrected to page 490
+DEBUG: Entry "Review Questions" corrected to page 490
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 11 image(s)...
+INFO: Total image payload: 3234 KB across 11 image(s)
+INFO: Vision API responded in 7.5s
+DEBUG: Entry "Bibliography" corrected to page 490
+DEBUG: Entry "32 SURGICAL INTERVENTIONS" corrected to page 493
+DEBUG: Entry "Learning objectives" corrected to page 493
+DEBUG: Entry "Surgical Interventions for Esophageal Disorders" corrected to page 493
+DEBUG: Entry "Surgical Interventions for Disorders of the Stomach" corrected to page 496
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 3432 KB across 10 image(s)
+INFO: Vision API responded in 8.1s
+DEBUG: Entry "Surgical Interventions for Pancreatic Disorders" corrected to page 499
+DEBUG: Entry "Surgical Interventions for Disorders of the Biliary Tract" corrected to page 500
+DEBUG: Entry "Surgical Interventions for Disorders of the Small Intestine" corrected to page 501
+DEBUG: Entry "Surgical Interventions for Disorders of the Colon and Rectum" corrected to page 502
+DEBUG: Entry "Transgastric Surgery" corrected to page 504
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 10 image(s)...
+INFO: Total image payload: 2790 KB across 10 image(s)
+INFO: Vision API responded in 6.2s
+DEBUG: Entry "Review Terms" corrected to page 504
+DEBUG: Entry "Review Questions" corrected to page 504
+DEBUG: Entry "Bibliography" corrected to page 505
+DEBUG: Entry "ANSWERS TO REVIEW QUESTIONS" corrected to page 507
+DEBUG: Entry "GLOSSARY" corrected to page 509
+INFO: Calling Vision API (claude-sonnet-4-20250514) with 5 image(s)...
+INFO: Total image payload: 1379 KB across 5 image(s)
+INFO: Vision API responded in 12.3s
+DEBUG: Entry "INDEX" corrected to page 527
+INFO: Cross-verification complete: 593 verified, 28 unverified out of 621 total
+INFO: Vision extracted 621 verified entries.
+INFO: Final bookmark count (vision): 621

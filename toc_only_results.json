@@ -1,0 +1,5663 @@
+{
+  "pdf_path": "C:\\Users\\user\\Downloads\\CoreCurriculum-6thEd-SGNA-9-15.pdf",
+  "total_pages": 7,
+  "method_used": "vision_toc",
+  "warnings": [
+    "Could not determine page number offset — using default mapping."
+  ],
+  "bookmark_count": 621,
+  "bookmarks": [
+    {
+      "title": "Section I GASTROENTEROLOGY NURSING PRACTICE",
+      "page_number": 1,
+      "pdf_page_index": 0,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "1 THE GASTROENTEROLOGY NURSE AND ASSOCIATE",
+          "page_number": 3,
+          "pdf_page_index": 2,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 3,
+              "pdf_page_index": 2,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Background and Historical Perspective",
+              "page_number": 3,
+              "pdf_page_index": 2,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Scope of Practice",
+              "page_number": 5,
+              "pdf_page_index": 4,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Education and Training",
+              "page_number": 6,
+              "pdf_page_index": 5,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "CONTENTS",
+      "page_number": 9,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Role Delineations",
+          "page_number": 8,
+          "pdf_page_index": 6,
+          "level": 3,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Role delineation of the advanced practice nurse in gastroenterology",
+              "page_number": 8,
+              "pdf_page_index": 6,
+              "level": 4,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Role delineation of the registered nurse in a staff position in gastroenterology and/or endoscopy",
+              "page_number": 9,
+              "pdf_page_index": 6,
+              "level": 4,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Role delineation of the licensed practical/vocational nurse in gastroenterology and/or endoscopy",
+              "page_number": 9,
+              "pdf_page_index": 6,
+              "level": 4,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Role delineation of the UAP in gastroenterology",
+              "page_number": 9,
+              "pdf_page_index": 6,
+              "level": 4,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Position Descriptions",
+          "page_number": 9,
+          "pdf_page_index": 6,
+          "level": 3,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 11,
+          "pdf_page_index": 6,
+          "level": 3,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 11,
+          "pdf_page_index": 6,
+          "level": 3,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 11,
+          "pdf_page_index": 6,
+          "level": 3,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "2 NURSING ADMINISTRATION: LEADERSHIP ROLES & MANAGEMENT OF THE GASTROENTEROLOGY DEPARTMENT",
+          "page_number": 13,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 13,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "The First Nurse Leader/Manager: Florence Nightingale",
+              "page_number": 14,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Leadership",
+              "page_number": 14,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Leadership: Theory and Styles",
+              "page_number": 15,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "The Organization",
+              "page_number": 16,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "The Role of Management in Leadership",
+              "page_number": 17,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Nursing Informatics",
+              "page_number": 20,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Evidence-Based Practice and Research",
+              "page_number": 21,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Summary",
+              "page_number": 21,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situations",
+              "page_number": 22,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 23,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 23,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 23,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "3 INFECTION CONTROL",
+          "page_number": 25,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 25,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Infection Control Principles",
+              "page_number": 25,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Microbial reservoirs and mechanisms of transmission",
+              "page_number": 26,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Standards for Infection Control in the Endoscopy Setting",
+              "page_number": 27,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Decontamination (Cleaning)",
+              "page_number": 28,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disinfectants",
+              "page_number": 31,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Endoscopic accessory equipment",
+              "page_number": 35,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Reprocessing of single-use accessory equipment",
+              "page_number": 35,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Unresolved issues requiring further study",
+              "page_number": 36,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 37,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 38,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 38,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "4 ENVIRONMENTAL SAFETY",
+          "page_number": 41,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 41,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Electrical Safety",
+              "page_number": 41,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fires",
+              "page_number": 42,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Endoscopic Imaging Systems",
+              "page_number": 42,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Electrosurgical and Cautery Devices",
+              "page_number": 43,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Equipment Maintenance",
+              "page_number": 44,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Laser Safety",
+              "page_number": 44,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Radiation Safety",
+              "page_number": 44,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Latex Sensitivity or Allergy",
+              "page_number": 46,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Chemical Safety",
+              "page_number": 46,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Accidental Injury",
+              "page_number": 47,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Emergency Patient Care",
+              "page_number": 47,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disaster Planning",
+              "page_number": 48,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Workplace Violence",
+              "page_number": 48,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 48,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 49,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 49,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 50,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "5 STANDARDS FOR PRACTICE",
+          "page_number": 51,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 51,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Definitions",
+              "page_number": 52,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Standards and guidelines in gastroenterology",
+              "page_number": 52,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "SGNA Standards of Clinical Nursing Practice and Role Delineation Statements",
+              "page_number": 52,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Accreditation",
+              "page_number": 57,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Accrediting organizations",
+              "page_number": 57,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Federal Regulations and Guidelines",
+              "page_number": 58,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 60,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 60,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 60,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 61,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "6 PROCESS IMPROVEMENT",
+          "page_number": 63,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 63,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Rationale for a Quality Program",
+              "page_number": 63,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Integrating Quality into the Gastroenterology Department",
+              "page_number": 65,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Measuring Quality",
+              "page_number": 65,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Improving Quality",
+              "page_number": 67,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Future Endeavors",
+              "page_number": 68,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 68,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 68,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 68,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 69,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "7 THE RESEARCH PROCESS",
+          "page_number": 71,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 71,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Historical Perspective of Nursing Research",
+              "page_number": 72,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "The Research Process",
+              "page_number": 72,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Step 1. Identify the problem",
+                  "page_number": 72,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 2. The literature review",
+                  "page_number": 73,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 3. Identify implications for nursing and nursing practice",
+                  "page_number": 74,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 4. Determining the appropriate number of participants for the study",
+                  "page_number": 74,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 5. Data collection plan",
+                  "page_number": 77,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 6. Analyze the data and interpret the findings",
+                  "page_number": 77,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 7. Report findings of study",
+                  "page_number": 79,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Step 8. Disseminate study findings",
+                  "page_number": 80,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 80,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 81,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 81,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 82,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Section II NURSING PROCESS",
+      "page_number": 85,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "8 ASSESSMENT",
+          "page_number": 87,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 87,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Assessment Process",
+              "page_number": 87,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Types of Nursing Assessment",
+              "page_number": 88,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Steps of a Nursing Assessment",
+              "page_number": 88,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 95,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 96,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 96,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 97,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "9 NURSING DIAGNOSIS",
+          "page_number": 99,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 99,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Nursing Diagnosis Defined",
+              "page_number": 99,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Nursing Diagnosis Versus Medical Diagnosis",
+              "page_number": 100,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Collaborative Problems",
+              "page_number": 100,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Formulating a Nursing Diagnosis",
+              "page_number": 101,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 102,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 103,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 103,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 103,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "10 PLANNING",
+          "page_number": 105,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 105,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Trends in Patient Care Planning",
+              "page_number": 105,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Comprehensive Planning",
+              "page_number": 107,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Determining Nursing Activities",
+              "page_number": 108,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Planning Care in Gastroenterology",
+              "page_number": 109,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 110,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 111,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 111,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 111,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "11 IMPLEMENTATION",
+          "page_number": 113,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning Objectives",
+              "page_number": 113,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Moving to Implementation",
+              "page_number": 113,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Putting the Plan in Motion",
+              "page_number": 114,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Data Collection Updating",
+              "page_number": 117,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Communicating about Care",
+              "page_number": 117,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Independent Intervention: Teaching, Counseling and Advocacy",
+              "page_number": 119,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 121,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 122,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 122,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 123,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "12 EVALUATION",
+          "page_number": 125,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 125,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "The Nursing Process",
+              "page_number": 125,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Standards of Care",
+              "page_number": 127,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Quality Improvement as a Function of the Nursing Process",
+              "page_number": 129,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Examples of Evaluation of Care in the Endoscopy Suite",
+              "page_number": 129,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 130,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 132,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 132,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 133,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Section III ANATOMY, PHYSIOLOGY AND PATHOPHYSIOLOGY",
+      "page_number": 135,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "13 ESOPHAGUS",
+          "page_number": 137,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 137,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anatomy and Physiology",
+              "page_number": 137,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disorders of the Esophagus",
+              "page_number": 139,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Gastroesophageal reflux disease",
+                  "page_number": 139,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Esophageal varices",
+                  "page_number": 141,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Tumors",
+                  "page_number": 142,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Diverticula",
+                  "page_number": 142,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Strictures",
+                  "page_number": 144,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Rings and webs",
+                  "page_number": 144,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Foreign bodies",
+                  "page_number": 145,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Inflammatory diseases",
+                  "page_number": 145,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Infectious diseases",
+                  "page_number": 146,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "HIV esophagitis",
+                  "page_number": 147,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Mallory-Weiss tears",
+                  "page_number": 147,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Motility disorders",
+                  "page_number": 147,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Caustic injury",
+                  "page_number": 148,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Barrett's esophagus",
+                  "page_number": 149,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Fistulas in adults",
+                  "page_number": 149,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 150,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 151,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 151,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 152,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "14 STOMACH",
+          "page_number": 155,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 155,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anatomy and Physiology",
+              "page_number": 155,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disorders of the Stomach",
+              "page_number": 157,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Peptic ulcer disease",
+                  "page_number": 157,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Helicobacter pylori",
+                  "page_number": 159,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Gastric cancer",
+                  "page_number": 160,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Gastric polyps",
+                  "page_number": 162,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Gastritis",
+                  "page_number": 162,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Stress ulcers",
+                  "page_number": 163,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Dieulafoy's lesion",
+                  "page_number": 164,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Gastric varices",
+                  "page_number": 164,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Hiatal hernia",
+                  "page_number": 164,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Congenital abnormalities",
+                  "page_number": 165,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Gastric motor abnormalities",
+                  "page_number": 165,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Infectious gastritis",
+                  "page_number": 166,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Gastric outlet obstruction",
+                  "page_number": 166,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Caustic injury",
+                  "page_number": 166,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Bezoars",
+                  "page_number": 167,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 168,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 169,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 169,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 170,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "15 SMALL INTESTINE",
+          "page_number": 173,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 173,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anatomy and Physiology",
+              "page_number": 173,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disorders of the Small Intestine",
+              "page_number": 175,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Duodenal ulcers",
+                  "page_number": 176,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Bacterial and viral infections",
+                  "page_number": 176,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Parasitic diseases",
+                  "page_number": 177,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Crohn's disease",
+                  "page_number": 180,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Meckel's diverticulum",
+                  "page_number": 183,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Vitamin B12 deficiency",
+                  "page_number": 183,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Malabsorption syndromes",
+                  "page_number": 184,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Chronic intestinal pseudo-obstruction",
+                  "page_number": 189,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Small intestine tumors",
+                  "page_number": 190,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Lymphangiectasia",
+                  "page_number": 190,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 191,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 193,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 193,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 193,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "16 LARGE INTESTINE",
+          "page_number": 195,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 195,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anatomy and Physiology",
+              "page_number": 195,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disorders of the Large Intestine",
+              "page_number": 199,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Polyps",
+                  "page_number": 199,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Angiodysplasia",
+                  "page_number": 200,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Colitis",
+                  "page_number": 200,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Irritable bowel syndrome",
+                  "page_number": 205,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Chronic and recurrent abdominal pain syndromes",
+                  "page_number": 206,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Parasitic infestations",
+                  "page_number": 206,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Diverticular disease",
+                  "page_number": 208,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Colorectal cancer",
+                  "page_number": 209,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Intestinal obstruction",
+                  "page_number": 212,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Anorectal disorders",
+                  "page_number": 214,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 217,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 218,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 218,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 218,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "17 BILIARY SYSTEM",
+          "page_number": 221,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 221,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anatomy and Physiology",
+              "page_number": 221,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disorders of the Biliary System",
+              "page_number": 223,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Cholelithiasis",
+                  "page_number": 223,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Choledocholithiasis",
+                  "page_number": 224,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Cholecystitis",
+                  "page_number": 225,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Cholangitis",
+                  "page_number": 226,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Cholangiocarcinoma",
+                  "page_number": 227,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Congenital abnormalities",
+                  "page_number": 228,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 229,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 230,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 230,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 231,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "18 PANCREAS",
+          "page_number": 233,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Learning objectives",
+              "page_number": 233,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anatomy and Physiology",
+              "page_number": 233,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Disorders of the Pancreas",
+              "page_number": 234,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": [
+                {
+                  "title": "Pancreatitis",
+                  "page_number": 234,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Pancreatic fluid collections",
+                  "page_number": 236,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Pancreatic fistulas",
+                  "page_number": 237,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Pancreatic carcinoma",
+                  "page_number": 237,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Pancreatic tumors",
+                  "page_number": 238,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Pancreatic exocrine insufficiency",
+                  "page_number": 240,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Cystic fibrosis",
+                  "page_number": 240,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Congenital anomalies",
+                  "page_number": 241,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                },
+                {
+                  "title": "Pancreatic diseases in children",
+                  "page_number": 242,
+                  "pdf_page_index": 6,
+                  "level": 4,
+                  "confidence": 0.9,
+                  "source": "vision_toc",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "Case Situation",
+              "page_number": 243,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Terms",
+              "page_number": 244,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Review Questions",
+              "page_number": 244,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bibliography",
+              "page_number": 245,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "19 LIVER",
+      "page_number": 247,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 247,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Anatomy and Physiology",
+          "page_number": 247,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Disorders of the Liver",
+          "page_number": 250,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Cirrhosis",
+              "page_number": 250,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Portal hypertension",
+              "page_number": 251,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Ascites",
+              "page_number": 252,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Hepatic encephalopathy",
+              "page_number": 253,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Hepatorenal syndrome",
+              "page_number": 253,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Hepatitis",
+              "page_number": 254,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fulminant hepatic failure",
+              "page_number": 260,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Budd-Chiari syndrome",
+              "page_number": 260,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Tumors",
+              "page_number": 261,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Wilson's disease",
+              "page_number": 262,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Porphyria",
+              "page_number": 262,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Hemochromatosis",
+              "page_number": 263,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Alpha1-antitrypsin deficiency",
+              "page_number": 264,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Intrahepatic biliary dysplasia",
+              "page_number": 265,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Biliary atresia",
+              "page_number": 265,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Neonatal hepatitis",
+              "page_number": 266,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Gilbert syndrome",
+              "page_number": 266,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 267,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 268,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 268,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 269,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Section IV PHARMACOLOGY, INTRAVENOUS THERAPY AND NUTRITION",
+      "page_number": 273,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": []
+    },
+    {
+      "title": "20 PHARMACOLOGY",
+      "page_number": 275,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 275,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles",
+          "page_number": 275,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Patient education",
+              "page_number": 276,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Techniques and routes of administration",
+              "page_number": 276,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Calculations and conversions",
+              "page_number": 277,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Documentation",
+              "page_number": 279,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Drugs Commonly Used for Patients with Gastrointestinal Disorders",
+          "page_number": 279,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Antacids",
+              "page_number": 279,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Probiotics and prebiotics",
+              "page_number": 280,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Antibiotics",
+              "page_number": 280,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anticholinergics and cholinergics",
+              "page_number": 281,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Antidiarrheals",
+              "page_number": 282,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Antiemetics",
+              "page_number": 283,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Antiflatulents",
+              "page_number": 283,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Antiparasitic/antifungal agents",
+              "page_number": 284,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Antiulcer Agents",
+              "page_number": 284,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Corticosteroids",
+              "page_number": 285,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Immunomodulators",
+              "page_number": 286,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Agents used in diagnostic tests",
+              "page_number": 286,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Gallstone therapeutic agents",
+              "page_number": 286,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Laxatives",
+              "page_number": 287,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Narcotics and antagonists",
+              "page_number": 288,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Sclerosing agents",
+              "page_number": 288,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Sedatives and antagonists",
+              "page_number": 289,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Reversal agents",
+              "page_number": 289,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Smooth muscle relaxants",
+              "page_number": 290,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Topical anesthetics",
+              "page_number": 290,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Other agents",
+              "page_number": 290,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 293,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 295,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 295,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 295,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "21 INTRAVENOUS THERAPY",
+      "page_number": 299,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 299,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Gastroenterology Nurse's Role in IV Therapy",
+          "page_number": 299,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Fluids and Electrolytes",
+          "page_number": 300,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Basic principles",
+              "page_number": 300,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fluid and electrolyte imbalances",
+              "page_number": 301,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Considerations when selecting IV fluids and electrolytes",
+              "page_number": 301,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "IV therapy administration risks for the gastroenterology nurse",
+              "page_number": 302,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Vascular access devices",
+              "page_number": 302,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Equipment",
+              "page_number": 303,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Insertion sites",
+              "page_number": 304,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Insertion technique",
+              "page_number": 305,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Complications",
+              "page_number": 305,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Dosage calculations",
+              "page_number": 306,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Patient education",
+              "page_number": 308,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Insertion documentation",
+              "page_number": 308,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Intravenous Medication Administration",
+          "page_number": 308,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Techniques and routes of administration",
+              "page_number": 308,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Indications for intravenous medication in gastroenterology",
+              "page_number": 309,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Adverse reactions",
+              "page_number": 309,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Administration documentation",
+              "page_number": 310,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Blood and Blood Components",
+          "page_number": 310,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Types of blood component administration",
+              "page_number": 311,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Equipment",
+              "page_number": 311,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Nursing responsibilities",
+              "page_number": 312,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Adverse reactions",
+              "page_number": 312,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Patient education",
+              "page_number": 313,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Transfusion documentation",
+              "page_number": 314,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 314,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 314,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 314,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 315,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "22 NUTRITIONAL THERAPY",
+      "page_number": 317,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 317,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles",
+          "page_number": 317,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Food-Drug Interactions",
+          "page_number": 319,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Anticoagulants",
+              "page_number": 319,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Anti-inflammatories",
+              "page_number": 319,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Potassium-sparing diuretics",
+              "page_number": 319,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Nutritional Assessment",
+          "page_number": 320,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Special Oral Diets",
+          "page_number": 320,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "High-fiber diets",
+              "page_number": 320,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Low-fiber diets",
+              "page_number": 320,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Gluten-free diets",
+              "page_number": 321,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Low-lactose diets",
+              "page_number": 321,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Low-protein diets",
+              "page_number": 322,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Low-fat diets",
+              "page_number": 322,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Two gram-sodium diets",
+              "page_number": 322,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Low FODMAP diets",
+              "page_number": 322,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "GI Restoration Program: Making this Complex Simple",
+          "page_number": 322,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "1. Remove",
+              "page_number": 323,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "2. Replace",
+              "page_number": 323,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "3. Reinoculate",
+              "page_number": 323,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "4. Regenerate",
+              "page_number": 323,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Intestinal Microflora – The Use of Probiotics to Promote Intestinal Balance",
+          "page_number": 323,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Prebiotics",
+              "page_number": 324,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Enteral Nutrition",
+          "page_number": 324,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Indications and contraindications",
+              "page_number": 324,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Administration of enteral nutrition",
+              "page_number": 324,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Initiation of feedings",
+              "page_number": 325,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Enteral formulas",
+              "page_number": 325,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Potential complications of enteral feedings",
+              "page_number": 326,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Nursing care",
+              "page_number": 326,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Additional support",
+              "page_number": 326,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Parenteral Nutrition",
+          "page_number": 326,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Indications and contraindications",
+              "page_number": 326,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Administration of parenteral nutrition",
+              "page_number": 327,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Parenteral formulas",
+              "page_number": 327,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Daily fluid requirements",
+              "page_number": 327,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Potential complications of total parenteral nutrition",
+              "page_number": 327,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Nursing care for patients receiving parenteral nutrition",
+              "page_number": 328,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 328,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 329,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 329,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 330,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Section V DIAGNOSTIC PROCEDURES AND TESTS",
+      "page_number": 333,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": []
+    },
+    {
+      "title": "23 ENDOSCOPY",
+      "page_number": 335,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 335,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Types of Endoscopes",
+          "page_number": 335,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Sedation and Analgesia",
+          "page_number": 336,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Esophagogastroduodenoscopy",
+          "page_number": 339,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Retrograde Cholangiopancreatography",
+          "page_number": 340,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Small Bowel Enteroscopy",
+          "page_number": 342,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Anoscopy",
+          "page_number": 342,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Proctosigmoidoscopy",
+          "page_number": 343,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Flexible Sigmoidoscopy",
+          "page_number": 344,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Colonoscopy",
+          "page_number": 344,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Additional Endoscopic Diagnostic Procedures",
+          "page_number": 346,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Capsule endoscopy",
+              "page_number": 346,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Endoscopy through an ostomy",
+              "page_number": 346,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Endoscopic ultrasonography",
+              "page_number": 347,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 347,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 347,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 347,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 348,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "24 MANOMETRY",
+      "page_number": 351,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 351,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles of GI Manometry",
+          "page_number": 351,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Esophageal Manometry",
+          "page_number": 352,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Anorectal Manometry",
+          "page_number": 359,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Antroduodenal Manometry",
+          "page_number": 362,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Sphincter of Oddi Manometry",
+          "page_number": 363,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 364,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 365,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 365,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 366,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "25 BIOPSY AND CYTOLOGY",
+      "page_number": 367,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 367,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles",
+          "page_number": 367,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Biopsy",
+          "page_number": 367,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Mucosal Resection",
+          "page_number": 369,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Submucosal Dissection",
+          "page_number": 370,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Esophageal Biopsy",
+          "page_number": 370,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Gastric Biopsy",
+          "page_number": 371,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Small Bowel Biopsy",
+          "page_number": 372,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Diagnosis of Biliary and Pancreatic Neoplasms",
+          "page_number": 373,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Fine-Needle Aspiration and Fine-Needle Biopsy",
+          "page_number": 373,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Colorectal Biopsy",
+          "page_number": 374,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Rectal Suction Biopsy",
+          "page_number": 375,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Percutaneous Liver Biopsy",
+          "page_number": 376,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Cytology and Culture of the GI Tract",
+          "page_number": 379,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 381,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 382,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 382,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 383,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "26 OTHER PROCEDURES AND TESTS",
+      "page_number": 385,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 385,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles",
+          "page_number": 385,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Radiographic and Non-radiographic Imaging",
+              "page_number": 386,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Contrast media",
+              "page_number": 386,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Barium swallow",
+              "page_number": 387,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Upper gastrointestinal series",
+              "page_number": 387,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Enteroclysis",
+              "page_number": 388,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Barium enema",
+              "page_number": 388,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Capsule endoscopy",
+              "page_number": 389,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Esophageal capsule",
+              "page_number": 390,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Wireless motility capsule",
+              "page_number": 390,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Magnetic resonance imaging",
+              "page_number": 391,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Percutaneous transhepatic cholangiography",
+              "page_number": 392,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Abdominal ultrasonography",
+              "page_number": 392,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Oral cholecystography",
+              "page_number": 393,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Arteriography",
+              "page_number": 393,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Computed tomography scan",
+              "page_number": 394,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Scintigraphy",
+              "page_number": 394,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Transjugular intrahepatic portosystemic shunt",
+              "page_number": 395,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Secretory Studies",
+          "page_number": 396,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Pancreatic stimulation",
+              "page_number": 396,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Gastric analysis",
+              "page_number": 397,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Multichannel intraluminal impedance",
+              "page_number": 397,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Twenty-four-hour pH monitoring",
+              "page_number": 398,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Wireless pH monitoring system",
+              "page_number": 398,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Blood Tests",
+          "page_number": 399,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Hemoglobin and hematocrit",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Prothrombin level",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Prothrombin time",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Activated partial thromboplastin time",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "International normalized ratio",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Bleeding time",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Platelet count",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum albumin-globulin ratio",
+              "page_number": 400,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Total protein",
+              "page_number": 401,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Galactose tolerance",
+              "page_number": 401,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Glucose level",
+              "page_number": 401,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Glucose tolerance test",
+              "page_number": 401,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum d-xylose",
+              "page_number": 401,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum cholesterol",
+              "page_number": 401,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum AST and ALT",
+              "page_number": 402,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum bilirubin",
+              "page_number": 402,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum alkaline phosphatase",
+              "page_number": 402,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Gamma-glutamyl transferase",
+              "page_number": 402,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum amylase",
+              "page_number": 403,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum lipase",
+              "page_number": 403,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum gastrin",
+              "page_number": 403,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Hepatitis antigens and antibodies",
+              "page_number": 403,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Carcinoembryonic antigen",
+              "page_number": 404,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Cancer antigen 19-9",
+              "page_number": 404,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Serum antibodies",
+              "page_number": 404,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Celiac screening panel",
+              "page_number": 404,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Urinalysis",
+          "page_number": 404,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Urine bilirubin",
+              "page_number": 405,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Urine urobilinogen",
+              "page_number": 405,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Fecal Analysis",
+          "page_number": 405,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Fecal occult blood",
+              "page_number": 405,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fecal immunochemical test",
+              "page_number": 406,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Stool DNA",
+              "page_number": 406,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fecal fat",
+              "page_number": 406,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fecal chymotrypsin",
+              "page_number": 406,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fecal Alpha1 antitrypsin",
+              "page_number": 407,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Fecal organisms",
+              "page_number": 407,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Hydrogen/Methane Breath Test",
+          "page_number": 407,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Helicobacter Pylori Tests",
+          "page_number": 408,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 408,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 408,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 409,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 409,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "Section VI THERAPEUTIC PROCEDURES",
+      "page_number": 411,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": []
+    },
+    {
+      "title": "27 DILATATION",
+      "page_number": 413,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 413,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles",
+          "page_number": 413,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Procedure",
+          "page_number": 413,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Types of Dilators",
+          "page_number": 415,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": [
+            {
+              "title": "Bougienage",
+              "page_number": 415,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Polyvinyl chloride dilators",
+              "page_number": 416,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Hydrostatic balloons",
+              "page_number": 417,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            },
+            {
+              "title": "Pneumatic balloons",
+              "page_number": 418,
+              "pdf_page_index": 6,
+              "level": 3,
+              "confidence": 0.9,
+              "source": "vision_toc",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 419,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 420,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 420,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 421,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "28 HEMOSTASIS AND TUMOR ABLATION",
+      "page_number": 423,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 423,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Basic Principles",
+          "page_number": 423,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Electrosurgery",
+          "page_number": 424,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Heater Probes",
+          "page_number": 428,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Laser Therapy",
+          "page_number": 429,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Argon Plasma Coagulation",
+          "page_number": 432,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Photodynamic Therapy",
+          "page_number": 432,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Brachytherapy",
+          "page_number": 433,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Mucosal Resection",
+          "page_number": 433,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Endoluminal Radiofrequency Ablation",
+          "page_number": 434,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Injection Therapy",
+          "page_number": 434,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Variceal Ligation",
+          "page_number": 437,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Clipping",
+          "page_number": 438,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Hemostatic Powder",
+          "page_number": 438,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Esophagogastric Tamponade",
+          "page_number": 438,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Endoscopic Cryotherapy",
+          "page_number": 440,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Confocal Laser Endomicroscopy",
+          "page_number": 440,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Nursing Considerations",
+          "page_number": 440,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 440,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 442,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 442,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 443,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "29 INTUBATION AND DRAINAGE",
+      "page_number": 445,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 445,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Nasogastric Tube Insertion",
+          "page_number": 445,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Gastric Lavage",
+          "page_number": 448,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Nasobiliary and Nasopancreatic Catheters",
+          "page_number": 450,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Biliary Stents",
+          "page_number": 451,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Pancreatic Stents",
+          "page_number": 454,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Self-Expanding Stents",
+          "page_number": 454,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Temporary Expandable Esophageal Stents",
+          "page_number": 456,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Colon Decompression",
+          "page_number": 456,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Abdominal Paracentesis",
+          "page_number": 457,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 459,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 460,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 460,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 461,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "30 EXCISION AND EXTRACTION",
+      "page_number": 463,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 463,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Foreign Body Removal",
+          "page_number": 463,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bezoar Removal",
+          "page_number": 465,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Polypectomy",
+          "page_number": 466,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Colonic polyps",
+          "page_number": 466,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Hemorrhage",
+          "page_number": 469,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Peutz-Jeghers syndrome",
+          "page_number": 469,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Gastric polyps",
+          "page_number": 469,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Sphincterotomy",
+          "page_number": 469,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Pancreatic Sphincterotomy",
+          "page_number": 473,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Extracorporeal Shock Wave Lithotripsy",
+          "page_number": 473,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Pulsed Dye Laser Lithotripsy",
+          "page_number": 473,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 474,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 474,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 475,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 475,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "31 COMPLICATIONS AND EMERGENCIES",
+      "page_number": 477,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 477,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Perforation of the Upper Gastrointestinal Tract",
+          "page_number": 477,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Perforation of the Lower Gastrointestinal Tract",
+          "page_number": 478,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Gastrointestinal hemorrhage",
+          "page_number": 479,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Shock",
+          "page_number": 482,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Adverse Drug Reactions",
+          "page_number": 483,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Cardiac Complications and Arrest",
+          "page_number": 484,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Respiratory Depression",
+          "page_number": 485,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Vasovagal Syncope",
+          "page_number": 486,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Postural Hypotension",
+          "page_number": 486,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Aspiration",
+          "page_number": 486,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Pediatric Complications and Emergencies",
+          "page_number": 487,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Case Situation",
+          "page_number": 487,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 490,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 490,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 490,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "32 SURGICAL INTERVENTIONS",
+      "page_number": 493,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": [
+        {
+          "title": "Learning objectives",
+          "page_number": 493,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Surgical Interventions for Esophageal Disorders",
+          "page_number": 493,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Surgical Interventions for Disorders of the Stomach",
+          "page_number": 496,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Surgical Interventions for Pancreatic Disorders",
+          "page_number": 499,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Surgical Interventions for Disorders of the Biliary Tract",
+          "page_number": 500,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Surgical Interventions for Disorders of the Small Intestine",
+          "page_number": 501,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Surgical Interventions for Disorders of the Colon and Rectum",
+          "page_number": 502,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Transgastric Surgery",
+          "page_number": 504,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Terms",
+          "page_number": 504,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Review Questions",
+          "page_number": 504,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        },
+        {
+          "title": "Bibliography",
+          "page_number": 505,
+          "pdf_page_index": 6,
+          "level": 2,
+          "confidence": 0.9,
+          "source": "vision_toc",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "ANSWERS TO REVIEW QUESTIONS",
+      "page_number": 507,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": []
+    },
+    {
+      "title": "GLOSSARY",
+      "page_number": 509,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": []
+    },
+    {
+      "title": "INDEX",
+      "page_number": 527,
+      "pdf_page_index": 6,
+      "level": 1,
+      "confidence": 0.9,
+      "source": "vision_toc",
+      "children": []
+    }
+  ]
+}

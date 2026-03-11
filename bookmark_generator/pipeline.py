@@ -2,17 +2,19 @@
 
 Orchestrates the full extraction flow:
 1. Check for existing bookmarks
-2. Locate and parse TOC pages
-3. Detect headings via font heuristics
-4. Reconcile and produce final bookmark tree
-5. Optionally run LLM review to validate and enhance results
-6. Optionally inject bookmarks back into the PDF
+2. Build page number mapping
+3. Vision-based TOC extraction (optional, highest accuracy)
+4. Regex-based TOC page parsing
+5. Font-based heading detection via heuristics
+6. Reconcile and produce final bookmark tree
+7. Optionally run LLM review to validate and enhance results
+8. Optionally inject bookmarks back into the PDF
 """
 
 from __future__ import annotations
 
 import logging
-from typing import Optional
+from typing import Callable, Optional
 
 import fitz
 
@@ -32,19 +34,24 @@ def extract_bookmarks(
     use_toc: bool = True,
     use_font_heuristics: bool = True,
     use_llm: bool = False,
+    use_vision: bool = False,
+    vision_model: str = "claude-sonnet-4-20250514",
     llm_model: str = "claude-sonnet-4-20250514",
     inject_into_pdf: bool = False,
     output_path: Optional[str] = None,
     fuzzy_threshold: int = 70,
+    progress_callback: Optional[Callable] = None,
 ) -> ExtractionResult:
     """Main entry point: extract chapter structure from a PDF.
 
     Args:
         pdf_path: Path to the input PDF file.
         force_rebuild: If True, ignore existing bookmarks and rebuild.
-        use_toc: Whether to try TOC page parsing (Approach 1).
-        use_font_heuristics: Whether to use font-based heading detection (Approach 3).
+        use_toc: Whether to try TOC page parsing (regex-based).
+        use_font_heuristics: Whether to use font-based heading detection.
         use_llm: Whether to use LLM review to validate/enhance headings.
+        use_vision: Whether to use Vision API for TOC extraction + verification.
+        vision_model: Which Anthropic model to use for Vision extraction.
         llm_model: Which Anthropic model to use for LLM review.
         inject_into_pdf: If True, write bookmarks into the PDF.
         output_path: Path for the output PDF (if injecting). Defaults to overwriting input.
@@ -79,11 +86,43 @@ def extract_bookmarks(
         else:
             result.warnings.append("Could not determine page number offset — using default mapping.")
 
-        # ── Step 3: TOC page parsing ────────────────────────────────────
+        # ── Step 2.5: Vision-based TOC extraction ────────────────────────
+        vision_entries: list[BookmarkEntry] = []
+
+        if use_vision:
+            logger.info("Running vision-based TOC extraction...")
+            try:
+                from .vision_extract import vision_extract_bookmarks
+
+                vision_result = vision_extract_bookmarks(
+                    doc, page_mapping,
+                    model=vision_model,
+                    verify=True,
+                    progress_callback=progress_callback,
+                )
+                if vision_result:
+                    vision_entries = vision_result
+                    methods_used.append("vision_toc")
+                    logger.info(f"Vision extracted {len(vision_entries)} verified entries.")
+                else:
+                    result.warnings.append("Vision extraction returned no results — falling back to regex/heuristics.")
+                    logger.warning("Vision extraction returned None.")
+            except ImportError:
+                result.warnings.append(
+                    "Vision extraction requires 'anthropic' package. "
+                    "Install with: pip install anthropic"
+                )
+                logger.warning("anthropic package not installed, skipping vision extraction.")
+            except Exception as e:
+                result.warnings.append(f"Vision extraction failed: {e}")
+                logger.warning(f"Vision extraction error: {e}")
+
+        # ── Step 3: TOC page parsing (regex-based) ───────────────────────
         toc_entries: list[BookmarkEntry] = []
         toc_page_indices: set[int] = set()
 
-        if use_toc:
+        if use_toc and not vision_entries:
+            # Only run regex TOC if vision didn't produce results
             logger.info("Searching for Table of Contents...")
             toc_location = find_toc_pages(doc)
 
@@ -107,7 +146,8 @@ def extract_bookmarks(
         # ── Step 4: Font-based heading detection ────────────────────────
         font_entries: list[BookmarkEntry] = []
 
-        if use_font_heuristics:
+        if use_font_heuristics and not vision_entries:
+            # Only run font heuristics if vision didn't produce results
             logger.info("Analyzing document font profile...")
             font_profile = build_font_profile(doc, skip_pages=toc_page_indices)
             logger.info(
@@ -123,8 +163,15 @@ def extract_bookmarks(
             logger.info(f"Detected {len(font_entries)} heading candidates.")
             methods_used.append("font_heuristics")
 
-        # ── Step 5: Reconcile ───────────────────────────────────────────
-        if toc_entries or font_entries:
+        # ── Step 5: Produce final bookmark list ──────────────────────────
+        if vision_entries:
+            # Vision results are already in TOC reading order — use them directly
+            # Build hierarchy tree from flat list (presorted=True to preserve TOC order)
+            from .reconciler import _build_hierarchy
+            result.bookmarks = _build_hierarchy(vision_entries, presorted=True)
+            result.method_used = " + ".join(methods_used)
+            logger.info(f"Final bookmark count (vision): {len(result.flat_bookmarks())}")
+        elif toc_entries or font_entries:
             logger.info("Reconciling TOC entries with detected headings...")
             reconciled = reconcile_bookmarks(
                 toc_entries, font_entries, page_mapping,

@@ -228,3 +228,19 @@ def build_page_number_mapping(doc: fitz.Document, sample_pages: Optional[list[in
         mapping.confidence = offset_counts[most_common_offset] / len(offsets)
 
     return mapping
+
+
+def render_page_to_png(page: fitz.Page, width: int = 1400) -> bytes:
+    """Render a PDF page as PNG bytes at the specified width.
+
+    Args:
+        page: A PyMuPDF page object.
+        width: Target width in pixels (height scales proportionally).
+
+    Returns:
+        PNG image bytes.
+    """
+    zoom = width / page.rect.width
+    mat = fitz.Matrix(zoom, zoom)
+    pix = page.get_pixmap(matrix=mat, alpha=False)
+    return pix.tobytes("png")

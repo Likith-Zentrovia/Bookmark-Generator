@@ -127,19 +127,30 @@ def _resolve_page_indices(
     return entries
 
 
-def _build_hierarchy(flat_entries: list[BookmarkEntry]) -> list[BookmarkEntry]:
+def _build_hierarchy(
+    flat_entries: list[BookmarkEntry],
+    presorted: bool = False,
+) -> list[BookmarkEntry]:
     """Convert a flat list of entries into a nested tree based on levels.
 
     Entries with level 1 are top-level. Level 2 entries become children
     of the preceding level 1, etc.
+
+    Args:
+        flat_entries: Flat list of bookmark entries.
+        presorted: If True, entries are already in correct reading order
+                   (e.g., from vision TOC extraction) and should NOT be
+                   re-sorted. If False (default), entries are sorted by
+                   page index before building hierarchy.
     """
     if not flat_entries:
         return []
 
-    # Sort by page then by appearance order
-    flat_entries.sort(key=lambda e: (
-        e.pdf_page_index if e.pdf_page_index >= 0 else e.page_number * 1000
-    ))
+    if not presorted:
+        # Sort by page then by appearance order
+        flat_entries.sort(key=lambda e: (
+            e.pdf_page_index if e.pdf_page_index >= 0 else e.page_number * 1000
+        ))
 
     root: list[BookmarkEntry] = []
     stack: list[BookmarkEntry] = []  # Stack of (entry) for nesting

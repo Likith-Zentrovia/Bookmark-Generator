@@ -13,6 +13,16 @@ import os
 import sys
 import threading
 import webbrowser
+from pathlib import Path
+
+# Load .env file from project root
+try:
+    from dotenv import load_dotenv
+    _env_file = Path(__file__).resolve().parent / ".env"
+    if _env_file.exists():
+        load_dotenv(_env_file, override=True)
+except ImportError:
+    pass
 
 
 def main():
@@ -34,6 +44,21 @@ def main():
         help="Don't automatically open the browser",
     )
     args = parser.parse_args()
+
+    # Configure logging so vision/extraction progress is visible in terminal
+    import logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(levelname)s: %(message)s",
+    )
+
+    # Check API key
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if api_key and not api_key.startswith("your-"):
+        print(f"  API Key: loaded ({api_key[:12]}...)")
+    else:
+        print("  API Key: NOT SET (Vision Extract will not work)")
+        print("           Add your key to .env file in project root")
 
     # Validate PDF path if provided
     if args.pdf_path:
