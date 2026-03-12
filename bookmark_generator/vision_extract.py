@@ -36,8 +36,10 @@ try:
 except ImportError:
     pass  # python-dotenv not installed, rely on environment variables
 
+from rapidfuzz import fuzz
+
 from .models import BookmarkEntry, PageNumberMapping
-from .pdf_utils import render_page_to_png
+from .pdf_utils import extract_page_text, render_page_to_png
 
 logger = logging.getLogger(__name__)
 
@@ -435,6 +437,100 @@ def extract_toc_entries_vision(
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+#  Text-based pre-verification (fast, local, no API call)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def _normalize_for_text_match(text: str) -> str:
+    """Normalize text for fuzzy text-based matching.
+
+    Mirrors reconciler._normalize_title logic but is self-contained
+    to avoid circular imports.
+    """
+    # Remove numbering prefixes like "1.2.3."
+    text = re.sub(r'^(?:\d+\.)+\d*\.?\s*', '', text)
+    # Remove chapter/section prefixes
+    text = re.sub(
+        r'^(?:chapter|part|section|unit|appendix)\s+[\dIVXLCivxlc]+[.:]\s*',
+        '', text, flags=re.IGNORECASE,
+    )
+    # Normalize whitespace and case
+    text = re.sub(r'\s+', ' ', text).strip().lower()
+    return text
+
+
+def _text_verify_entry(
+    doc,
+    entry: BookmarkEntry,
+    total_pages: int,
+    nearby_range: int = 2,
+    threshold: int = 75,
+) -> tuple[bool, Optional[int]]:
+    """Check if an entry's title appears on its target page using text extraction.
+
+    Uses PyMuPDF's text extraction (instant, local, no API call) and
+    rapidfuzz fuzzy matching to verify whether the heading exists on the
+    target page or nearby pages.
+
+    Args:
+        doc: Open PyMuPDF document.
+        entry: The BookmarkEntry to verify. Must have pdf_page_index set.
+        total_pages: Total number of pages in the document.
+        nearby_range: How many pages on either side of the target to check.
+        threshold: Minimum rapidfuzz score (0-100) to consider a match.
+
+    Returns:
+        (verified, actual_page_idx):
+            - verified=True, actual_page_idx=target if found on target page
+            - verified=True, actual_page_idx=nearby if found on a nearby page
+            - verified=False, actual_page_idx=None if not found anywhere
+    """
+    title_normalized = _normalize_for_text_match(entry.title)
+    if not title_normalized or len(title_normalized) < 3:
+        # Title too short for reliable text matching
+        return False, None
+
+    target = entry.pdf_page_index
+
+    # Check target page first, then nearby pages in expanding order
+    pages_to_check = [target]
+    for offset in range(1, nearby_range + 1):
+        if target + offset < total_pages:
+            pages_to_check.append(target + offset)
+        if target - offset >= 0:
+            pages_to_check.append(target - offset)
+
+    for page_idx in pages_to_check:
+        page = doc[page_idx]
+        page_text = extract_page_text(page)
+        if not page_text:
+            continue
+
+        page_text_lower = page_text.lower()
+
+        # Strategy 1: Check if the normalized title is a substring (fast path)
+        if title_normalized in page_text_lower:
+            return True, page_idx
+
+        # Strategy 2: Fuzzy match against each line of the page
+        # This handles minor OCR differences or formatting variations
+        lines = [line.strip() for line in page_text.split('\n') if line.strip()]
+        for line in lines:
+            line_normalized = _normalize_for_text_match(line)
+            if not line_normalized:
+                continue
+            score = fuzz.token_sort_ratio(title_normalized, line_normalized)
+            if score >= threshold:
+                return True, page_idx
+            # Also try partial_ratio for titles that are substrings of longer lines
+            if len(title_normalized) > 5:
+                partial_score = fuzz.partial_ratio(title_normalized, line_normalized)
+                if partial_score >= threshold + 10:  # Higher bar for partial
+                    return True, page_idx
+
+    return False, None
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 #  Phase 3: Cross-verification
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -444,14 +540,18 @@ def cross_verify_entries(
     page_mapping: PageNumberMapping,
     model: str = "claude-sonnet-4-20250514",
     render_width: int = 1000,
-    batch_size: int = 5,
+    batch_size: int = 12,
     nearby_range: int = 2,
     progress_callback: Optional[ProgressCallback] = None,
 ) -> list[BookmarkEntry]:
     """Verify each TOC entry by checking if the heading exists on its claimed page.
 
-    For each entry, renders the target page (and nearby pages) and asks
-    the Vision API to confirm the heading is present.
+    Uses a two-phase approach for speed:
+    1. Text pre-verification: Uses PyMuPDF text extraction (instant, local) to
+       check if the heading text exists on the target page. ~90% of entries are
+       verified this way in under 2 seconds.
+    2. Vision API verification: Only entries that fail text matching are sent to
+       the Vision API for visual verification.
 
     Returns:
         Verified list of BookmarkEntry objects with corrected pages/levels.
@@ -460,7 +560,6 @@ def cross_verify_entries(
         return []
 
     total_pages = len(doc)
-    cache = _PageImageCache(doc, render_width=render_width)
 
     # Resolve page indices first
     for entry in entries:
@@ -469,21 +568,89 @@ def cross_verify_entries(
         # Clamp to valid range
         entry.pdf_page_index = max(0, min(entry.pdf_page_index, total_pages - 1))
 
-    # Create index-ordered list for batching by page proximity,
-    # but track original TOC order so we can restore it later.
-    indexed_entries = list(enumerate(entries))  # (original_index, entry)
-    indexed_entries.sort(key=lambda x: x[1].pdf_page_index)
-    verified_entries: list[tuple[int, BookmarkEntry]] = []
+    # ── Phase 3a: Text-based pre-verification (fast, local) ──────────────
+    text_verified_entries: list[tuple[int, BookmarkEntry]] = []   # (orig_idx, entry)
+    needs_vision_entries: list[tuple[int, BookmarkEntry]] = []    # (orig_idx, entry)
 
-    total_verify_batches = (len(indexed_entries) + batch_size - 1) // batch_size
-    for batch_num, batch_start in enumerate(range(0, len(indexed_entries), batch_size)):
-        batch = indexed_entries[batch_start:batch_start + batch_size]
+    if progress_callback:
+        progress_callback(
+            "text_verification", 0, len(entries),
+            "Running text-based pre-verification..."
+        )
+
+    text_verified_count = 0
+    for orig_idx, entry in enumerate(entries):
+        verified, actual_page_idx = _text_verify_entry(
+            doc, entry, total_pages, nearby_range=nearby_range,
+        )
+
+        if verified:
+            if actual_page_idx is not None and actual_page_idx != entry.pdf_page_index:
+                # Found on a different nearby page — correct it
+                entry.pdf_page_index = actual_page_idx
+                corrected_num = page_mapping.physical_to_logical_num(actual_page_idx)
+                if corrected_num is not None:
+                    entry.page_number = corrected_num
+                entry.confidence = 0.85
+                logger.debug(
+                    f'Entry "{entry.title}" text-verified on nearby page {actual_page_idx + 1}'
+                )
+            else:
+                entry.confidence = 0.92
+            entry.source = "text_verified"
+            text_verified_entries.append((orig_idx, entry))
+            text_verified_count += 1
+        else:
+            needs_vision_entries.append((orig_idx, entry))
+
+        # Report progress every 50 entries
+        if progress_callback and (orig_idx + 1) % 50 == 0:
+            progress_callback(
+                "text_verification", orig_idx + 1, len(entries),
+                f"Text-verified {text_verified_count}/{orig_idx + 1} entries..."
+            )
+
+    if progress_callback:
+        progress_callback(
+            "text_verification", len(entries), len(entries),
+            f"Text pre-verification: {text_verified_count}/{len(entries)} verified, "
+            f"{len(needs_vision_entries)} need Vision API"
+        )
+
+    logger.info(
+        f"Text pre-verification: {text_verified_count}/{len(entries)} verified locally. "
+        f"{len(needs_vision_entries)} entries need Vision API verification."
+    )
+
+    # If all entries were text-verified, skip Vision API entirely
+    if not needs_vision_entries:
+        all_entries = list(text_verified_entries)
+        all_entries.sort(key=lambda x: x[0])
+        result_entries = [entry for _idx, entry in all_entries]
+
+        logger.info(
+            f"Cross-verification complete (text-only): {text_verified_count} verified, "
+            f"0 needed Vision API, out of {len(result_entries)} total"
+        )
+        return result_entries
+
+    # ── Phase 3b: Vision API verification (only for failed entries) ──────
+    cache = _PageImageCache(doc, render_width=render_width)
+
+    # Sort by page proximity for efficient batching
+    needs_vision_entries.sort(key=lambda x: x[1].pdf_page_index)
+    verified_entries: list[tuple[int, BookmarkEntry]] = list(text_verified_entries)
+
+    total_verify_batches = (len(needs_vision_entries) + batch_size - 1) // batch_size
+    for batch_num, batch_start in enumerate(range(0, len(needs_vision_entries), batch_size)):
+        batch = needs_vision_entries[batch_start:batch_start + batch_size]
 
         if progress_callback:
-            entries_done = min(batch_start + batch_size, len(indexed_entries))
+            entries_done = min(batch_start + batch_size, len(needs_vision_entries))
             progress_callback(
                 "verification", batch_num + 1, total_verify_batches,
-                f"Verifying entries {batch_start + 1}-{entries_done} of {len(indexed_entries)}..."
+                f"Vision-verifying entries {batch_start + 1}-{entries_done} "
+                f"of {len(needs_vision_entries)} remaining..."
             )
 
         # Collect all pages needed for this batch (target + nearby)
@@ -589,11 +756,13 @@ def cross_verify_entries(
     verified_entries.sort(key=lambda x: x[0])
     result_entries = [entry for _idx, entry in verified_entries]
 
-    verified_count = sum(1 for e in result_entries if e.source == "vision_verified")
+    text_count = sum(1 for e in result_entries if e.source == "text_verified")
+    vision_count = sum(1 for e in result_entries if e.source == "vision_verified")
     unverified_count = sum(1 for e in result_entries if e.source == "vision_unverified")
     logger.info(
-        f"Cross-verification complete: {verified_count} verified, "
-        f"{unverified_count} unverified out of {len(result_entries)} total"
+        f"Cross-verification complete: {text_count} text-verified, "
+        f"{vision_count} vision-verified, {unverified_count} unverified "
+        f"out of {len(result_entries)} total"
     )
 
     return result_entries

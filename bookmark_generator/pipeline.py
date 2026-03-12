@@ -41,6 +41,7 @@ def extract_bookmarks(
     output_path: Optional[str] = None,
     fuzzy_threshold: int = 70,
     progress_callback: Optional[Callable] = None,
+    vision_verify: bool = True,
 ) -> ExtractionResult:
     """Main entry point: extract chapter structure from a PDF.
 
@@ -97,7 +98,7 @@ def extract_bookmarks(
                 vision_result = vision_extract_bookmarks(
                     doc, page_mapping,
                     model=vision_model,
-                    verify=True,
+                    verify=vision_verify,
                     progress_callback=progress_callback,
                 )
                 if vision_result:

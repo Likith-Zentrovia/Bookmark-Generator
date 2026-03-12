@@ -59,6 +59,13 @@ def main(argv: list[str] | None = None) -> int:
         help="Anthropic model to use for vision extraction. Default: claude-sonnet-4-20250514.",
     )
     parser.add_argument(
+        "--fast",
+        action="store_true",
+        help="Skip Vision cross-verification phase for faster extraction. "
+             "Entries get page-index resolution but no verification against actual pages. "
+             "Use with --vision for fast mode.",
+    )
+    parser.add_argument(
         "--llm",
         action="store_true",
         help="Enable LLM review stage (requires ANTHROPIC_API_KEY). "
@@ -124,6 +131,7 @@ def main(argv: list[str] | None = None) -> int:
             inject_into_pdf=args.inject,
             output_path=args.output,
             fuzzy_threshold=args.fuzzy_threshold,
+            vision_verify=not args.fast,
         )
     except FileNotFoundError:
         print(f"Error: File not found: {args.pdf_path}", file=sys.stderr)

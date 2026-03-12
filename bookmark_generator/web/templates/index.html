@@ -692,12 +692,16 @@
                     <div class="loading-subtext" x-text="visionProgress.message"></div>
                     <div class="progress-phase">
                         <span class="progress-phase-dot"
-                              :class="{'active': visionProgress.phase === 'discovery', 'done': ['extraction','verification','finalizing','done'].includes(visionProgress.phase)}">
+                              :class="{'active': visionProgress.phase === 'discovery', 'done': ['extraction','text_verification','verification','finalizing','done'].includes(visionProgress.phase)}">
                             Discover
                         </span>
                         <span class="progress-phase-dot"
-                              :class="{'active': visionProgress.phase === 'extraction', 'done': ['verification','finalizing','done'].includes(visionProgress.phase)}">
+                              :class="{'active': visionProgress.phase === 'extraction', 'done': ['text_verification','verification','finalizing','done'].includes(visionProgress.phase)}">
                             Extract
+                        </span>
+                        <span class="progress-phase-dot"
+                              :class="{'active': visionProgress.phase === 'text_verification', 'done': ['verification','finalizing','done'].includes(visionProgress.phase)}">
+                            Text Check
                         </span>
                         <span class="progress-phase-dot"
                               :class="{'active': visionProgress.phase === 'verification', 'done': ['finalizing','done'].includes(visionProgress.phase)}">
@@ -763,6 +767,11 @@
                             :style="hasApiKey ? 'background:#2a4a7f;color:#fff' : 'background:#555;color:#999;cursor:not-allowed'">
                         &#128065; Vision Extract
                     </button>
+                    <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-muted);cursor:pointer"
+                           title="Skip cross-verification for faster extraction (less accurate page numbers)">
+                        <input type="checkbox" x-model="fastMode" style="accent-color:var(--primary)">
+                        Fast
+                    </label>
                 </div>
                 <div class="toolbar-sep"></div>
                 <input type="text" class="search-box" placeholder="&#128269; Search bookmarks..."
@@ -895,6 +904,7 @@
             lastSaved: '',
             autoSaveTimer: null,
             hasApiKey: false,
+            fastMode: false,
 
             // ── Delete confirmation ──────────────────────────────
             deleteConfirm: { show: false, id: null, message: '' },
@@ -1049,6 +1059,7 @@
                             use_toc: true,
                             use_font_heuristics: true,
                             use_vision: true,
+                            fast: this.fastMode,
                         })
                     });
                     const startData = await startResp.json();
@@ -1088,7 +1099,8 @@
                                 'starting': 'Vision AI: Starting...',
                                 'discovery': 'Vision AI: Discovering TOC pages...',
                                 'extraction': 'Vision AI: Extracting entries from TOC...',
-                                'verification': 'Vision AI: Cross-verifying entries...',
+                                'text_verification': 'Vision AI: Text-based pre-verification...',
+                                'verification': 'Vision AI: Verifying remaining entries...',
                                 'finalizing': 'Vision AI: Building bookmark tree...',
                                 'done': 'Vision AI: Complete!',
                             };
@@ -1281,6 +1293,7 @@
                     'vision_toc': 'Vision',
                     'vision_verified': 'Verified',
                     'vision_unverified': 'Unverified',
+                    'text_verified': 'TextOK',
                 };
                 return map[source] || source;
             },
@@ -1296,11 +1309,12 @@
                 const step = this.visionProgress.step || 0;
                 const total = Math.max(this.visionProgress.total_steps || 1, 1);
                 const phasePct = (step / total) * 100;
-                // Weighted phases: discovery 5%, extraction 10%, verification 80%, finalize 5%
+                // Weighted phases: discovery 5%, extraction 10%, text check 10%, verification 70%, finalize 5%
                 const phaseWeights = {
                     'starting': 0,
                     'discovery': 5,
                     'extraction': 15,
+                    'text_verification': 25,
                     'verification': 95,
                     'finalizing': 100,
                     'done': 100,
@@ -1310,7 +1324,8 @@
                     'starting': 0,
                     'discovery': 0,
                     'extraction': 5,
-                    'verification': 15,
+                    'text_verification': 15,
+                    'verification': 25,
                     'finalizing': 95,
                     'done': 100,
                 };

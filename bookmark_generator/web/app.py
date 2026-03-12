@@ -157,6 +157,7 @@ def create_app() -> Flask:
                         llm_model=data.get("llm_model", "claude-sonnet-4-20250514"),
                         fuzzy_threshold=data.get("fuzzy_threshold", 70),
                         progress_callback=progress_callback,
+                        vision_verify=not data.get("fast", False),
                     )
 
                     bookmarks_json = _bookmarks_to_json(result.bookmarks)
